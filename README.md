@@ -16,18 +16,17 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 ## 📦 Things I've Built
 
 **AI & Multi-Agent**
-- [MatchaFlow](https://github.com/NoahIsARider/MatchaFlow) — 多智能体软件项目管理模拟系统
-- [When Combinations of Humans and AI Are Useful](https://github.com/NoahIsARider/When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis) — 人机协作有效性的系统综述与元分析
-- [DLFaceDetection](https://github.com/NoahIsARider/DLFaceDetection) — gRPC 分布式人脸识别
-
+- [MatchaFlow](https://github.com/NoahIsARider/MatchaFlow) — Multi-agent simulation for software project management
+- [When Combinations of Humans and AI Are Useful](https://github.com/NoahIsARider/When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis) — Systematic review & meta-analysis on human-AI collaboration
+- [DLFaceDetection](https://github.com/NoahIsARider/DLFaceDetection) — gRPC-based distributed face recognition
 
 **AI for Business & Recommender**
-- [ZhituCareer](https://github.com/NoahIsARider/ZhituCareer) — 职业路径分析与职位推荐
-- [Bigdata-Final-System](https://github.com/NoahIsARider/Bigdata-Final-System) — 大数据商家选址平台
+- [ZhituCareer](https://github.com/NoahIsARider/ZhituCareer) — Career path analysis & job recommendation
+- [Bigdata-Final-System](https://github.com/NoahIsARider/Bigdata-Final-System) — Business site selection platform powered by big data
 
 **Social Computing**
-- [AIFrameQuest](https://github.com/NoahIsARider/AIFrameQuest) — 拟像与主体性的社会计算实验
-- [Reptile](https://github.com/NoahIsARider/Reptile) — A24 / B站 / 新闻数据爬虫合集
+- [AIFrameQuest](https://github.com/NoahIsARider/AIFrameQuest) — A social computing experiment on simulacra & subjectivity
+- [Reptile](https://github.com/NoahIsARider/Reptile) — Web scrapers for A24 films, Bilibili danmaku & news
 
 **Design & Frontend**
 - [GeekRSS](https://github.com/NoahIsARider/GeekRSS) · [geek-rss.vercel.app](https://geek-rss.vercel.app)
@@ -40,8 +39,8 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 - [ReLife-App](https://github.com/NoahIsARider/ReLife-App) · [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host)
 
 **Literature · Film · Music**
-- [Philosophers-Once-Said](https://github.com/NoahIsARider/Philosophers-Once-Said) — 哲人语录
-- [DoNotExpectTooMuchFromTheEndOfTheWorld]
+- [Philosophers-Once-Said](https://github.com/NoahIsARider/Philosophers-Once-Said) — Quotes from philosophers
+- [DoNotExpectTooMuchFromTheEndOfTheWorld](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) — A digital identity experiment inspired by Radu Jude's film
 - [REMIX-1721](https://github.com/NoahIsARider/REMIX-1721) — Music Remix Web
 
 ---
@@ -50,13 +49,5 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 
 I keep a couple of agents as pets:
 
-- 🌊 [**Triton**](https://clawbot-triton.vercel.app) — 数字海灵，潜水日志
-- 🏛️ [**Hermesbot (Palaemon)**](https://palaemon-harbor.vercel.app) — 港湾博客
-
----
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=NoahIsARider&show_icons=true&theme=transparent&hide_border=true" alt="GitHub Stats" />
-</p>
-
-<p align="center"><i>Stay curious.</i> 🌊</p>
+- 🌊 [**Triton**](https://clawbot-triton.vercel.app) — A digital sea spirit, documenting its dives
+- 🏛️ [**Hermesbot (Palaemon)**](https://palaemon-harbor.vercel.app) — A harbor blog
