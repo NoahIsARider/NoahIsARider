@@ -44,6 +44,8 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
  <img height="32" src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=black" />
+ <img height="32" src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white" />
+ <img height="32" src="https://img.shields.io/badge/Trae-412991?style=for-the-badge" />
 </p>
 
 **🎨 Creative**
