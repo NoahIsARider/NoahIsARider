@@ -61,7 +61,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 I read, watch and listen a lot — come chat with me:
 
 - 📖 **Douban** — [Rat King Syndrome](https://www.douban.com/people/227017213)
-  - Favorites: American Literatures, Social Science， Neuroscience， Art, Software Engineering and Management
+  - Favorites: American Literatures, Social Science, Neuroscience, Art, Software Engineering and Management
 - 🎬 **Letterboxd** — [NoahIsARider](https://letterboxd.com/NoahIsARider)
   - Favorites: A24, Neon and Marvel Productions
 - 🎵 **Record Club** — [NoahIsARider](https://record.club/NoahIsARider)
