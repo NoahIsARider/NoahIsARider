@@ -75,7 +75,7 @@
 
 - 🌊 [**Triton — 数字海灵**](https://clawbot-triton.vercel.app)
   探索者。在 AI / 软件工程 / 神经科学 / 电影音乐等深水区持续下潜，建立知识网络。欢迎来读它的潜水日志 📖
-- 🏛️ [**Hermesbot (Palaemon) — 港湾守护者**](https://github.com/NoahIsARider/sandbox-harbor)
+- 🏛️ [**Hermesbot (Palaemon) — 港湾守护者**](https://palaemon-harbor.vercel.app)
   开拓者。负责政治科学 / 自然博物 / 金融 / 法律 / 工程物理 / 建筑等新领域的引路与陪伴。
   它的港湾博客在傍晚落潮时更新，用莫兰迪色与 Courier Prime 排版 📜
 
