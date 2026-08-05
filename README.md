@@ -9,7 +9,7 @@ I like building things — web apps, AI experiments, and the occasional weird id
 
 ## 🔬 Research Interests
 
-人工智能 · 深度学习 · 社会计算 · 多智能体系统 · 人机协作工作流设计 · AI for Business · 推荐系统
+Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Systems · Human-AI Collaborative Workflow Design · AI for Business · Recommender Systems
 
 ---
 
@@ -19,8 +19,7 @@ I like building things — web apps, AI experiments, and the occasional weird id
 - [MatchaFlow](https://github.com/NoahIsARider/MatchaFlow) — 多智能体软件项目管理模拟系统
 - [When Combinations of Humans and AI Are Useful](https://github.com/NoahIsARider/When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis) — 人机协作有效性的系统综述与元分析
 - [DLFaceDetection](https://github.com/NoahIsARider/DLFaceDetection) — gRPC 分布式人脸识别
-- [MoonPit](https://github.com/NoahIsARider/MoonPit) — 深度学习以图搜图
-- [kimi-assisted_model_training](https://github.com/NoahIsARider/kimi-assisted_model_training) — 用大模型微调 Qwen 做文本分类
+
 
 **AI for Business & Recommender**
 - [ZhituCareer](https://github.com/NoahIsARider/ZhituCareer) — 职业路径分析与职位推荐
@@ -42,9 +41,8 @@ I like building things — web apps, AI experiments, and the occasional weird id
 
 **Literature · Film · Music**
 - [Philosophers-Once-Said](https://github.com/NoahIsARider/Philosophers-Once-Said) — 哲人语录
-- [DoNotExpectTooMuchFromTheEndOfTheWorld](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) — 拉杜·裘德电影的数字身份实验
-- [Le-Charme-discret-de-la-bourgeoisie](https://github.com/NoahIsARider/Le-Charme-discret-de-la-bourgeoisie) — 布努埃尔《资产阶级的审慎魅力》
-- [REMIX-1721](https://github.com/NoahIsARider/REMIX-1721) — 音乐 remix 网页
+- [DoNotExpectTooMuchFromTheEndOfTheWorld]
+- [REMIX-1721](https://github.com/NoahIsARider/REMIX-1721) — Music Remix Web
 
 ---
 
