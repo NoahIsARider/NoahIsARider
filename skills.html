@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skills &amp; Tools — Noah Zhou</title>
+<title>Tools &amp; Skills — Noah Zhou</title>
 <meta name="description" content="Skills and tools of Noah Zhou — software engineering, research, and creative work.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛠</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,55 +60,39 @@
     letter-spacing: 0.06em;
     animation: fade 0.8s ease both;
   }
+  .top .brandline {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
   .top .brand {
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-size: 12px;
   }
-  .top .brand span { color: var(--muted); }
+  .top .tag {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
   .top .back {
     color: var(--muted);
     transition: color 0.2s ease;
   }
   .top .back:hover { color: var(--fg); }
 
-  /* ── Hero ────────────────────────────────── */
-  .hero {
-    padding: 11vh 0 9vh;
-    animation: fade 0.9s 0.08s ease both;
-  }
-  .eyebrow {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 12px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 22px;
-  }
-  .hero h1 {
-    font-weight: 300;
-    font-size: clamp(44px, 7.2vw, 72px);
-    line-height: 1.02;
-    letter-spacing: -0.03em;
-  }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--muted);
-  }
-  .hero .sub {
-    margin-top: 26px;
-    max-width: 480px;
-    color: var(--muted);
-    font-size: 15px;
-    font-weight: 300;
-  }
-
   /* ── Sections ────────────────────────────── */
   section.group {
     padding: 52px 0 10px;
     border-top: 1px solid var(--line);
     animation: fade 0.9s ease both;
+  }
+  section.group:first-of-type {
+    margin-top: 7vh;
+    padding-top: 44px;
   }
   .group-head {
     display: flex;
@@ -180,16 +164,14 @@
 <div class="wrap">
 
   <header class="top">
-    <a class="brand" href="https://github.com/NoahIsARider">Noah<span> Zhou</span></a>
+    <div class="brandline">
+      <a class="brand" href="https://github.com/NoahIsARider">Noah Zhou</a>
+      <span class="tag">Tools &amp; Skills</span>
+    </div>
     <a class="back" href="https://noahisarider.github.io">← Profile</a>
   </header>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Skills &amp; Tools — 2026</p>
-      <h1>Skills<br><em>&amp; Tools</em></h1>
-      <p class="sub">Software engineering × business administration. Building at the intersection of code, data and design.</p>
-    </section>
 
     <section class="group" style="animation-delay:0.12s">
       <div class="group-head">
