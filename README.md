@@ -27,28 +27,28 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 
 | Project | Description |
 | --- | --- |
-| [ZhituCareer](https://github.com/NoahIsARider/ZhituCareer) | Career path analysis & job recommendation |
-| [Bigdata-Final-System](https://github.com/NoahIsARider/Bigdata-Final-System) | Business site selection platform powered by big data |
+| [ZhituCareer](https://github.com/NoahIsARider/ZhituCareer) | Web-based career analysis & job recommendation — career path evaluation, job matching, market trend analysis & course recommendations |
+| [Bigdata-Final-System](https://github.com/NoahIsARider/Bigdata-Final-System) | Business site-selection platform powered by big data — data pipelines that recommend optimal store locations |
 
 **Social Computing**
 
 | Project | Description |
 | --- | --- |
-| [AIFrameQuest](https://github.com/NoahIsARider/AIFrameQuest) | A social computing experiment on simulacra & subjectivity |
-| [Reptile](https://github.com/NoahIsARider/Reptile) | Web scrapers for A24 films, Bilibili danmaku & news |
+| [AIFrameQuest](https://github.com/NoahIsARider/AIFrameQuest) | A social computing experiment on simulacra, spectacle & subjectivity — using Hupu ratings and Douban as fieldwork to explore how symbols become currency in the digital age |
+| [Reptile](https://github.com/NoahIsARider/Reptile) | A collection of web scrapers for A24 filmographies, Bilibili danmaku & news sites — simple, adaptable and privacy-conscious |
 
 **Design & Frontend**
 
-| Project | Link |
-| --- | --- |
-| [GeekRSS](https://github.com/NoahIsARider/GeekRSS) — independent RSS reader | [geek-rss.vercel.app](https://geek-rss.vercel.app) |
-| [ARK3005](https://github.com/NoahIsARider/ARK3005) | [ark-3005.vercel.app](https://ark-3005.vercel.app) |
-| [Museum-of-Failures](https://github.com/NoahIsARider/Museum-of-Failures) | [museum-of-failures.vercel.app](https://museum-of-failures.vercel.app) |
-| [BookClub-2000](https://github.com/NoahIsARider/BookClub-2000) | [book-club-2000.vercel.app](https://book-club-2000.vercel.app) |
-| [DeadlineACT](https://github.com/NoahIsARider/DeadlineACT) | [deadline-act.vercel.app](https://deadline-act.vercel.app) |
-| [sailor-draft](https://github.com/NoahIsARider/sailor-draft) | [sailor-draft.vercel.app](https://sailor-draft.vercel.app) |
-| [ArkRSS](https://github.com/NoahIsARider/ArkRSS) | [ark-rss.vercel.app](https://ark-rss.vercel.app) |
-| [ReLife-App](https://github.com/NoahIsARider/ReLife-App) | [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host) |
+| Project | Description | Link |
+| --- | --- | --- |
+| [GeekRSS](https://github.com/NoahIsARider/GeekRSS) | Minimalist RSS reader with a geeky, text-first aesthetic | [geek-rss.vercel.app](https://geek-rss.vercel.app) |
+| [ARK3005](https://github.com/NoahIsARider/ARK3005) | Experimental web experience (PROTOCOL_07A) | [ark-3005.vercel.app](https://ark-3005.vercel.app) |
+| [Museum-of-Failures](https://github.com/NoahIsARider/Museum-of-Failures) | A museum of AI failure cases — Next.js + shadcn/ui | [museum-of-failures.vercel.app](https://museum-of-failures.vercel.app) |
+| [BookClub-2000](https://github.com/NoahIsARider/BookClub-2000) | A book club web app | [book-club-2000.vercel.app](https://book-club-2000.vercel.app) |
+| [DeadlineACT](https://github.com/NoahIsARider/DeadlineACT) | Academic conference deadline tracker | [deadline-act.vercel.app](https://deadline-act.vercel.app) |
+| [sailor-draft](https://github.com/NoahIsARider/sailor-draft) | Screenwriting, unadorned | [sailor-draft.vercel.app](https://sailor-draft.vercel.app) |
+| [ArkRSS](https://github.com/NoahIsARider/ArkRSS) | Terminal-style RSS reader, green-on-black | [ark-rss.vercel.app](https://ark-rss.vercel.app) |
+| [ReLife-App](https://github.com/NoahIsARider/ReLife-App) | Digital legacy app — Expo + Express | [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host) |
 
 **Literature · Film · Music**
 
@@ -57,6 +57,18 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [Philosophers-Once-Said](https://github.com/NoahIsARider/Philosophers-Once-Said) | Quotes from philosophers |
 | [DoNotExpectTooMuchFromTheEndOfTheWorld](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) | A digital identity experiment inspired by Radu Jude's film |
 | [REMIX-1721](https://github.com/NoahIsARider/REMIX-1721) | Music Remix Web |
+
+I read, watch and listen a lot — come chat with me:
+
+- 📖 **Douban** — [douban.com/people/227017213](https://www.douban.com/people/227017213)
+- 🎬 **Letterboxd** — [letterboxd.com/NoahIsARider](https://letterboxd.com/NoahIsARider)
+- 🎵 **Record Club** — [record.club/NoahIsARider](https://record.club/NoahIsARider)
+
+Some favorites:
+
+- 🎞️ **Directors** — Bergman, Buñuel, Lynch, Lanthimos, Kaufman (art-house & auteur cinema, heavy A24 user)
+- 🎵 **Artists** — Sufjan Stevens, Charli XCX, Lana Del Rey, Bon Iver, Phoebe Bridgers, FKA twigs, Frank Ocean…
+- 📚 **Writers** — Faulkner, García Márquez, Steinbeck, Thomas Mann, Lem, Rulfo
 
 ---
 
