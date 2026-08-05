@@ -80,9 +80,18 @@
   }
   .top .back {
     color: var(--muted);
-    transition: color 0.2s ease;
+    border: 1px solid var(--line);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
-  .top .back:hover { color: var(--fg); }
+  .top .back:hover {
+    color: var(--fg);
+    border-color: var(--muted);
+    background: var(--badge-bg);
+  }
 
   /* ── Sections ────────────────────────────── */
   section.group {
