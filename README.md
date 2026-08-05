@@ -23,27 +23,11 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
  <img height="32" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
  <img height="32" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge" />
  <img height="32" src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Verilog%2FHDL-5C2D91?style=for-the-badge" />
-</p>
-
-**🤖 AI & Research**
-
-<p align="center" style="display:flex; flex-wrap:wrap; gap:8px;">
- <img height="32" src="https://img.shields.io/badge/LLMs-FF6F00?style=for-the-badge" />
- <img height="32" src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Anthropic-191919?style=for-the-badge&logo=anthropic&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/DeepSeek-4D6BFE?style=for-the-badge&logo=deepseek&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
- <img height="32" src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Overleaf-47A141?style=for-the-badge&logo=overleaf&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Zotero-CC2936?style=for-the-badge&logo=zotero&logoColor=white" />
 </p>
 
 **⚙️ Frameworks & Tools**
@@ -55,24 +39,11 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
  <img height="32" src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
  <img height="32" src="https://img.shields.io/badge/WSL-4EAA25?style=for-the-badge&logo=windowsterminal&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=black" />
-</p>
-
-**🎨 Creative & Security**
-
-<p align="center" style="display:flex; flex-wrap:wrap; gap:8px;">
- <img height="32" src="https://img.shields.io/badge/Blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/DaVinci_Resolve-233A51?style=for-the-badge" />
- <img height="32" src="https://img.shields.io/badge/Krita-3BABFF?style=for-the-badge&logo=krita&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white" />
- <img height="32" src="https://img.shields.io/badge/IDA_Pro-8B0000?style=for-the-badge" />
- <img height="32" src="https://img.shields.io/badge/Reverse_Engineering-FF0000?style=for-the-badge" />
 </p>
 
 ---
