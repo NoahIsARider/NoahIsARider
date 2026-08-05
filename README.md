@@ -46,6 +46,14 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
  <img height="32" src="https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=black" />
 </p>
 
+**🎨 Creative**
+
+<p align="center" style="display:flex; flex-wrap:wrap; gap:8px;">
+ <img height="32" src="https://img.shields.io/badge/draw.io-F08705?style=for-the-badge&logo=diagramdotnet&logoColor=white" />
+ <img height="32" src="https://img.shields.io/badge/CapCut-000000?style=for-the-badge&logo=capcut&logoColor=white" />
+ <img height="32" src="https://img.shields.io/badge/BandLab-DC4630?style=for-the-badge&logo=bandlab&logoColor=white" />
+</p>
+
 ---
 
 ---
