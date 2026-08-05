@@ -66,6 +66,8 @@ I read, watch and listen a lot — come chat with me:
   - Favorites: A24, Neon and Marvel Productions
 - 🎵 **Record Club** — [NoahIsARider](https://record.club/NoahIsARider)
   - Favorites: Charli XCX, Sufjan Stevens and Bon Iver
+- 🎮 **Games** — into literary games? Disco Elysium, Kentucky Route Zero, The Cosmic Wheel Sisterhood — story-driven, text-heavy games with real literary weight. Whether you play them or build them, let's talk!
+  - Favorites: Disco Elysium, The Cosmic Wheel Sisterhood, Kentucky Route Zero
 
 ---
 
