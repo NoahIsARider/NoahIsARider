@@ -3,7 +3,7 @@
 Software Engineering + Business Administration student at **SCUT**.
 I like building things — web apps, AI experiments, and the occasional weird idea.
 
-🏠 [My Personal Page](https://noahisarider.github.io) · 📍 Guangzhou
+🏠 [My Personal Page](https://noahisarider.github.io) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 📍 Guangzhou
 
 ---
 
