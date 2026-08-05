@@ -80,18 +80,9 @@
   }
   .top .back {
     color: var(--muted);
-    border: 1px solid var(--line);
-    padding: 7px 16px;
-    border-radius: 999px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    transition: color 0.2s ease;
   }
-  .top .back:hover {
-    color: var(--fg);
-    border-color: var(--muted);
-    background: var(--badge-bg);
-  }
+  .top .back:hover { color: var(--fg); }
 
   /* ── Sections ────────────────────────────── */
   section.group {
@@ -160,6 +151,12 @@
     letter-spacing: 0.05em;
     animation: fade 0.9s 0.2s ease both;
   }
+  footer .links {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  footer .links .dot { color: var(--line); }
   footer a { transition: color 0.2s ease; }
   footer a:hover { color: var(--fg); }
 
@@ -177,7 +174,7 @@
       <a class="brand" href="https://github.com/NoahIsARider">Noah Zhou</a>
       <span class="tag">Tools &amp; Skills</span>
     </div>
-    <a class="back" href="https://noahisarider.github.io">← Profile</a>
+    <a class="back" href="https://github.com/NoahIsARider">← Profile</a>
   </header>
 
   <main>
@@ -241,7 +238,11 @@
 
   <footer>
     <span>© 2026 Noah Zhou · Guangzhou</span>
-    <a href="https://github.com/NoahIsARider">github.com/NoahIsARider</a>
+    <div class="links">
+      <a href="https://noahisarider.github.io">Personal Page</a>
+      <span class="dot">·</span>
+      <a href="https://github.com/NoahIsARider">GitHub</a>
+    </div>
   </footer>
 
 </div>
