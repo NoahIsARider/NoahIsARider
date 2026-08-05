@@ -66,8 +66,6 @@ I read, watch and listen a lot — come chat with me:
   - Favorites: A24, Neon and Marvel Productions
 - 🎵 **Record Club** — [NoahIsARider](https://record.club/NoahIsARider)
   - Favorites: Charli XCX, Sufjan Stevens and Bon Iver
-- 🎮 **Games** — if you're also into Stardew Valley or Disco Elysium, let's talk!
-  - Favorites: Disco Elysium, The Cosmic Wheel Sisterhood, Kentucky Route Zero, What Remains of Edith Finch, The Red Strings Club, Stardew Valley
 
 ---
 
