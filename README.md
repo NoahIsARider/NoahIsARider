@@ -60,15 +60,9 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 
 I read, watch and listen a lot — come chat with me:
 
-- 📖 **Douban** — [douban.com/people/227017213](https://www.douban.com/people/227017213)
-- 🎬 **Letterboxd** — [letterboxd.com/NoahIsARider](https://letterboxd.com/NoahIsARider)
-- 🎵 **Record Club** — [record.club/NoahIsARider](https://record.club/NoahIsARider)
-
-Some favorites:
-
-- 🎞️ **Directors** — Bergman, Buñuel, Lynch, Lanthimos, Kaufman (art-house & auteur cinema, heavy A24 user)
-- 🎵 **Artists** — Sufjan Stevens, Charli XCX, Lana Del Rey, Bon Iver, Phoebe Bridgers, FKA twigs, Frank Ocean…
-- 📚 **Writers** — Faulkner, García Márquez, Steinbeck, Thomas Mann, Lem, Rulfo
+- 📖 **Douban** — [Rat King Syndrome](https://www.douban.com/people/227017213)
+- 🎬 **Letterboxd** — [NoahIsARider](https://letterboxd.com/NoahIsARider)
+- 🎵 **Record Club** — [NoahIsARider](https://record.club/NoahIsARider)
 
 ---
 
