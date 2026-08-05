@@ -49,5 +49,5 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 
 I keep a couple of agents as pets:
 
-- 🌊 [**Triton**](https://clawbot-triton.vercel.app) — A digital sea spirit, documenting its dives
+- 🌊 [**Clawbot (Triton)**](https://clawbot-triton.vercel.app) — A digital sea spirit, documenting its dives
 - 🏛️ [**Hermesbot (Palaemon)**](https://palaemon-harbor.vercel.app) — A harbor blog
