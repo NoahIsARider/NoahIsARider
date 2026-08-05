@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills &amp; Tools — Noah Zhou</title>
+<meta name="description" content="Skills and tools of Noah Zhou — software engineering, research, and creative work.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafafa;
+    --fg: #141414;
+    --muted: #9a9a9a;
+    --line: rgba(0, 0, 0, 0.09);
+    --badge-bg: #ffffff;
+    --badge-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --badge-hover: 0 10px 24px -8px rgba(0, 0, 0, 0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0c0f;
+      --fg: #e9e9e9;
+      --muted: #646b76;
+      --line: rgba(255, 255, 255, 0.08);
+      --badge-bg: #121417;
+      --badge-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      --badge-hover: 0 10px 24px -8px rgba(0, 0, 0, 0.7);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 9vh 28px 7vh;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Top bar ─────────────────────────────── */
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    animation: fade 0.8s ease both;
+  }
+  .top .brand {
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  .top .brand span { color: var(--muted); }
+  .top .back {
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+  .top .back:hover { color: var(--fg); }
+
+  /* ── Hero ────────────────────────────────── */
+  .hero {
+    padding: 11vh 0 9vh;
+    animation: fade 0.9s 0.08s ease both;
+  }
+  .eyebrow {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-weight: 300;
+    font-size: clamp(44px, 7.2vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--muted);
+  }
+  .hero .sub {
+    margin-top: 26px;
+    max-width: 480px;
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  /* ── Sections ────────────────────────────── */
+  section.group {
+    padding: 52px 0 10px;
+    border-top: 1px solid var(--line);
+    animation: fade 0.9s ease both;
+  }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  .group-head .idx {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .group-head h2 {
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .group-head .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  section.group:hover .rule { transform: scaleX(1.6); }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .badges img {
+    height: 34px;
+    border-radius: 6px;
+    background: var(--badge-bg);
+    box-shadow: var(--badge-shadow);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, filter 0.25s ease;
+    will-change: transform;
+  }
+  .badges img:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--badge-hover);
+    filter: saturate(1.1);
+  }
+
+  /* ── Footer ──────────────────────────────── */
+  footer {
+    margin-top: 80px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    animation: fade 0.9s 0.2s ease both;
+  }
+  footer a { transition: color 0.2s ease; }
+  footer a:hover { color: var(--fg); }
+
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="https://github.com/NoahIsARider">Noah<span> Zhou</span></a>
+    <a class="back" href="https://noahisarider.github.io">← Profile</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Skills &amp; Tools — 2026</p>
+      <h1>Skills<br><em>&amp; Tools</em></h1>
+      <p class="sub">Software engineering × business administration. Building at the intersection of code, data and design.</p>
+    </section>
+
+    <section class="group" style="animation-delay:0.12s">
+      <div class="group-head">
+        <span class="idx">01</span>
+        <h2>Languages</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="badges">
+        <img height="34" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+        <img height="34" src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++" />
+        <img height="34" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
+        <img height="34" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+        <img height="34" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+        <img height="34" src="https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge" alt="MATLAB" />
+        <img height="34" src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white" alt="R" />
+        <img height="34" src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white" alt="Bash" />
+        <img height="34" src="https://img.shields.io/badge/Verilog%2FHDL-5C2D91?style=for-the-badge" alt="Verilog/HDL" />
+        <img height="34" src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white" alt="LaTeX" />
+      </div>
+    </section>
+
+    <section class="group" style="animation-delay:0.2s">
+      <div class="group-head">
+        <span class="idx">02</span>
+        <h2>Frameworks &amp; Tools</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="badges">
+        <img height="34" src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" alt="Vue.js" />
+        <img height="34" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+        <img height="34" src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+        <img height="34" src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET" />
+        <img height="34" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+        <img height="34" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+        <img height="34" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
+        <img height="34" src="https://img.shields.io/badge/WSL-4EAA25?style=for-the-badge&logo=windowsterminal&logoColor=white" alt="WSL" />
+        <img height="34" src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+        <img height="34" src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman" />
+        <img height="34" src="https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=black" alt="Android Studio" />
+        <img height="34" src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code" />
+        <img height="34" src="https://img.shields.io/badge/Trae-412991?style=for-the-badge" alt="Trae" />
+      </div>
+    </section>
+
+    <section class="group" style="animation-delay:0.28s">
+      <div class="group-head">
+        <span class="idx">03</span>
+        <h2>Creative</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="badges">
+        <img height="34" src="https://img.shields.io/badge/draw.io-F08705?style=for-the-badge&logo=diagramdotnet&logoColor=white" alt="draw.io" />
+        <img height="34" src="https://img.shields.io/badge/CapCut-000000?style=for-the-badge&logo=capcut&logoColor=white" alt="CapCut" />
+        <img height="34" src="https://img.shields.io/badge/BandLab-DC4630?style=for-the-badge&logo=bandlab&logoColor=white" alt="BandLab" />
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Noah Zhou · Guangzhou</span>
+    <a href="https://github.com/NoahIsARider">github.com/NoahIsARider</a>
+  </footer>
+
+</div>
+</body>
+</html>
