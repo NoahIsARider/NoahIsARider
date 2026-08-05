@@ -1,3 +1,9 @@
+---
+title: Skills & Tools
+---
+
+[← Back to profile](https://github.com/NoahIsARider)
+
 ## 🛠 Skills & Tools
 
 **💻 Languages**
