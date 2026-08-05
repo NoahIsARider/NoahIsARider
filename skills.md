@@ -8,7 +8,7 @@ title: Skills & Tools
 
 **💻 Languages**
 
-<p align="center" style="display:flex; flex-wrap:wrap; gap:8px;">
+<p align="center" style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px;">
  <img height="32" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
@@ -23,7 +23,7 @@ title: Skills & Tools
 
 **⚙️ Frameworks & Tools**
 
-<p align="center" style="display:flex; flex-wrap:wrap; gap:8px;">
+<p align="center" style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px;">
  <img height="32" src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
@@ -41,7 +41,7 @@ title: Skills & Tools
 
 **🎨 Creative**
 
-<p align="center" style="display:flex; flex-wrap:wrap; gap:8px;">
+<p align="center" style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px;">
  <img height="32" src="https://img.shields.io/badge/draw.io-F08705?style=for-the-badge&logo=diagramdotnet&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/CapCut-000000?style=for-the-badge&logo=capcut&logoColor=white" />
  <img height="32" src="https://img.shields.io/badge/BandLab-DC4630?style=for-the-badge&logo=bandlab&logoColor=white" />
