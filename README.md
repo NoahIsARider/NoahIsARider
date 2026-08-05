@@ -1,5 +1,9 @@
 # Hi, I'm Noah 👋
 
+<p align="center">
+ <img src="https://komarev.com/ghpvc/?username=NoahIsARider&color=blue" alt="Profile Views" />
+</p>
+
 Software Engineering + Business Administration student at **SCUT**.
 I like building things — web apps, AI experiments, and the occasional weird idea.
 
