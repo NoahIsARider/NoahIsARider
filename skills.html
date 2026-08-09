@@ -3,293 +3,436 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tools &amp; Skills — Noah Zhou</title>
-<meta name="description" content="Tools and skills of Noah Zhou — software engineering, research, and creative work.">
+<title>skills.exe — Noah Zhou</title>
+<meta name="description" content="Noah Zhou's skills &amp; projects — in a Windows 98 shell. Click a skill on the left to see related projects.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛠</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/98.css">
 <style>
-  :root {
-    --bg: #0b0d10;
-    --fg: #e8e8e8;
-    --muted: #6b7280;
-    --line: rgba(255, 255, 255, 0.08);
-    --card: rgba(255, 255, 255, 0.03);
-    --card-hover: rgba(255, 255, 255, 0.06);
-    --shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.6);
-  }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #fafafa;
-      --fg: #141414;
-      --muted: #9a9a9a;
-      --line: rgba(0, 0, 0, 0.09);
-      --card: rgba(0, 0, 0, 0.03);
-      --card-hover: rgba(0, 0, 0, 0.06);
-      --shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.15);
-    }
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    transition: background 0.35s ease, color 0.35s ease;
-  }
-  .wrap {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 8vh 28px 7vh;
-  }
-  a { color: inherit; text-decoration: none; }
-
-  /* ── Top bar ─────────────────────────────── */
-  .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--line);
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    animation: fade 0.8s ease both;
-  }
-  .top .brandline {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-  }
-  .top .brand {
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 12px;
-  }
-  .top .tag {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .top .back {
-    color: var(--muted);
-    transition: color 0.2s ease;
-  }
-  .top .back:hover { color: var(--fg); }
-
-  /* ── Sections ────────────────────────────── */
-  section.group {
-    padding: 56px 0 8px;
-    border-top: 1px solid var(--line);
-    animation: fade 0.9s ease both;
-  }
-  section.group:first-of-type {
-    margin-top: 7vh;
-    padding-top: 48px;
-  }
-  .group-head {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 34px;
-  }
-  .group-head .idx {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-  .group-head h2 {
-    font-weight: 400;
-    font-size: 20px;
-    letter-spacing: -0.01em;
-  }
-  .group-head .rule {
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-  }
-
-  /* ── Skills grid ─────────────────────────── */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
-    gap: 14px;
-  }
-  .skill {
+    background: #008080;               /* classic Win98 desktop teal */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 22px 8px 16px;
-    border-radius: 14px;
-    background: var(--card);
-    border: 1px solid transparent;
-    transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+    justify-content: center;
+    padding: 28px 14px;
+    margin: 0;
   }
-  .skill:hover {
-    background: var(--card-hover);
-    border-color: var(--line);
-    transform: translateY(-3px);
+  .desktop {
+    width: 100%;
+    max-width: 980px;
   }
-  .skill .icon {
-    width: 44px;
-    height: 44px;
+  .window { width: 100%; }
+  .window-body { background: #c0c0c0; }
+
+  .split {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .pane-left {
+    width: 250px;
+    flex-shrink: 0;
+    background: #c0c0c0;
+    padding: 4px 6px;
+    overflow-y: auto;
+    max-height: 520px;
+  }
+  .pane-right {
+    flex: 1;
+    min-width: 0;
+    background: #c0c0c0;
+    padding: 6px;
+  }
+
+  /* ── skill tree ─────────────────────────── */
+  ul.tree-view li button.skill-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-  .skill .icon img {
-    width: 44px;
-    height: 44px;
-    /* unified monochrome: dark → white, light → black */
-    filter: grayscale(1) brightness(0) invert(1);
-    transition: opacity 0.25s ease;
-  }
-  .skill .icon svg { width: 44px; height: 44px; }
-  .skill .icon svg path { fill: var(--fg); transition: fill 0.35s ease; }
-  @media (prefers-color-scheme: light) {
-    .skill .icon img { filter: grayscale(1) brightness(0); }
-  }
-  .skill .name {
+    gap: 6px;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 3px 4px;
     font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.02em;
-    transition: color 0.2s ease;
+    cursor: pointer;
+    color: #000;
     white-space: nowrap;
   }
-  .skill:hover .name { color: var(--fg); }
-
-  /* ── Text pill fallback (no icon available) ── */
-  .pill {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
+  ul.tree-view li button.skill-btn:hover {
+    background: #d4d0c8;
+  }
+  ul.tree-view li button.skill-btn.selected {
+    background: #000080;
+    color: #fff;
+  }
+  ul.tree-view li button.skill-btn img, ul.tree-view li button.skill-btn .ico {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  ul.tree-view li button.skill-btn .ico {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    border: 1px solid #808080;
+    background: #fff;
+  }
+
+  /* ── detail pane ────────────────────────── */
+  .detail {
+    background: #fff;
+    padding: 12px 14px;
+    min-height: 420px;
+    box-sizing: border-box;
+  }
+  .detail h2 {
+    margin: 0 0 2px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .detail h2 img, .detail h2 .ico {
+    width: 20px;
+    height: 20px;
+  }
+  .detail h2 .ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    border: 1px solid #808080;
+    background: #fff;
+  }
+  .detail .sub {
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    color: var(--muted);
-    background: transparent;
-    border: 1px solid var(--line);
+    color: #404040;
+    margin-bottom: 10px;
   }
-  .skill:hover .pill { color: var(--fg); }
-
-  /* ── Footer ──────────────────────────────── */
-  footer {
-    margin-top: 80px;
-    padding-top: 26px;
-    border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
+  .detail .empty {
+    color: #606060;
     font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    animation: fade 0.9s 0.2s ease both;
+    padding-top: 40px;
+    text-align: center;
   }
-  footer .links {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
+  .detail .empty .big {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
   }
-  footer .links .dot { color: var(--line); }
-  footer a { transition: color 0.2s ease; }
-  footer a:hover { color: var(--fg); }
+  .proj {
+    border: 1px solid #a0a0a0;
+    border-left: 2px solid #000080;
+    background: #f8f8f8;
+    padding: 7px 9px;
+    margin-bottom: 8px;
+  }
+  .proj .t {
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .proj .t a { color: #000080; text-decoration: underline; }
+  .proj .t a:hover { color: #ff0000; }
+  .proj .d {
+    font-size: 11.5px;
+    color: #303030;
+    margin-top: 2px;
+    line-height: 1.45;
+  }
 
-  @keyframes fade {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* ── status bar ─────────────────────────── */
+  .status-bar { margin-top: 6px; }
+  .status-bar-field {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .status-bar-field.right { flex: 1; }
+
+  .desktop-footer {
+    color: #fff;
+    font-size: 12px;
+    margin-top: 14px;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+  }
+  .desktop-footer a { color: #ffff80; }
+
+  @media (max-width: 640px) {
+    .split { flex-direction: column; }
+    .pane-left { width: 100%; max-height: 220px; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="desktop">
 
-  <header class="top">
-    <div class="brandline">
-      <a class="brand" href="https://github.com/NoahIsARider">Noah Zhou</a>
-      <span class="tag">Tools &amp; Skills</span>
+  <div class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">skills.exe — Noah Zhou</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
     </div>
-    <a class="back" href="https://github.com/NoahIsARider">← Profile</a>
-  </header>
-
-  <main>
-
-    <section class="group" style="animation-delay:0.12s">
-      <div class="group-head">
-        <span class="idx">01</span>
-        <h2>Languages</h2>
-        <span class="rule"></span>
+    <div class="window-body">
+      <div class="split">
+        <div class="pane-left">
+          <ul class="tree-view" id="skill-tree"><!-- filled by JS --></ul>
+        </div>
+        <div class="pane-right">
+          <div class="detail sunken-panel" id="detail"><!-- filled by JS --></div>
+        </div>
       </div>
-      <div class="grid">
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"></span><span class="name">Python</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++"></span><span class="name">C++</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java"></span><span class="name">Java</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript"></span><span class="name">JavaScript</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript"></span><span class="name">TypeScript</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg" alt="MATLAB"></span><span class="name">MATLAB</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg" alt="R"></span><span class="name">R</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash"></span><span class="name">Bash</span></div>
-        <div class="skill"><span class="icon"><span class="pill">VL</span></span><span class="name">Verilog</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/latex/latex-original.svg" alt="LaTeX"></span><span class="name">LaTeX</span></div>
+      <div class="status-bar">
+        <div class="status-bar-field">Ready</div>
+        <div class="status-bar-field right" id="status">Click a skill to see related projects</div>
       </div>
-    </section>
-
-    <section class="group" style="animation-delay:0.2s">
-      <div class="group-head">
-        <span class="idx">02</span>
-        <h2>Frameworks &amp; Tools</h2>
-        <span class="rule"></span>
-      </div>
-      <div class="grid">
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" alt="Vue.js"></span><span class="name">Vue.js</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-line.svg" alt="Next.js"></span><span class="name">Next.js</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js"></span><span class="name">Node.js</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg" alt=".NET"></span><span class="name">.NET</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker"></span><span class="name">Docker</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"></span><span class="name">Git</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux"></span><span class="name">Linux</span></div>
-        <div class="skill"><span class="icon"><svg viewBox="0 0 24 24" fill="#9CA3AF" role="img" aria-label="WSL"><path d="M8.165 6V3h7.665v3H8.165zm-.5-3H1c-.55 0-1 .45-1 1v2h7.665V3zM23 3h-6.67v3H24V4c0-.55-.45-1-1-1zM0 6.5h24V20c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V6.5zM11.5 18c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5v-1.5c0-.3-.2-.5-.5-.5h-8c-.3 0-.5.2-.5.5V18zM3.5 12.3l4-2.9v2.6l-2.5 1.9 2.5 1.9v2.6l-4-2.9v-3.2zm6.5.4v2.3H16v-2.3H10z"/></svg></span><span class="name">WSL</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL"></span><span class="name">MySQL</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" alt="Postman"></span><span class="name">Postman</span></div>
-        <div class="skill"><span class="icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" alt="Android Studio"></span><span class="name">Android Studio</span></div>
-        <div class="skill"><span class="icon"><svg viewBox="0 0 24 24" fill="#D97757" role="img" aria-label="Claude Code"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg></span><span class="name">Claude Code</span></div>
-        <div class="skill"><span class="icon"><svg viewBox="0 0 24 24" fill="#412991" role="img" aria-label="Trae"><path d="M24 20.5H3.5V17H0V3.5h24ZM3.5 17h17V7h-17Zm8.5-5-2.5 2.5L7 12l2.5-2.5Zm7 0-2.5 2.5L14 12l2.5-2.5z"/></svg></span><span class="name">Trae</span></div>
-      </div>
-    </section>
-
-    <section class="group" style="animation-delay:0.28s">
-      <div class="group-head">
-        <span class="idx">03</span>
-        <h2>Creative</h2>
-        <span class="rule"></span>
-      </div>
-      <div class="grid">
-        <div class="skill"><span class="icon"><span class="pill">dio</span></span><span class="name">draw.io</span></div>
-        <div class="skill"><span class="icon"><span class="pill">CC</span></span><span class="name">CapCut</span></div>
-        <div class="skill"><span class="icon"><svg viewBox="0 0 24 24" fill="#DC4630" role="img" aria-label="BandLab"><path d="m19.32 6.076 3.567 6.164A8.835 8.835 0 0 1 24 16.255C24 20.76 20.455 24 15.425 24h-6.85C3.545 24 0 20.76 0 16.255a8.925 8.925 0 0 1 1.102-4.015l3.567-6.164h3.349L3.84 13.342a6.033 6.033 0 0 0-.829 2.869c0 2.869 1.964 4.909 5.651 4.909h6.654c3.709 0 5.662-2.04 5.662-4.909a6.043 6.043 0 0 0-.829-2.869l-4.167-7.266h3.338Zm-8.444 11.509c-1.581 0-2.531-.927-2.531-2.236 0-1.789 1.822-3.349 3.819-3.785L7.473 0h8.182l1.505 2.891h-5.727l3.414 8.345c.295.655.448 1.364.448 2.073 0 2.476-2.455 4.276-4.419 4.276Z"/></svg></span><span class="name">BandLab</span></div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <span>© 2026 Noah Zhou · Guangzhou</span>
-    <div class="links">
-      <a href="https://noahisarider.github.io">Personal Page</a>
-      <span class="dot">·</span>
-      <a href="https://github.com/NoahIsARider">GitHub</a>
     </div>
-  </footer>
+  </div>
+
+  <div class="desktop-footer">
+    © 2026 Noah Zhou · <a href="https://github.com/NoahIsARider">GitHub</a> ·
+    <a href="https://noahisarider.github.io">Homepage</a>
+  </div>
 
 </div>
+
+<script>
+// ── icons ─────────────────────────────────────────────
+const DEV = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/";
+const ICONS = {
+  Python:      DEV + "python/python-original.svg",
+  JavaScript:  DEV + "javascript/javascript-original.svg",
+  TypeScript:  DEV + "typescript/typescript-original.svg",
+  "C++":       DEV + "cplusplus/cplusplus-original.svg",
+  Java:        DEV + "java/java-original.svg",
+  "C#":        DEV + "csharp/csharp-original.svg",
+  Go:          DEV + "go/go-original.svg",
+  Rust:        DEV + "rust/rust-original.svg",
+  Kotlin:      DEV + "kotlin/kotlin-original.svg",
+  Shell:       DEV + "bash/bash-original.svg",
+  MATLAB:      DEV + "matlab/matlab-original.svg",
+  R:           DEV + "r/r-original.svg",
+  Verilog:     DEV + "verilog/verilog-original.svg",
+  LaTeX:       DEV + "latex/latex-original.svg",
+  Jupyter:     DEV + "jupyter/jupyter-original.svg",
+  "Vue.js":    DEV + "vuejs/vuejs-original.svg",
+  "Next.js":   DEV + "nextjs/nextjs-line.svg",
+  "Node.js":   DEV + "nodejs/nodejs-original.svg",
+  ".NET":      DEV + "dotnetcore/dotnetcore-original.svg",
+  Docker:      DEV + "docker/docker-original.svg",
+  Git:         DEV + "git/git-original.svg",
+  Linux:       DEV + "linux/linux-original.svg",
+  MySQL:       DEV + "mysql/mysql-original.svg",
+  Postman:     DEV + "postman/postman-original.svg",
+  "Android Studio": DEV + "androidstudio/androidstudio-original.svg",
+};
+const SVG = {
+  WSL: '<svg viewBox="0 0 24 24" width="16" height="16" fill="#9CA3AF" aria-hidden="true"><path d="M8.165 6V3h7.665v3H8.165zm-.5-3H1c-.55 0-1 .45-1 1v2h7.665V3zM23 3h-6.67v3H24V4c0-.55-.45-1-1-1zM0 6.5h24V20c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V6.5zM11.5 18c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5v-1.5c0-.3-.2-.5-.5-.5h-8c-.3 0-.5.2-.5.5V18zM3.5 12.3l4-2.9v2.6l-2.5 1.9 2.5 1.9v2.6l-4-2.9v-3.2zm6.5.4v2.3H16v-2.3H10z"/></svg>',
+  "Claude Code": '<svg viewBox="0 0 24 24" width="16" height="16" fill="#D97757" aria-hidden="true"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>',
+  Trae: '<svg viewBox="0 0 24 24" width="16" height="16" fill="#412991" aria-hidden="true"><path d="M24 20.5H3.5V17H0V3.5h24ZM3.5 17h17V7h-17Zm8.5-5-2.5 2.5L7 12l2.5-2.5Zm7 0-2.5 2.5L14 12l2.5-2.5z"/></svg>',
+};
+
+// ── projects ──────────────────────────────────────────
+const GH = "https://github.com/NoahIsARider/";
+const SCHOLAR = "https://scholar.google.cz/citations?user=CLf-BNAAAAAJ";
+const P = (n, d, u) => ({ n, d, u });
+
+// ── skill data: skill -> related projects ─────────────
+const DATA = {
+  Languages: {
+    Python: { projects: [
+      P("MatchaFlow", "Multi-agent simulation for software project management", GH + "MatchaFlow"),
+      P("When Combinations of Humans and AI Are Useful", "Systematic review & meta-analysis on human-AI collaboration (IEEE TCE)", GH + "When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis"),
+      P("DLFaceDetection", "gRPC-based distributed face recognition with dynamic module partitioning", GH + "DLFaceDetection"),
+      P("Bigdata-Final-System", "Business site-selection platform powered by big-data pipelines", GH + "Bigdata-Final-System"),
+      P("Reptile", "Web scrapers for A24 filmographies, Bilibili danmaku & news sites", GH + "Reptile"),
+      P("TheBackrooms", "A Backrooms-inspired narrative experiment (AI-generated)", GH + "TheBackrooms"),
+    ]},
+    JavaScript: { projects: [
+      P("ARK3005", "Experimental web experience (PROTOCOL_07A)", "https://ark-3005.vercel.app"),
+      P("ArkRSS", "Terminal-style RSS reader, green-on-black", "https://ark-rss.vercel.app"),
+      P("SnakeGame", "Snake, generated with Cursor + GPT-4o-mini, hand-tuned", GH + "SnakeGame"),
+      P("Lyricbook", "A lyric book with a Shakespearean flavor", GH + "Lyricbook"),
+      P("TaskForge", "JavaScript toolbox", GH + "TaskForge"),
+    ]},
+    TypeScript: { projects: [
+      P("Museum-of-Failures", "A museum of AI failure cases — Next.js + shadcn/ui", "https://museum-of-failures.vercel.app"),
+      P("GeekRSS", "Minimalist RSS reader with a geeky, text-first aesthetic", "https://geek-rss.vercel.app"),
+      P("DeadlineACT", "Academic conference deadline tracker", "https://deadline-act.vercel.app"),
+      P("BookClub-2000", "Book club web app", "https://book-club-2000.vercel.app"),
+      P("sailor-draft", "Screenwriting, unadorned", "https://sailor-draft.vercel.app"),
+      P("REMIX-1721", "Music remix web", GH + "REMIX-1721"),
+      P("ReLife-App", "Digital legacy app — Expo + Express", GH + "ReLife-App"),
+    ]},
+    "C++": { projects: [
+      P("TimeCalculator", "C++ datetime-diff calculator handling leap years & rollovers (DeepSeek-R1 tuned)", GH + "TimeCalculator"),
+    ]},
+    Java: { projects: [
+      P("JavaBankProject", "SCUT Java programming coursework — OOP, interfaces, exceptions", GH + "JavaBankProject"),
+    ]},
+    "C#": { projects: [
+      P("StellarSeas", "C# project", GH + "StellarSeas"),
+    ]},
+    Go: { projects: [
+      P("GoStudio", "Venus Plan — Chapter II: Go", GH + "GoStudio"),
+    ]},
+    Rust: { projects: [
+      P("RustStudio", "Venus Plan — Chapter I: Rust", GH + "RustStudio"),
+    ]},
+    Kotlin: { projects: [
+      P("Doodle-Cavern", "A place for your doodles", GH + "Doodle-Cavern"),
+    ]},
+    Shell: { projects: [
+      P("DockerStudio", "Venus Plan — Chapter III: Docker", GH + "DockerStudio"),
+      P("aseprite-builder", "Build Aseprite via GitHub Actions (Windows / macOS / Ubuntu)", GH + "aseprite-builder"),
+    ]},
+    MATLAB: { projects: [
+      P("IEEE TCE Paper", "Accepted research publication — methods & figures in MATLAB", SCHOLAR),
+    ]},
+    R: { projects: [
+      P("Systematic Review & Meta-Analysis", "Statistical analysis for the IEEE TCE human-AI collaboration review", SCHOLAR),
+    ]},
+    Verilog: { projects: [
+      P("DigitalLogicSimulation", "Digital logic simulation in Verilog", GH + "DigitalLogicSimulation"),
+    ]},
+    LaTeX: { projects: [
+      P("IEEE TCE Paper", "Typeset & published via LaTeX/Overleaf", SCHOLAR),
+    ]},
+    Jupyter: { projects: [
+      P("DoNotExpectTooMuchFromTheEndOfTheWorld", "Digital identity experiment inspired by Radu Jude's film", GH + "DoNotExpectTooMuchFromTheEndOfTheWorld"),
+      P("KeyFrameExtraction", "Keyframe extraction research notebook", GH + "KeyFrameExtraction"),
+    ]},
+  },
+  "Frameworks & Tools": {
+    "Vue.js": { projects: [
+      P("AIFrameQuest", "Social-computing experiment on simulacra & subjectivity (Hupu / Douban)", GH + "AIFrameQuest"),
+      P("MoonPit", "Self-hosted image database with deep-learning image retrieval", GH + "MoonPit"),
+      P("ReminisenceStone", "Upload memories, resonate with others' — image retrieval", GH + "ReminisenceStone"),
+    ]},
+    "Next.js": { projects: [
+      P("Museum-of-Failures", "Next.js + shadcn/ui", "https://museum-of-failures.vercel.app"),
+      P("GeekRSS", "Deployed on Vercel", "https://geek-rss.vercel.app"),
+    ]},
+    "Node.js": { projects: [
+      P("ArkRSS", "Terminal-style RSS reader", "https://ark-rss.vercel.app"),
+      P("ReLife-App", "Expo + Express backend", GH + "ReLife-App"),
+    ]},
+    ".NET": { projects: [] },
+    Docker: { projects: [
+      P("DLFaceDetection", "gRPC services containerized for distributed deployment", GH + "DLFaceDetection"),
+      P("DockerStudio", "Venus Plan — Chapter III: Docker", GH + "DockerStudio"),
+      P("aseprite-builder", "GitHub Actions build pipeline", GH + "aseprite-builder"),
+    ]},
+    Git: { projects: [
+      P("54 public repositories", "Everything on GitHub — projects, coursework & experiments", "https://github.com/NoahIsARider?tab=repositories"),
+    ]},
+    Linux: { projects: [
+      P("DLFaceDetection", "Deployed & profiled on Linux servers", GH + "DLFaceDetection"),
+      P("Server workflow", "Ubuntu, WSL, headless services & CI", "https://github.com/NoahIsARider?tab=repositories"),
+    ]},
+    WSL: { projects: [] },
+    MySQL: { projects: [
+      P("Bigdata-Final-System", "Data pipelines & store-location analytics", GH + "Bigdata-Final-System"),
+      P("ZhituCareer", "Career analysis & job recommendation — data layer", GH + "ZhituCareer"),
+    ]},
+    Postman: { projects: [
+      P("DLFaceDetection", "gRPC/API testing during development", GH + "DLFaceDetection"),
+    ]},
+    "Android Studio": { projects: [] },
+    "Claude Code": { projects: [
+      P("AI-assisted development", "Used across most projects as the primary coding agent", "https://github.com/NoahIsARider?tab=repositories"),
+      P("TheBackrooms", "Generated with Trae + Claude 3.7 Sonnet", GH + "TheBackrooms"),
+      P("TimeCalculator", "Optimized with DeepSeek-R1", GH + "TimeCalculator"),
+    ]},
+    Trae: { projects: [
+      P("TheBackrooms", "Built in Trae with Claude 3.7 Sonnet", GH + "TheBackrooms"),
+    ]},
+  },
+  Creative: {
+    "draw.io": { projects: [
+      P("DLFaceDetection", "System architecture diagrams", GH + "DLFaceDetection"),
+      P("Bigdata-Final-System", "Pipeline & platform design diagrams", GH + "Bigdata-Final-System"),
+    ]},
+    CapCut: { projects: [
+      P("DoNotExpectTooMuchFromTheEndOfTheWorld", "Video-centric identity experiment", GH + "DoNotExpectTooMuchFromTheEndOfTheWorld"),
+    ]},
+    BandLab: { projects: [
+      P("REMIX-1721", "Music remix project", GH + "REMIX-1721"),
+    ]},
+  },
+};
+
+const NOSKILL = "No public project on GitHub yet — this one lives in coursework or private work.";
+
+// ── render skill tree ────────────────────────────────
+const tree = document.getElementById("skill-tree");
+const detail = document.getElementById("detail");
+const status = document.getElementById("status");
+let count = 0;
+
+function iconHTML(name) {
+  if (ICONS[name]) return '<img src="' + ICONS[name] + '" alt="">';
+  if (SVG[name]) return SVG[name];
+  return '<span class="ico">' + name.slice(0, 2).toUpperCase() + "</span>";
+}
+
+for (const [group, skills] of Object.entries(DATA)) {
+  const li = document.createElement("li");
+  const det = document.createElement("details");
+  det.open = true;
+  const sum = document.createElement("summary");
+  sum.textContent = group;
+  det.appendChild(sum);
+  const ul = document.createElement("ul");
+  for (const name of Object.keys(skills)) {
+    count++;
+    const sli = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.className = "skill-btn";
+    btn.dataset.skill = name;
+    btn.innerHTML = iconHTML(name) + '<span>' + name + "</span>";
+    btn.addEventListener("click", () => selectSkill(group, name, btn));
+    sli.appendChild(btn);
+    ul.appendChild(sli);
+  }
+  det.appendChild(ul);
+  li.appendChild(det);
+  tree.appendChild(li);
+}
+
+// ── select & render detail ───────────────────────────
+function projHTML(proj) {
+  return '<div class="proj"><div class="t"><a href="' + proj.u + '" target="_blank" rel="noopener">' + proj.n + "</a></div>" +
+         '<div class="d">' + proj.d + "</div></div>";
+}
+
+function selectSkill(group, name, btn) {
+  document.querySelectorAll(".skill-btn.selected").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+  const entry = DATA[group][name];
+  let html = '<h2>' + iconHTML(name) + " " + name + "</h2>";
+  html += '<div class="sub">' + group + " · " + entry.projects.length + " related project(s)</div>";
+  if (entry.projects.length === 0) {
+    html += '<div class="empty"><span class="big">📁</span>' + NOSKILL + "</div>";
+  } else {
+    html += entry.projects.map(projHTML).join("");
+  }
+  detail.innerHTML = html;
+  status.textContent = name + " — " + entry.projects.length + " related project(s)";
+}
+
+// default: select the first skill so the pane is never empty
+const firstGroup = Object.keys(DATA)[0];
+const firstName = Object.keys(DATA[firstGroup])[0];
+selectSkill(firstGroup, firstName, document.querySelector(".skill-btn"));
+</script>
 </body>
 </html>
