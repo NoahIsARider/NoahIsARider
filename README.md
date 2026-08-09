@@ -3,6 +3,8 @@
 Software Engineering + Business Administration student at **SCUT**.
 I like building things — web apps, AI experiments, and the occasional weird idea.
 
+<img src="https://raw.githubusercontent.com/NoahIsARider/NoahIsARider/main/dino.svg" width="850" alt="Chrome dino — an endless runner, day and night" />
+
 💫 [My Personal Page](https://noahisarider.github.io) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 🛠 [Skills & Tools](https://noahisarider.github.io/NoahIsARider/skills.html) · 📇 [Blogs](https://noahsblogs.pages.dev/) · 📍 Guangzhou
 
 ---
