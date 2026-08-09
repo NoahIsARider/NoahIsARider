@@ -343,19 +343,18 @@
   }
   .scenery .sbtns {
     display: flex;
-    gap: 4px;
+    justify-content: center;
     padding: 0 6px 6px;
     flex-shrink: 0;
   }
   .scenery .sbtns button {
-    flex: 1;
+    flex: 0 0 auto;
     font-family: Tahoma, Arial, sans-serif;
     font-size: 10px;
     font-weight: 700;
-    padding: 2px 0;
+    padding: 2px 10px;
     cursor: pointer;
   }
-  .scenery .sbtns button.on { border-style: inset; background: #d4d0c8; }
 
   /* under construction sign removed */
 
@@ -524,8 +523,7 @@
       <div class="shead"><span>scenery.exe</span><span class="x">✕</span></div>
       <div class="screen" id="scn-screen"></div>
       <div class="sbtns">
-        <button id="scn-ascii">ASCII</button>
-        <button id="scn-dino">DINO</button>
+        <button id="scn-toggle" title="">ASCII</button>
       </div>
     </div>
   </aside>
@@ -923,8 +921,7 @@ document.getElementById("winamp-close").addEventListener("click", () => {
 
 // ── scenery.exe (left art strip) ────────────────────
 const scnScreen = document.getElementById("scn-screen");
-const scnAscii = document.getElementById("scn-ascii");
-const scnDino = document.getElementById("scn-dino");
+const scnToggle = document.getElementById("scn-toggle");
 const SCENERY_ART = [
   "    .-.",
   "   /   \\",
@@ -941,9 +938,21 @@ const SCENERY_ART = [
 let sceneryMode = "ascii";
 try { sceneryMode = localStorage.getItem("scenery.mode") || "ascii"; } catch (e) {}
 
+// cap the strip so its bottom lines up with the skills.exe window, not the viewport
+function sizeScenery() {
+  const win = document.querySelector(".center .window");
+  const scn = document.querySelector(".scenery");
+  if (!win || !scn) return;
+  const winBottom = win.getBoundingClientRect().bottom;
+  const scnTop = scn.getBoundingClientRect().top;
+  const cap = Math.min(winBottom, window.innerHeight) - scnTop - 8;
+  scn.style.maxHeight = Math.max(80, cap) + "px";
+}
+
 function paintScenery() {
-  scnAscii.classList.toggle("on", sceneryMode === "ascii");
-  scnDino.classList.toggle("on", sceneryMode === "dino");
+  const next = sceneryMode === "ascii" ? "DINO" : "ASCII";
+  scnToggle.textContent = sceneryMode;
+  scnToggle.title = "Switch to " + next;
   scnScreen.classList.toggle("dino", sceneryMode === "dino");
   if (sceneryMode === "dino") { scnScreen.innerHTML = ""; return; }
   const lines = Math.max(1, Math.floor(scnScreen.clientHeight / 11));
@@ -956,10 +965,13 @@ function setScenery(mode) {
   try { localStorage.setItem("scenery.mode", mode); } catch (e) {}
   paintScenery();
 }
-scnAscii.addEventListener("click", () => setScenery("ascii"));
-scnDino.addEventListener("click", () => setScenery("dino"));
+scnToggle.addEventListener("click", () => setScenery(sceneryMode === "ascii" ? "dino" : "ascii"));
 let scnTimer;
-window.addEventListener("resize", () => { clearTimeout(scnTimer); scnTimer = setTimeout(paintScenery, 150); });
+window.addEventListener("resize", () => {
+  clearTimeout(scnTimer);
+  scnTimer = setTimeout(() => { sizeScenery(); paintScenery(); }, 150);
+});
+sizeScenery();
 paintScenery();
 </script>
 </body>
