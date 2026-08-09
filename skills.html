@@ -20,15 +20,15 @@
     width: 100%;
   }
   .side {
-    flex: 1 1 0;
+    flex: 0 1 auto;
     min-width: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 6px;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 56px 10px 20px;
   }
   .center {
     flex: 0 0 auto;
@@ -37,11 +37,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 46px 12px 24px;
+    justify-content: flex-start;
+    padding: 56px 12px 24px;
   }
-  @media (max-width: 1080px) {
-    .side { display: none; }   /* window nearly fills the viewport — no room for rails */
+  @media (max-width: 1199px) {
+    .side { display: none; }   /* window nearly fills the viewport — no room for rails/guestbook */
   }
   .window { width: 100%; }
   .window-body { background: #c0c0c0; }
@@ -197,7 +197,7 @@
 
   /* left / right ad rails (in-flow inside the side columns) */
   .rail {
-    width: 118px;
+    width: 100px;
     margin: 0 auto;
     background: #c0c0c0;
     border: 2px outset #dfdfdf;
@@ -288,16 +288,139 @@
   .ad-dialog .dbtn { text-align: center; padding-bottom: 10px; }
   .ad-dialog button { min-width: 70px; font-family: Tahoma, Arial, sans-serif; font-size: 12px; }
 
-  /* under construction sign (lives in the left side column) */
-  .ad-construction {
-    background: #ffff00;
-    border: 3px solid #ff0000;
-    color: #ff0000;
-    font-weight: 700;
+  /* under construction sign removed */
+
+  /* guestbook panel (right side) */
+  .guestbook {
+    width: 170px;
+    background: #c0c0c0;
+    border: 2px outset #dfdfdf;
+    box-shadow: 2px 2px 0 #404040;
     font-size: 11px;
-    padding: 4px 8px;
-    transform: rotate(-3deg);
   }
+  .guestbook .ghead { background: linear-gradient(90deg, #000080, #1084d0); color: #fff; padding: 2px 4px; font-weight: 700; }
+  .guestbook .gbody { padding: 8px; }
+  .guestbook input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    border: 2px inset #dfdfdf;
+    background: #fff;
+    padding: 3px 4px;
+    margin-bottom: 6px;
+  }
+  .guestbook button {
+    width: 100%;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .guestbook .signed {
+    margin-top: 8px;
+    border-top: 1px solid #808080;
+    padding-top: 6px;
+    color: #000080;
+  }
+  .guestbook .signed b { color: #000; }
+
+  /* temporary "just signed" marquee (bottom-left) */
+  .sign-marquee {
+    position: fixed;
+    bottom: 12px;
+    left: 14px;
+    width: min(460px, 70vw);
+    background: #000080;
+    color: #fff;
+    border: 2px outset #4040c0;
+    box-shadow: 2px 2px 0 #202020;
+    font-size: 12px;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 95;
+    display: none;
+    padding: 3px 0;
+  }
+  .sign-marquee.show { display: block; }
+  .sign-marquee .track { display: inline-block; position: relative; left: 100%; }
+  .sign-marquee.show .track { animation: marquee 9s linear forwards; }
+
+  /* winamp-style mini player */
+  .winamp {
+    position: fixed;
+    right: 14px;
+    bottom: 64px;
+    width: 226px;
+    background: #2b2b2b;
+    border: 2px outset #555;
+    box-shadow: 3px 3px 0 #101010;
+    font-family: Tahoma, Arial, sans-serif;
+    z-index: 90;
+    display: none;
+  }
+  .winamp .close {
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    font-size: 9px;
+    line-height: 1;
+    padding: 1px 4px;
+    background: #3a3a3a;
+    color: #fff;
+    border: 2px outset #555;
+    cursor: pointer;
+  }
+  .winamp .lcd {
+    background: #000;
+    color: #33ff33;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 7px;
+    margin: 6px;
+    border: 1px inset #000;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .winamp .lcd .t { overflow: hidden; }
+  .winamp .btns {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    padding: 0 6px 5px;
+  }
+  .winamp .btns button {
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 30px;
+    background: #3a3a3a;
+    color: #cfe;
+    border: 2px outset #555;
+    cursor: pointer;
+  }
+  .winamp .btns button:active { border-style: inset; }
+  .winamp .eq {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 22px;
+    padding: 0 8px 7px;
+    justify-content: center;
+  }
+  .winamp .eq i {
+    width: 4px;
+    height: 4px;
+    background: #33ff33;
+  }
+  .winamp.playing .eq i { animation: eqbar 0.5s ease-in-out infinite alternate; }
+  .winamp.playing .eq i:nth-child(2n) { animation-duration: 0.4s; }
+  .winamp.playing .eq i:nth-child(3n) { animation-duration: 0.65s; }
+  @keyframes eqbar { from { height: 3px; } to { height: 20px; } }
 
   /* hide fixed ads only when they'd overlap the window */
   @media (max-width: 719px), (max-height: 679px) {
@@ -320,7 +443,14 @@
         <a class="cta ad-blink" href="https://clawbot-triton.vercel.app" target="_blank" rel="noopener">CLICK HERE!</a>
       </div>
     </div>
-    <div class="ad ad-construction">🚧 Under Construction 🚧</div>
+    <div class="ad rail">
+      <div class="rhead">Advertisement</div>
+      <div class="rbody">
+        <div class="art">🏛️</div>
+        <div class="slogan">PALAEMON<br>opening new frontiers</div>
+        <span class="cta ad-blink">NOW HIRING</span>
+      </div>
+    </div>
   </aside>
 
   <div class="center">
@@ -358,13 +488,12 @@
   </div><!-- /center -->
 
   <aside class="side right">
-    <div class="ad rail">
-      <div class="rhead">Advertisement</div>
-      <div class="rbody">
-        <div class="art">🏛️</div>
-        <div class="slogan">PALAEMON<br>opening new frontiers</div>
-        <span class="cta ad-blink">NOW HIRING</span>
-        <div class="mini">★ sign my <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener" style="color:#0000ee;text-decoration:underline;">guestbook</a></div>
+    <div class="guestbook">
+      <div class="ghead">✍ guestbook.exe</div>
+      <div class="gbody">
+        <input type="text" id="gb-name" maxlength="24" placeholder="Your name..." autocomplete="off">
+        <button id="gb-sign">Sign the guestbook</button>
+        <div class="signed" id="gb-signed">Nobody has signed yet — be the first!</div>
       </div>
     </div>
   </aside>
@@ -394,6 +523,22 @@
     <div class="dbtn">
       <button id="dlg-ok">OK</button>
       <button id="dlg-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <div class="sign-marquee" id="sign-marquee"><span class="track" id="sign-track"></span></div>
+
+  <div class="winamp" id="winamp">
+    <button class="close" id="winamp-close" title="Close">✕</button>
+    <div class="lcd"><span class="t" id="winamp-title">GUESTBOOK TUNE</span><span id="winamp-time">0:00</span></div>
+    <div class="btns">
+      <button id="wa-prev" title="Previous">◄◄</button>
+      <button id="wa-play" title="Play / Pause">►</button>
+      <button id="wa-stop" title="Stop">■</button>
+      <button id="wa-next" title="Next">►►</button>
+    </div>
+    <div class="eq" id="winamp-eq">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
   </div>
 
@@ -629,6 +774,75 @@ function dismissDialog() {
 }
 document.getElementById("dlg-ok").addEventListener("click", dismissDialog);
 document.getElementById("dlg-cancel").addEventListener("click", dismissDialog);
+
+// ── guestbook ────────────────────────────────────────
+const gbInput = document.getElementById("gb-name");
+const gbSign = document.getElementById("gb-sign");
+const gbSigned = document.getElementById("gb-signed");
+const signMarquee = document.getElementById("sign-marquee");
+const signTrack = document.getElementById("sign-track");
+let guests = 0;
+
+gbSign.addEventListener("click", () => {
+  const name = (gbInput.value || "").trim() || "Anonymous";
+  gbInput.value = "";
+  guests++;
+  gbSigned.innerHTML = "✔ Signed as <b>" + name + "</b><br>visitors: " + guests;
+  // temporarily show the name on the page
+  signTrack.textContent = "★ " + name + " just signed the guestbook! ★ Thanks for stopping by! ★";
+  signMarquee.classList.add("show");
+  clearTimeout(window._gbTimer);
+  window._gbTimer = setTimeout(() => signMarquee.classList.remove("show"), 11000);
+  // open the winamp-style player (within the click gesture so autoplay is allowed)
+  openWinamp();
+});
+
+gbInput.addEventListener("keydown", (e) => { if (e.key === "Enter") gbSign.click(); });
+
+// ── winamp-style mini player ─────────────────────────
+const winamp = document.getElementById("winamp");
+const waAudio = new Audio("assets/guest-tune.mp3");
+waAudio.loop = true;
+const waPlay = document.getElementById("wa-play");
+const waTime = document.getElementById("winamp-time");
+
+function fmtTime(s) { return Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0"); }
+setInterval(() => { waTime.textContent = fmtTime(waAudio.currentTime); }, 500);
+
+function openWinamp() {
+  winamp.style.display = "block";
+  waAudio.currentTime = 0;
+  waAudio.play().then(() => {
+    waPlay.textContent = "||";
+    winamp.classList.add("playing");
+  }).catch(() => { waPlay.textContent = "►"; });
+}
+
+waPlay.addEventListener("click", () => {
+  if (waAudio.paused) {
+    waAudio.play();
+    waPlay.textContent = "||";
+    winamp.classList.add("playing");
+  } else {
+    waAudio.pause();
+    waPlay.textContent = "►";
+    winamp.classList.remove("playing");
+  }
+});
+
+document.getElementById("wa-stop").addEventListener("click", () => {
+  waAudio.pause(); waAudio.currentTime = 0;
+  waPlay.textContent = "►";
+  winamp.classList.remove("playing");
+});
+document.getElementById("wa-prev").addEventListener("click", () => { waAudio.currentTime = 0; });
+document.getElementById("wa-next").addEventListener("click", () => { waAudio.currentTime = 0; });
+document.getElementById("winamp-close").addEventListener("click", () => {
+  winamp.style.display = "none";
+  waAudio.pause();
+  waPlay.textContent = "►";
+  winamp.classList.remove("playing");
+});
 </script>
 </body>
 </html>
