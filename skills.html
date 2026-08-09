@@ -10,17 +10,38 @@
 <style>
   body {
     background: #008080;               /* classic Win98 desktop teal */
+    margin: 0;
+  }
+  .desktop {
     min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+  }
+  .side {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 28px 14px;
-    margin: 0;
+    gap: 12px;
+    padding: 14px 6px;
   }
-  .desktop {
+  .center {
+    flex: 0 0 auto;
     width: 100%;
     max-width: 980px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 46px 12px 24px;
+  }
+  @media (max-width: 1080px) {
+    .side { display: none; }   /* window nearly fills the viewport — no room for rails */
   }
   .window { width: 100%; }
   .window-body { background: #c0c0c0; }
@@ -169,16 +190,15 @@
   }
 
   /* ── millennium desktop ads ────────────────── */
-  .ad { position: fixed; z-index: 50; font-family: Tahoma, Arial, sans-serif; user-select: none; }
+  .ad { z-index: 50; font-family: Tahoma, Arial, sans-serif; user-select: none; }
   .ad a { text-decoration: none; color: inherit; }
   .ad-blink { animation: adblink 1s steps(1) infinite; }
   @keyframes adblink { 50% { opacity: 0; } }
 
-  /* left / right ad rails */
+  /* left / right ad rails (in-flow inside the side columns) */
   .rail {
-    top: 50%;
-    transform: translateY(-50%);
     width: 118px;
+    margin: 0 auto;
     background: #c0c0c0;
     border: 2px outset #dfdfdf;
     box-shadow: 2px 2px 0 #404040;
@@ -216,6 +236,7 @@
 
   /* top marquee banner */
   .ad-marquee {
+    position: fixed;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
@@ -235,6 +256,7 @@
 
   /* AOL-style popup */
   .ad-mail {
+    position: fixed;
     right: 12px;
     bottom: 14px;
     width: 210px;
@@ -250,6 +272,7 @@
 
   /* error dialog */
   .ad-dialog {
+    position: fixed;
     left: 50%;
     top: 40%;
     transform: translateX(-50%);
@@ -265,10 +288,8 @@
   .ad-dialog .dbtn { text-align: center; padding-bottom: 10px; }
   .ad-dialog button { min-width: 70px; font-family: Tahoma, Arial, sans-serif; font-size: 12px; }
 
-  /* under construction sign */
+  /* under construction sign (lives in the left side column) */
   .ad-construction {
-    left: 14px;
-    bottom: 14px;
     background: #ffff00;
     border: 3px solid #ff0000;
     color: #ff0000;
@@ -278,23 +299,31 @@
     transform: rotate(-3deg);
   }
 
-  /* hide ads on smaller viewports (they only live in the empty desktop space) */
-  @media (max-width: 1260px) {
-    .rail { display: none; }
+  /* hide fixed ads only when they'd overlap the window */
+  @media (max-width: 719px), (max-height: 679px) {
+    .ad-marquee { display: none; }
   }
-  @media (max-width: 1000px) {
-    .ad-marquee, .ad-construction { display: none; }
-  }
-  @media (max-height: 720px) {
-    .rail, .ad-marquee, .ad-construction { display: none; }
-  }
-  @media (max-width: 560px) {
+  @media (max-width: 559px) {
     .ad-mail, .ad-dialog { display: none; }
   }
 </style>
 </head>
 <body>
 <div class="desktop">
+
+  <aside class="side left">
+    <div class="ad rail">
+      <div class="rhead">Advertisement</div>
+      <div class="rbody">
+        <div class="art">🌊</div>
+        <div class="slogan">DIVE INTO THE DEEP<br>Triton's underwater lab</div>
+        <a class="cta ad-blink" href="https://clawbot-triton.vercel.app" target="_blank" rel="noopener">CLICK HERE!</a>
+      </div>
+    </div>
+    <div class="ad ad-construction">🚧 Under Construction 🚧</div>
+  </aside>
+
+  <div class="center">
 
   <div class="window">
     <div class="title-bar">
@@ -326,33 +355,25 @@
     <a href="https://noahisarider.github.io">Homepage</a>
   </div>
 
-  <!-- ── millennium desktop ads (fill the empty desktop space) ── -->
+  </div><!-- /center -->
+
+  <aside class="side right">
+    <div class="ad rail">
+      <div class="rhead">Advertisement</div>
+      <div class="rbody">
+        <div class="art">🏛️</div>
+        <div class="slogan">PALAEMON<br>opening new frontiers</div>
+        <span class="cta ad-blink">NOW HIRING</span>
+        <div class="mini">★ sign my <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener" style="color:#0000ee;text-decoration:underline;">guestbook</a></div>
+      </div>
+    </div>
+  </aside>
 
   <div class="ad ad-marquee">
     <span class="track">
       ✦ Welcome to my homepage! ✦ New posts on my <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener">blog</a> ✦
       <a href="https://noahisarider.github.io" target="_blank" rel="noopener">Personal page</a> ✦ Click here! ✦
     </span>
-  </div>
-
-  <div class="ad rail left">
-    <div class="rhead">Advertisement</div>
-    <div class="rbody">
-      <div class="art">🌊</div>
-      <div class="slogan">DIVE INTO THE DEEP<br>Triton's underwater lab</div>
-      <a class="cta ad-blink" href="https://clawbot-triton.vercel.app" target="_blank" rel="noopener">CLICK HERE!</a>
-      <div class="mini">🚧 under construction</div>
-    </div>
-  </div>
-
-  <div class="ad rail right">
-    <div class="rhead">Advertisement</div>
-    <div class="rbody">
-      <div class="art">🏛️</div>
-      <div class="slogan">PALAEMON<br>opening new frontiers</div>
-      <span class="cta ad-blink">NOW HIRING</span>
-      <div class="mini">★ sign my <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener" style="color:#0000ee;text-decoration:underline;">guestbook</a></div>
-    </div>
   </div>
 
   <div class="ad ad-mail">
@@ -363,8 +384,6 @@
       — <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener">read it now →</a>
     </div>
   </div>
-
-  <div class="ad ad-construction">🚧 Under Construction 🚧</div>
 
   <div class="ad ad-dialog" id="error-dialog">
     <div class="dhead">skills.exe - Error</div>
