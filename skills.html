@@ -288,6 +288,75 @@
   .ad-dialog .dbtn { text-align: center; padding-bottom: 10px; }
   .ad-dialog button { min-width: 70px; font-family: Tahoma, Arial, sans-serif; font-size: 12px; }
 
+  /* scenery.exe — art strip under the left ad rails */
+  .scenery {
+    width: 100px;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: #c0c0c0;
+    border: 2px outset #dfdfdf;
+    box-shadow: 2px 2px 0 #404040;
+  }
+  .scenery .shead {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .scenery .shead .x {
+    font-size: 10px;
+    line-height: 1;
+    padding: 1px 4px;
+    background: #c0c0c0;
+    color: #000;
+    border: 2px outset #dfdfdf;
+  }
+  .scenery .screen {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 6px 6px 4px;
+    background: #f7f7f7;
+    border: 2px inset #dfdfdf;
+    overflow: hidden;
+  }
+  .scenery .screen pre {
+    margin: 0 auto;
+    width: max-content;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 11px;
+    line-height: 11px;
+    color: #000;
+  }
+  .scenery .screen.dino {
+    background-image: url("assets/dino-strip.png");
+    background-repeat: repeat-y;
+    background-position: center top;
+    image-rendering: pixelated;
+  }
+  .scenery .sbtns {
+    display: flex;
+    gap: 4px;
+    padding: 0 6px 6px;
+    flex-shrink: 0;
+  }
+  .scenery .sbtns button {
+    flex: 1;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 0;
+    cursor: pointer;
+  }
+  .scenery .sbtns button.on { border-style: inset; background: #d4d0c8; }
+
   /* under construction sign removed */
 
   /* guestbook panel (right side) */
@@ -449,6 +518,14 @@
         <div class="art">🏛️</div>
         <div class="slogan">PALAEMON<br>opening new frontiers</div>
         <a class="cta ad-blink" href="https://palaemon-harbor.vercel.app/" target="_blank" rel="noopener">NOW HIRING!</a>
+      </div>
+    </div>
+    <div class="scenery">
+      <div class="shead"><span>scenery.exe</span><span class="x">✕</span></div>
+      <div class="screen" id="scn-screen"></div>
+      <div class="sbtns">
+        <button id="scn-ascii">ASCII</button>
+        <button id="scn-dino">DINO</button>
       </div>
     </div>
   </aside>
@@ -843,6 +920,47 @@ document.getElementById("winamp-close").addEventListener("click", () => {
   waPlay.textContent = "►";
   winamp.classList.remove("playing");
 });
+
+// ── scenery.exe (left art strip) ────────────────────
+const scnScreen = document.getElementById("scn-screen");
+const scnAscii = document.getElementById("scn-ascii");
+const scnDino = document.getElementById("scn-dino");
+const SCENERY_ART = [
+  "    .-.",
+  "   /   \\",
+  "  |  o  |",
+  "  |     |",
+  "   \\   /",
+  "    `-'",
+  "   .---.",
+  "  /     \\",
+  " /       \\",
+  "/ ~~~~~~~ \\",
+  "~~~~~~~~~~~~",
+];
+let sceneryMode = "ascii";
+try { sceneryMode = localStorage.getItem("scenery.mode") || "ascii"; } catch (e) {}
+
+function paintScenery() {
+  scnAscii.classList.toggle("on", sceneryMode === "ascii");
+  scnDino.classList.toggle("on", sceneryMode === "dino");
+  scnScreen.classList.toggle("dino", sceneryMode === "dino");
+  if (sceneryMode === "dino") { scnScreen.innerHTML = ""; return; }
+  const lines = Math.max(1, Math.floor(scnScreen.clientHeight / 11));
+  let out = "";
+  for (let i = 0; i < lines; i++) out += SCENERY_ART[i % SCENERY_ART.length] + "\n";
+  scnScreen.innerHTML = "<pre>" + out + "</pre>";
+}
+function setScenery(mode) {
+  sceneryMode = mode;
+  try { localStorage.setItem("scenery.mode", mode); } catch (e) {}
+  paintScenery();
+}
+scnAscii.addEventListener("click", () => setScenery("ascii"));
+scnDino.addEventListener("click", () => setScenery("dino"));
+let scnTimer;
+window.addEventListener("resize", () => { clearTimeout(scnTimer); scnTimer = setTimeout(paintScenery, 150); });
+paintScenery();
 </script>
 </body>
 </html>
