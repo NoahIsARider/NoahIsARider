@@ -167,6 +167,130 @@
     .split { flex-direction: column; }
     .pane-left { width: 100%; max-height: 220px; }
   }
+
+  /* ── millennium desktop ads ────────────────── */
+  .ad { position: fixed; z-index: 50; font-family: Tahoma, Arial, sans-serif; user-select: none; }
+  .ad a { text-decoration: none; color: inherit; }
+  .ad-blink { animation: adblink 1s steps(1) infinite; }
+  @keyframes adblink { 50% { opacity: 0; } }
+
+  /* left / right ad rails */
+  .rail {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 118px;
+    background: #c0c0c0;
+    border: 2px outset #dfdfdf;
+    box-shadow: 2px 2px 0 #404040;
+    font-size: 11px;
+  }
+  .rail .rhead {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 4px;
+    font-weight: 700;
+  }
+  .rail .rbody { padding: 8px 6px; text-align: center; }
+  .rail .rbody .art { font-size: 26px; line-height: 1; }
+  .rail .rbody .slogan { font-size: 10px; color: #000080; margin-top: 5px; font-weight: 700; }
+  .rail .rbody .cta {
+    display: inline-block;
+    margin-top: 7px;
+    background: #ffff00;
+    color: #ff0000;
+    border: 2px outset #ffff88;
+    padding: 2px 6px;
+    font-weight: 700;
+    font-size: 10px;
+  }
+  .rail.left { left: 10px; }
+  .rail.right { right: 10px; }
+  .rail .mini {
+    margin-top: 6px;
+    border-top: 1px solid #808080;
+    padding-top: 6px;
+    font-size: 10px;
+    color: #404040;
+  }
+
+  /* top marquee banner */
+  .ad-marquee {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(560px, 62vw);
+    background: #ffff00;
+    color: #000;
+    border: 2px outset #ffffaa;
+    box-shadow: 2px 2px 0 #404040;
+    font-size: 12px;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ad-marquee .track { display: inline-block; position: relative; left: 100%; animation: marquee 16s linear infinite; }
+  .ad-marquee .track a { color: #0000ee; text-decoration: underline; }
+  @keyframes marquee { to { left: -100%; } }
+
+  /* AOL-style popup */
+  .ad-mail {
+    right: 12px;
+    bottom: 14px;
+    width: 210px;
+    background: #fff;
+    border: 2px outset #dfdfdf;
+    box-shadow: 2px 2px 0 #404040;
+    font-size: 11px;
+  }
+  .ad-mail .mhead { background: linear-gradient(90deg, #000080, #1084d0); color: #fff; padding: 2px 4px; font-weight: 700; }
+  .ad-mail .mbody { padding: 9px; }
+  .ad-mail .mbody .star { color: #ff0000; font-size: 15px; }
+  .ad-mail .mbody a { color: #0000ee; text-decoration: underline; }
+
+  /* error dialog */
+  .ad-dialog {
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    width: 300px;
+    background: #c0c0c0;
+    border: 2px outset #dfdfdf;
+    box-shadow: 3px 3px 0 #404040;
+    font-size: 12px;
+  }
+  .ad-dialog .dhead { background: linear-gradient(90deg, #000080, #1084d0); color: #fff; padding: 2px 4px; font-weight: 700; }
+  .ad-dialog .dbody { padding: 14px 10px 10px; display: flex; align-items: center; gap: 10px; }
+  .ad-dialog .dbody .ico { font-size: 26px; }
+  .ad-dialog .dbtn { text-align: center; padding-bottom: 10px; }
+  .ad-dialog button { min-width: 70px; font-family: Tahoma, Arial, sans-serif; font-size: 12px; }
+
+  /* under construction sign */
+  .ad-construction {
+    left: 14px;
+    bottom: 14px;
+    background: #ffff00;
+    border: 3px solid #ff0000;
+    color: #ff0000;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 8px;
+    transform: rotate(-3deg);
+  }
+
+  /* hide ads on smaller viewports (they only live in the empty desktop space) */
+  @media (max-width: 1260px) {
+    .rail { display: none; }
+  }
+  @media (max-width: 1000px) {
+    .ad-marquee, .ad-construction { display: none; }
+  }
+  @media (max-height: 720px) {
+    .rail, .ad-marquee, .ad-construction { display: none; }
+  }
+  @media (max-width: 560px) {
+    .ad-mail, .ad-dialog { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -200,6 +324,58 @@
   <div class="desktop-footer">
     © 2026 Noah Zhou · <a href="https://github.com/NoahIsARider">GitHub</a> ·
     <a href="https://noahisarider.github.io">Homepage</a>
+  </div>
+
+  <!-- ── millennium desktop ads (fill the empty desktop space) ── -->
+
+  <div class="ad ad-marquee">
+    <span class="track">
+      ✦ Welcome to my homepage! ✦ New posts on my <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener">blog</a> ✦
+      <a href="https://noahisarider.github.io" target="_blank" rel="noopener">Personal page</a> ✦ Click here! ✦
+    </span>
+  </div>
+
+  <div class="ad rail left">
+    <div class="rhead">Advertisement</div>
+    <div class="rbody">
+      <div class="art">🌊</div>
+      <div class="slogan">DIVE INTO THE DEEP<br>Triton's underwater lab</div>
+      <a class="cta ad-blink" href="https://clawbot-triton.vercel.app" target="_blank" rel="noopener">CLICK HERE!</a>
+      <div class="mini">🚧 under construction</div>
+    </div>
+  </div>
+
+  <div class="ad rail right">
+    <div class="rhead">Advertisement</div>
+    <div class="rbody">
+      <div class="art">🏛️</div>
+      <div class="slogan">PALAEMON<br>opening new frontiers</div>
+      <span class="cta ad-blink">NOW HIRING</span>
+      <div class="mini">★ sign my <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener" style="color:#0000ee;text-decoration:underline;">guestbook</a></div>
+    </div>
+  </div>
+
+  <div class="ad ad-mail">
+    <div class="mhead">✉ You've Got Mail!</div>
+    <div class="mbody">
+      <span class="star">★</span> 1 new message from
+      <a href="https://noahisarider.github.io" target="_blank" rel="noopener">noahisarider.github.io</a>
+      — <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener">read it now →</a>
+    </div>
+  </div>
+
+  <div class="ad ad-construction">🚧 Under Construction 🚧</div>
+
+  <div class="ad ad-dialog" id="error-dialog">
+    <div class="dhead">skills.exe - Error</div>
+    <div class="dbody">
+      <div class="ico">⚠️</div>
+      <div>skills.dll not found.<br>Run in safe mode instead?</div>
+    </div>
+    <div class="dbtn">
+      <button id="dlg-ok">OK</button>
+      <button id="dlg-cancel">Cancel</button>
+    </div>
   </div>
 
 </div>
@@ -427,6 +603,13 @@ function selectSkill(group, name, btn) {
 const firstGroup = Object.keys(DATA)[0];
 const firstName = Object.keys(DATA[firstGroup])[0];
 selectSkill(firstGroup, firstName, document.querySelector(".skill-btn"));
+
+// ── dismiss the fake error dialog ───────────────────
+function dismissDialog() {
+  document.getElementById("error-dialog").style.display = "none";
+}
+document.getElementById("dlg-ok").addEventListener("click", dismissDialog);
+document.getElementById("dlg-cancel").addEventListener("click", dismissDialog);
 </script>
 </body>
 </html>
