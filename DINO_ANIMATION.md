@@ -83,11 +83,13 @@ Opacity masks between poses fade instead of switching. The run-mask faded the ru
 
 **Fix:** `animation-timing-function: steps(1,end)` on the pose-mask animations → hard frame swap at exactly the keyframe boundaries.
 
-### 4. CSS `fill` and `filter` animations are unreliable inside `<img>` SVGs
+### 4. Don't misattribute failures — the "unreliable `fill`/`filter`" diagnosis was wrong
 
-The first day/night attempt animated `fill` on a `<rect>` and `filter: invert()` on a world group — the background never changed for the viewer (though the keyframes were valid). 
+The first day/night attempt animated `fill` on a `<rect>` and `filter: invert()` on a world group, and it never worked for the viewer. I blamed CSS `fill`/`filter` animations inside `<img>` SVGs and rewrote day/night as opacity crossfades between two pre-colored layers.
 
-**Fix:** crossfade two pre-colored layers with **opacity only** (opacity/transform are the two properties that always animate). Bonus: the crossfade looks like the original game's 1.5s `transition`.
+The rewrite worked, but the original diagnosis was **wrong**: the first version carried the same missing-`%` keyframe bug as everything else (see #8). The crossfade is still a good choice — opacity/transform are the safest properties to animate in image contexts — but the failure was our generated CSS, not the platform.
+
+**Lesson:** verify the emitted CSS before blaming the environment.
 
 ### 5. Seamless tiling needs seam repair
 
@@ -103,6 +105,29 @@ For a 100 px-wide cactus group, the pass (≈0.35 s) is longer than the time the
 
 No headless browser available → wrote a **timeline auditor** (Python) that replays the CSS math at fine granularity: actual hit times, jump/cactus clearance margins, simultaneous-obstacle spacing, day/night windows, ground-seam continuity. Plus Pillow-rendered static frames with pixel checks. Grep the generated SVG and recompute — never trust the generator's intent over the file's content.
 
+### 8. A missing `%` in a keyframe selector silently kills the animation
+
+The day/night keyframes were generated as `0%,47.2222%{opacity:0}51.3889,95.8333%{opacity:1}...` — an f-string slip left the first percentage without its `%`. The CSS parser drops the invalid keyframe block, so `nightbg` effectively animated opacity between 0 and 0: **the night never happened**, while every other animation in the same stylesheet ran fine.
+
+It survived multiple review rounds because:
+- the always-day render looked perfectly "normal",
+- static Pillow previews don't parse CSS at all,
+- verification greps truncated at the first `}` and hid the malformed selector.
+
+**Lesson:** when generating CSS programmatically, validate the generated stylesheet itself — dump the full keyframes and eyeball them; ideally run them through a CSS parser.
+
+### 9. Sub-pixel motion is invisible
+
+The stars were given a "gentle" drift of 60 px over 40 s = 1.5 px/s — under a pixel per frame. Browsers round sub-pixel transforms to nothing, so the stars looked frozen while the moon and clouds (≈30 px/s) moved visibly.
+
+**Lesson:** anything below ~10 px/s reads as static on a README-scale render. Match the authentic game speeds (stars ≈36 px/s at 2x) or pick ≥20 px/s. And make drifting elements wrap **offscreen**: a short range with a mid-screen element causes a visible teleport at the loop boundary — a full-sky crossing that wraps at the edges avoids it.
+
+### 10. Verify "authentic" claims against the source, not memory
+
+Asked "does the original have a sun?" — checked the game source: no `SUN` in `spriteDefinition`, and a pixel scan of the sprite sheet found no sun shape (the region between the restart icon and the cloud is the high-speed motion streaks). The original day sky is plain `#f7f7f7` + clouds; night adds moon + stars. (Bonus find: a few unused cactus-variant columns in the sheet.)
+
+**Lesson:** for fidelity questions, scan the actual assets and source — don't trust memory.
+
 ---
 
 ## Tuning
@@ -114,6 +139,7 @@ No headless browser available → wrote a **timeline auditor** (Python) that rep
 | World speed | `SPEED` in `build_dino.py` / `timing.py` |
 | Day/night window | `DAY_END / NIGHT_START / NIGHT_END` in `build_dino.py` |
 | Jump feel | `RISE / HANG / FALL / JUMP_H` in `timing.py` |
+| Star drift | `STARS` + `starfloat` keyframes in `build_dino.py` / `preview.py` (currently 20 px/s full-sky crossing, wraps offscreen) |
 
 Rebuild & verify:
 
