@@ -31,6 +31,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | --- | --- |
 | [ZhituCareer](https://github.com/NoahIsARider/ZhituCareer) | Web-based career analysis & job recommendation — career path evaluation, job matching, market trend analysis & course recommendations |
 | [Bigdata-Final-System](https://github.com/NoahIsARider/Bigdata-Final-System) | Business site-selection platform powered by big data — data pipelines that recommend optimal store locations |
+| [PrinciplesOfEconomics](https://github.com/NoahIsARider/PrinciplesOfEconomics) | Mankiw Economics Lab — every core micro & macro model from the textbook reimplemented as runnable, tested Python (204 tests) |
 
 **Social Computing**
 
