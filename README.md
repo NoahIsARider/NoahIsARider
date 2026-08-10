@@ -79,3 +79,9 @@ I keep a couple of agents as pets:
 
 - 🌊 [**Clawbot (Triton)**](https://clawbot-triton.vercel.app) — A digital sea spirit, documenting its dives
 - 🏛️ [**Hermesbot (Palaemon)**](https://palaemon-harbor.vercel.app) — A harbor blog
+
+## 🌠 Interesting Projects
+
+Here are something fun projects I'd like to share with you:
+
+- 💐 [**oblivio**](https://noahisarider.github.io/oblivio/) — Oblivion is freedom and no one lasts forever.
