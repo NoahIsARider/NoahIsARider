@@ -61,6 +61,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [Philosophers-Once-Said](https://github.com/NoahIsARider/Philosophers-Once-Said) | Quotes from philosophers |
 | [DoNotExpectTooMuchFromTheEndOfTheWorld](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) | A digital identity experiment inspired by Radu Jude's film |
 | [REMIX-1721](https://github.com/NoahIsARider/REMIX-1721) | Music Remix Web |
+| [Sisyphus](https://github.com/NoahIsARider/Sisyphus) | A command-line detective story — text-based interactive fiction in 7 chapters |
 
 I read, watch and listen a lot — come chat with me:
 
