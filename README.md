@@ -51,6 +51,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [sailor-draft](https://github.com/NoahIsARider/sailor-draft) | Screenwriting, unadorned | [sailor-draft.vercel.app](https://sailor-draft.vercel.app) |
 | [ArkRSS](https://github.com/NoahIsARider/ArkRSS) | Terminal-style RSS reader, green-on-black | [ark-rss.vercel.app](https://ark-rss.vercel.app) |
 | [ReLife-App](https://github.com/NoahIsARider/ReLife-App) | Digital legacy app — Expo + Express | [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host) |
+| [NEOWEST](https://github.com/NoahIsARider/NEOWEST) | Retro-Futurism × Western Cowboy aesthetic — pure frontend | [noahisarider.github.io/NEOWEST](https://noahisarider.github.io/NEOWEST/) |
 
 **Literature · Film · Music**
 
