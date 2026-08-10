@@ -48,7 +48,6 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [ARK3005](https://github.com/NoahIsARider/ARK3005) | Experimental web experience (PROTOCOL_07A) | [ark-3005.vercel.app](https://ark-3005.vercel.app) |
 | [Museum-of-Failures](https://github.com/NoahIsARider/Museum-of-Failures) | A museum of AI failure cases — Next.js + shadcn/ui | [museum-of-failures.vercel.app](https://museum-of-failures.vercel.app) |
 | [BookClub-2000](https://github.com/NoahIsARider/BookClub-2000) | A book club web app | [book-club-2000.vercel.app](https://book-club-2000.vercel.app) |
-| [DeadlineACT](https://github.com/NoahIsARider/DeadlineACT) | Academic conference deadline tracker | [deadline-act.vercel.app](https://deadline-act.vercel.app) |
 | [sailor-draft](https://github.com/NoahIsARider/sailor-draft) | Screenwriting, unadorned | [sailor-draft.vercel.app](https://sailor-draft.vercel.app) |
 | [ArkRSS](https://github.com/NoahIsARider/ArkRSS) | Terminal-style RSS reader, green-on-black | [ark-rss.vercel.app](https://ark-rss.vercel.app) |
 | [ReLife-App](https://github.com/NoahIsARider/ReLife-App) | Digital legacy app — Expo + Express | [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host) |
@@ -59,7 +58,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | Project | Description |
 | --- | --- |
 | [Philosophers-Once-Said](https://github.com/NoahIsARider/Philosophers-Once-Said) | Quotes from philosophers |
-| [DoNotExpectTooMuchFromTheEndOfTheWorld](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) | A digital identity experiment inspired by Radu Jude's film |
+| [DoNotExpectTooMuchFromTheEndOfTheWorld](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) | A digital identity AI dataset inspired by Radu Jude's film |
 | [REMIX-1721](https://github.com/NoahIsARider/REMIX-1721) | Music Remix Web |
 | [Sisyphus](https://github.com/NoahIsARider/Sisyphus) | A command-line detective story — text-based interactive fiction in 7 chapters |
 
