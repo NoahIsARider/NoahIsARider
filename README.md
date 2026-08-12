@@ -23,6 +23,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | --- | --- |
 | [MatchaFlow](https://github.com/NoahIsARider/MatchaFlow) | Multi-agent simulation for software project management |
 | [When Combinations of Humans and AI Are Useful](https://github.com/NoahIsARider/When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis) | Systematic review & meta-analysis on human-AI collaboration |
+| [Crusaders](https://github.com/NoahIsARider/Crusaders) | Scaffold for designing, running & evaluating Human-Machine Collaboration frameworks driven by dynamic power handover |
 | [DLFaceDetection](https://github.com/NoahIsARider/DLFaceDetection) | gRPC-based distributed face recognition |
 
 **AI for Business & Recommender**
