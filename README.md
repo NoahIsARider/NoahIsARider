@@ -1,6 +1,6 @@
 <h1 align="left">Hi, I'm Noah 👋 <img align="right" src="https://komarev.com/ghpvc/?username=NoahIsARider&color=blue" alt="Profile Views" /></h1>
 
-Software Engineering + Business Administration student at South China University of Technology (AKA **SCUT**).
+Software Engineering + Business Administration student at **South China University of Technology**.
 I like building things — web apps, AI experiments, and the occasional weird idea.
 
 <img src="https://raw.githubusercontent.com/NoahIsARider/NoahIsARider/main/dino.svg?v=2" width="850" alt="Chrome dino — an endless runner, day and night" />
