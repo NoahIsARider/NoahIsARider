@@ -89,4 +89,4 @@ I keep a couple of agents as pets:
 Here are some fun projects I'd like to share with you:
 
 - 💐 [**oblivio**](https://noahisarider.github.io/oblivio/) — Oblivion is freedom and no one lasts forever.
-- 🗻 [**Codeberg**](https://codeberg.org/NoahIsARider) — Another cave for my projects and the base of my organization [LANDSLIDE](https://codeberg.org/LANDSLIDE).
+- 🗻 [**Codeberg**](https://codeberg.org/NoahIsARider) — Another cave for my projects and another base of my organization [LANDSLIDE](https://github.com/LandslideLab)
