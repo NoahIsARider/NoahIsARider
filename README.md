@@ -50,7 +50,6 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [Museum-of-Failures](https://github.com/NoahIsARider/Museum-of-Failures) | A museum of AI failure cases — Next.js + shadcn/ui | [museum-of-failures.vercel.app](https://museum-of-failures.vercel.app) |
 | [BookClub-2000](https://github.com/NoahIsARider/BookClub-2000) | Windows 2000-styled co-reading platform + personal reading log (86 books) | [book-club-2000.vercel.app](https://book-club-2000.vercel.app) |
 | [sailor-draft](https://github.com/NoahIsARider/sailor-draft) | Screenwriting, unadorned | [sailor-draft.vercel.app](https://sailor-draft.vercel.app) |
-| [ArkRSS](https://github.com/NoahIsARider/ArkRSS) | Terminal-style RSS reader, green-on-black | [ark-rss.vercel.app](https://ark-rss.vercel.app) |
 | [ReLife-App](https://github.com/NoahIsARider/ReLife-App) | Digital legacy app — Expo + Express | [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host) |
 | [NEOWEST](https://github.com/NoahIsARider/NEOWEST) | Retro-Futurism × Western Cowboy aesthetic — pure frontend | [noahisarider.github.io/NEOWEST](https://noahisarider.github.io/NEOWEST/) |
 
