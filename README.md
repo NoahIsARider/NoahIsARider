@@ -33,6 +33,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [ZhituCareer](https://github.com/NoahIsARider/ZhituCareer) | Web-based career analysis & job recommendation — career path evaluation, job matching, market trend analysis & course recommendations |
 | [Bigdata-Final-System](https://github.com/NoahIsARider/Bigdata-Final-System) | Business site-selection platform powered by big data — data pipelines that recommend optimal store locations |
 | [MankiwEcoLab](https://github.com/NoahIsARider/MankiwEcoLab) | Mankiw Economics Lab — every core micro & macro model from the textbook reimplemented as runnable, tested Python (204 tests) |
+| [RecRedTeam](https://github.com/NoahIsARider/RecRedTeam) | Red-team audit framework for LLM/agentic recommendation & shopping assistants — threat taxonomy (OWASP ASI 2026 mapped), attack library, dual-channel judge & defense plugins |
 
 **Social Computing**
 
@@ -40,6 +41,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | --- | --- |
 | [AIFrameQuest](https://github.com/NoahIsARider/AIFrameQuest) | A social computing experiment on simulacra, spectacle & subjectivity — using Hupu ratings and Douban as fieldwork to explore how symbols become currency in the digital age |
 | [Reptile](https://github.com/NoahIsARider/Reptile) | A collection of web scrapers for A24 filmographies, Bilibili danmaku & news sites — simple, adaptable and privacy-conscious |
+| [OnChainGov](https://github.com/NoahIsARider/OnChainGov) | On-chain governance research toolchain — DAO/Web3 data collection (Snapshot/Tally/EVM/Steemit) to research-ready panels & causal inference (DID/PSM-DID/placebo/event study) |
 
 **Design & Frontend**
 
