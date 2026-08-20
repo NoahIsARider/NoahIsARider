@@ -11,7 +11,7 @@ I like building things — web apps, AI experiments, and the occasional weird id
 
 ## 🔬 Research Interests
 
-Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Systems · Human-AI Collaborative Workflow Design · AI for Business · Recommender Systems
+Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Systems · Human-AI Collaborative Workflow Design · AI for Business · AI for Healthcare · Recommender Systems
 
 ---
 
@@ -25,6 +25,12 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [When Combinations of Humans and AI Are Useful](https://github.com/NoahIsARider/When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis) | Systematic review & meta-analysis on human-AI collaboration |
 | [Crusaders](https://github.com/NoahIsARider/Crusaders) | Scaffold for designing, running & evaluating Human-Machine Collaboration frameworks driven by dynamic power handover |
 | [DLFaceDetection](https://github.com/NoahIsARider/DLFaceDetection) | gRPC-based distributed face recognition |
+
+**AI for Healthcare**
+
+| Project | Description |
+| --- | --- |
+| [Open Stethoscope](https://github.com/NoahIsARider/open-stethoscope) | Open-source AI heart-murmur detection for primary care — a 404K-param multi-position attention fusion that beats the PhysioNet 2022 Challenge champion (s_murmur 0.7926) |
 
 **AI for Business & Recommender**
 
