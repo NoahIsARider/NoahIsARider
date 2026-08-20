@@ -55,7 +55,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 
 - [**Philosophers-Once-Said**](https://github.com/NoahIsARider/Philosophers-Once-Said) — Quotes from philosophers
 - [**DoNotExpectTooMuchFromTheEndOfTheWorld**](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) — A digital identity AI dataset inspired by Radu Jude's film
-- [**Clube**](https://github.com/NoahIsARider/Clube) — A film-society operations tool — screening scheduling, QR check-in, anonymous ratings & semester wrap-up reports
+- [**Clube**](https://github.com/NoahIsARider/Clube) — A film-society operations tool — screening scheduling, anonymous ratings & semester wrap-up reports
 - [**REMIX-1721**](https://github.com/NoahIsARider/REMIX-1721) — Music Remix Web
 - [**Sisyphus**](https://github.com/NoahIsARider/Sisyphus) — A command-line detective story — text-based interactive fiction in 7 chapters
 
