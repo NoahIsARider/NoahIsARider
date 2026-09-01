@@ -69,7 +69,7 @@ I read, watch and listen a lot — come chat with me:
   - Favorites: A24, Neon and Marvel Productions
 - 🎵 **Record Club** — [NoahIsARider](https://record.club/NoahIsARider)
   - Favorites: Charli XCX, Sufjan Stevens and Bon Iver
-- 🎮 **Games** — into literary games? Whether you play them or build them, let's talk!
+- 🎮 **Games** — [itch.io](https://noahisarider.itch.io) — into literary games? Whether you play them or build them, let's talk!
   - Favorites: Disco Elysium, The Cosmic Wheel Sisterhood, Kentucky Route Zero
 
 ---
