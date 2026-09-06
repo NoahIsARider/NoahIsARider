@@ -4,245 +4,361 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>skills.exe — Noah Zhou</title>
-<meta name="description" content="Noah Zhou's skills & projects — in a Windows XP desktop. Double-click an icon to explore.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛠️</text></svg>">
+<meta name="description" content="Noah Zhou's skills & projects — a Windows XP desktop tribute. Double-click an icon to explore.">
+<link rel="icon" href="assets/xp/favicon.png">
 <style>
 :root{
-  --cap1:#0058e6; --cap2:#3a9bff; --capIn1:#8aa8dc; --capIn2:#d0ddf0;
+  --cap1:#0058e6; --cap2:#3a9bff; --capIn1:#7fa9e8; --capIn2:#c3d6f7;
   --luna-face:#ece9d8; --border:#0831d9; --btnface:#f0eee2;
-  --tahoma:"Tahoma","Segoe UI","Microsoft YaHei",sans-serif;
+  --f:"Tahoma","Segoe UI","Microsoft YaHei",sans-serif;
 }
 *{box-sizing:border-box; -webkit-user-select:none; user-select:none;}
 html,body{height:100%; margin:0; overflow:hidden;}
-body{font-family:var(--tahoma); font-size:11px; color:#000;}
-body[data-wall="bliss"]{background:#000 url(assets/bliss.svg) center/cover no-repeat;}
-body[data-wall="teal"]{background:#008080;}
-body[data-wall="sky"]{background:linear-gradient(180deg,#4a7fd4 0%,#7fb0e8 55%,#cfe4f4 100%);}
+body{font-family:var(--f); font-size:11px; color:#000; background:#3a6ea5;}
+body.wall-photo{background:#000 url(assets/wallpaper.jpg) center/cover no-repeat;}
+body.wall-sky{background:linear-gradient(180deg,#4a7fd4 0%,#7fb0e8 55%,#cfe4f4 100%);}
+body.wall-teal{background:#008080;}
+.wcontent{user-select:text; -webkit-user-select:text;}
 
-/* ─────────── boot ─────────── */
-#boot{position:fixed; inset:0; z-index:9999; background:#000; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:34px; transition:opacity .5s;}
+/* ═══════════ boot ═══════════ */
+#boot{position:fixed; inset:0; z-index:9900; background:#000; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:30px; opacity:1; transition:opacity .45s;}
 #boot.off{opacity:0; pointer-events:none;}
-.boot-logo{font-size:64px; font-weight:bold; font-style:italic; letter-spacing:-1px;
-  background:linear-gradient(180deg,#fff 20%,#9fd0ff 60%,#3d8fe0 85%); -webkit-background-clip:text; background-clip:text; color:transparent;
-  text-shadow:0 0 30px rgba(90,160,255,.25);}
-.boot-sub{color:#8aa7d8; font-size:13px; margin-top:-24px; letter-spacing:3px;}
-.boot-bar{width:220px; height:16px; border:2px solid #666; background:#000; padding:2px;}
-.boot-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,#2f6fcf,#66a7ff);
-  animation:bootfill 2.1s cubic-bezier(.3,.7,.4,1) forwards;}
-@keyframes bootfill{0%{width:2%} 55%{width:58%} 82%{width:84%} 100%{width:100%}}
-.boot-hint{color:#3d3d3d; font-size:11px; margin-top:-18px;}
+.boot-logo{font-size:60px; font-weight:bold; font-style:italic; letter-spacing:-1px;
+  background:linear-gradient(180deg,#fff 15%,#cfd9f0 55%,#7a9fd8 90%); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.boot-bar{width:218px; height:16px; border:1px solid #4a4a4a; background:#111; padding:2px; border-radius:1px;}
+.boot-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,#1e56d8,#5ea0ff 55%,#2f7cf0);
+  animation:bootfill 2s cubic-bezier(.25,.7,.4,1) forwards;}
+@keyframes bootfill{0%{width:2%} 55%{width:64%} 85%{width:86%} 100%{width:100%}}
 
-/* ─────────── desktop icons ─────────── */
-#icons{position:absolute; top:4px; left:2px; display:flex; flex-direction:column; flex-wrap:wrap;
-  align-content:flex-start; height:calc(100% - 40px); gap:2px; z-index:5;}
-.dicon{width:78px; padding:6px 2px 4px; display:flex; flex-direction:column; align-items:center; gap:3px;
-  border:1px solid transparent; border-radius:2px; cursor:default; position:relative;}
-.dicon .ico{width:36px; height:36px; font-size:30px; line-height:36px; text-align:center;
-  filter:drop-shadow(0 1px 1px rgba(0,0,0,.35));}
-.dicon .lab{color:#fff; text-align:center; line-height:1.2; max-width:76px;
-  text-shadow:1px 1px 0 rgba(0,0,0,.75), -1px -1px 0 rgba(0,0,0,.45), 1px -1px 0 rgba(0,0,0,.45), -1px 1px 0 rgba(0,0,0,.45);
-  font-size:11px;}
-.dicon:hover{border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.08);}
-.dicon.sel{border:1px solid rgba(0,80,220,.55); background:rgba(60,120,255,.28);}
+/* ═══════════ login / welcome ═══════════ */
+#login{position:fixed; inset:0; z-index:9800; display:none; align-items:center; justify-content:center;
+  background:radial-gradient(120% 105% at 50% 26%, #9fc6f4 0%, #6a97e2 34%, #3a68c4 70%, #1d3f8e 100%);}
+#login::before{content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%, rgba(255,255,255,.18), transparent 70%);}
+#login .brand{position:absolute; right:18px; bottom:12px; display:flex; align-items:center; gap:6px;
+  color:#dfe9f8; font-style:italic; font-weight:bold; font-size:13px; opacity:.9;}
+#login .brand img{width:20px; height:auto; opacity:.85;}
+#login .turnoff{position:absolute; left:16px; bottom:16px; display:flex; align-items:center; gap:7px;
+  height:30px; padding:0 16px 0 10px; font-size:12px; font-weight:bold; color:#fff;
+  border:1px solid #174e9e; border-radius:3px; cursor:pointer; font-family:var(--f);
+  background:linear-gradient(180deg,#79b2f7 0%,#3f84e8 45%,#2a66cd 100%); box-shadow:0 2px 5px rgba(0,0,0,.3);}
+#login .turnoff:hover{filter:brightness(1.1);}
+#login .turnoff:active{filter:brightness(.85);}
+.login-card{display:flex; flex-direction:column; align-items:center; gap:10px; cursor:pointer;
+  padding:26px 44px 24px; border-radius:10px;}
+.login-card .pic{width:120px; height:120px; border-radius:10px; box-shadow:0 8px 22px rgba(0,0,0,.4);
+  background:#fff; display:grid; place-items:center; border:2px solid #e8f1fd; outline:1px solid #7fa3d8;}
+.login-card .pic img{width:100%; height:100%; border-radius:12px;}
+.login-card .nm{color:#fff; font-size:26px; font-weight:bold; text-shadow:0 2px 6px rgba(0,0,0,.45); margin-top:4px;}
+.login-card .role{color:#d7e5f8; font-size:12px; text-shadow:0 1px 2px rgba(0,0,0,.4);}
+.login-card:hover .pic{outline:3px solid rgba(255,255,255,.65); outline-offset:3px;}
+.login-hint{position:absolute; left:0; right:0; top:16%; text-align:center; color:#e3edfb; font-size:14px;
+  text-shadow:0 1px 3px rgba(0,0,0,.45); letter-spacing:.2px;}
+#welcome{position:fixed; inset:0; z-index:9850; background:#000; display:none; flex-direction:column;
+  align-items:center; justify-content:center; gap:26px;}
+#welcome .wl{font-size:44px; font-weight:bold; font-style:italic; letter-spacing:0;
+  background:linear-gradient(180deg,#fff 20%,#b9cdf2 70%,#6f97dc 95%); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+/* ═══════════ shutdown ═══════════ */
+#shutdown{position:fixed; inset:0; z-index:9950; background:#000; display:none; align-items:center; justify-content:center;}
+#shutdown .txt{color:#f60; font-size:26px; font-family:"Lucida Console",Consolas,monospace; text-align:center;}
+
+/* ═══════════ desktop ═══════════ */
+#desktop{position:absolute; inset:0 0 30px 0;}
+#icons{position:absolute; top:3px; left:2px; display:flex; flex-direction:column; flex-wrap:wrap;
+  align-content:flex-start; height:calc(100% - 6px); gap:3px; z-index:5;}
+.dicon{width:76px; padding:7px 2px 5px; display:flex; flex-direction:column; align-items:center; gap:4px;
+  border:1px solid transparent; border-radius:2px; cursor:default;}
+.dicon .ico{width:32px; height:32px; display:block; object-fit:contain;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));}
+.dicon .lab{color:#fff; text-align:center; line-height:1.25; max-width:74px; font-size:11px;
+  text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 2px rgba(0,0,0,.6);}
+.dicon:hover{border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.07);}
+.dicon.sel{border:1px solid rgba(0,80,220,.5); background:rgba(60,120,255,.22);}
 .dicon.sel .lab{background:#0a4fd6; text-shadow:none; border-radius:2px; padding:0 2px;}
-.dicon .arrow{position:absolute; left:2px; bottom:10px; font-size:9px; color:#fff; opacity:.85;
-  text-shadow:0 1px 1px #000;}
-body[data-wall="teal"] .dicon:hover{background:rgba(255,255,255,.14);}
 
-/* ─────────── windows ─────────── */
-#winlayer{position:absolute; inset:0 0 30px 0; z-index:10; pointer-events:none;}
-.win{position:absolute; min-width:240px; min-height:120px; pointer-events:auto;
-  border:1px solid var(--border); border-radius:8px 8px 0 0; box-shadow:2px 2px 8px rgba(0,0,0,.45);
-  display:flex; flex-direction:column; background:var(--luna-face);}
+/* ═══════════ windows ═══════════ */
+#winlayer{position:absolute; inset:0; z-index:10; pointer-events:none;}
+.win{position:absolute; min-width:200px; min-height:110px; pointer-events:auto; display:flex; flex-direction:column;
+  background:var(--luna-face); border-radius:8px 8px 0 0;
+  border:1px solid #0d4fc7; box-shadow:3px 4px 14px rgba(0,0,0,.5);}
 .win.maximized{border-radius:0;}
-.win .wtitle{height:26px; display:flex; align-items:center; gap:5px; padding:0 3px 0 7px; cursor:default;
-  background:linear-gradient(180deg,var(--cap1) 0%,var(--cap1) 45%,var(--cap2) 100%);
-  border-radius:7px 7px 0 0; flex:0 0 auto;}
+.win .wtitle{height:28px; display:flex; align-items:center; gap:6px; padding:0 2px 0 8px; flex:0 0 auto;
+  background:linear-gradient(180deg,#0058e6 0%,#1467ea 6%,#1f79f0 40%,#2f90f8 88%,#1c6fe8 100%);
+  border-radius:7px 7px 0 0;}
 .win.maximized .wtitle{border-radius:0;}
-.win.inactive .wtitle{background:linear-gradient(180deg,#6f85b0 0%,#6f85b0 45%,#9db2d8 100%);}
-.win .wtitle .ticon{font-size:14px;}
-.win .wtitle .tt{flex:1; min-width:0; color:#fff; font-weight:bold; font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-shadow:1px 1px 1px rgba(0,0,0,.5);}
+.win.inactive .wtitle{background:linear-gradient(180deg,#7d93bd 0%,#8296bd 40%,#a3b5d4 88%,#8da1c4 100%);}
+.win .wtitle img.tic{width:16px; height:16px; object-fit:contain;}
+.win .wtitle .tt{flex:1; min-width:0; color:#fff; font-weight:bold; font-size:11px; white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis; text-shadow:1px 1px 2px rgba(0,0,20,.55);}
 .win.inactive .wtitle .tt{text-shadow:none;}
-.xbtns{display:flex; gap:2px;}
-.xbtn{width:21px; height:21px; border:1px solid #fff; border-radius:3px; font-size:10px; line-height:1;
-  display:flex; align-items:center; justify-content:center; color:#fff; background:transparent; cursor:pointer; padding:0;}
-.xbtn:hover{background:rgba(255,255,255,.25);}
-.xbtn.mn{font-size:10px; padding-bottom:8px;}
-.xbtn.cl{background:linear-gradient(180deg,#f2a7a0,#e05a4d 45%,#c93a2c); border-color:#fff;}
-.xbtn.cl:hover{background:linear-gradient(180deg,#ffb9b2,#f07062 45%,#e04a3a);}
-.xbtn:active{filter:brightness(.85);}
-.win.inactive .xbtn{background:rgba(255,255,255,.12);}
-.win .wbody{flex:1; min-height:0; background:var(--luna-face); overflow:hidden; display:flex; flex-direction:column;}
+.xbtns{display:flex; gap:2px; align-items:center; padding-right:1px;}
+.capbtn{position:relative; width:21px; height:21px; border-radius:3px; border:1px solid rgba(255,255,255,.75);
+  cursor:pointer; padding:0; display:block;}
+.capbtn svg{position:absolute; inset:0; margin:auto; display:block;}
+.capbtn.mn{background:linear-gradient(180deg,#4a9cf8 0%,#2377ea 45%,#1a66d8 100%);}
+.capbtn.mx{background:linear-gradient(180deg,#4a9cf8 0%,#2377ea 45%,#1a66d8 100%);}
+.capbtn.cl{background:linear-gradient(180deg,#f4a09a 0%,#e1584c 45%,#c93a2c 100%);}
+.capbtn.mn:hover{filter:brightness(1.15);} .capbtn.mx:hover{filter:brightness(1.15);}
+.capbtn.cl:hover{filter:brightness(1.12);}
+.capbtn:active{filter:brightness(.85);}
+.win.inactive .capbtn{border-color:rgba(255,255,255,.55); background:linear-gradient(180deg,#c7cede,#aeb6c9 50%,#99a3ba);}
+.win.inactive .capbtn.cl{background:linear-gradient(180deg,#d9a19c,#c0746c 50%,#ab5a52);}
+.win .wbody{flex:1; min-height:0; display:flex; flex-direction:column; background:var(--luna-face);}
 .win .wcontent{flex:1; min-height:0; overflow:auto; background:#fff;}
-.win .wstatus{flex:0 0 auto; display:flex; gap:8px; padding:2px 6px; background:var(--luna-face);
-  border-top:1px solid #d4d0c8; font-size:11px; color:#000;}
+.win .wstatus{flex:0 0 auto; display:flex; gap:6px; padding:2px 5px; background:var(--luna-face);
+  border-top:1px solid #d9d4c4; font-size:11px;}
 .status-sunken{background:#fff; border:1px solid #aca899; border-top-color:#6e6a5e; border-left-color:#6e6a5e;
   padding:1px 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-.win .tbar{flex:0 0 auto; display:flex; align-items:center; gap:4px; padding:3px 5px;
-  background:linear-gradient(180deg,#f6f4ec,#e3dfd2); border-bottom:1px solid #c6c2b4;}
-.win .tbar .addr{flex:1; display:flex; align-items:center; gap:3px; background:#fff;
-  border:1px solid #aca899; border-top-color:#6e6a5e; border-left-color:#6e6a5e; padding:2px 6px; font-size:11px;}
-.tbtn{min-width:24px; height:22px; padding:0 6px; border:1px solid #c6c2b4; border-radius:3px; cursor:pointer;
-  background:linear-gradient(180deg,#fff,#e7e2d4); font-size:12px; line-height:1;}
-.tbtn:active{background:#d9d4c6;}
+
+/* menubar */
+.menubar{flex:0 0 auto; display:flex; align-items:center; height:20px; background:var(--luna-face); padding:0 2px;}
+.mbar-item{padding:2px 7px; font-size:11px; cursor:default; border-radius:2px;}
+.mbar-item:hover,.mbar-item.open{background:#0a4fd6; color:#fff;}
+
+/* dropdown menu */
+.mddrop{position:fixed; z-index:9000; background:#fff; border:1px solid #8a94ac; box-shadow:3px 3px 8px rgba(0,0,0,.4);
+  padding:2px; min-width:150px; display:none;}
+.mddrop .mi{display:flex; align-items:center; gap:7px; padding:4px 26px 4px 6px; cursor:default; white-space:nowrap;}
+.mddrop .mi img{width:16px; height:16px; object-fit:contain;}
+.mddrop .mi:hover{background:#0a4fd6; color:#fff;}
+.mddrop .mi.dis{color:#9a9a9a;} .mddrop .mi.dis:hover{background:transparent; color:#9a9a9a;}
+.mddrop .msep{border-top:1px solid #d6d2c4; margin:3px 2px;}
+.mddrop .mi .acc{margin-left:auto; padding-left:20px; color:#888;}
+.mddrop .mi:hover .acc{color:#fff;}
+
+/* toolbar */
+.toolbar{flex:0 0 auto; display:flex; align-items:center; gap:2px; padding:3px 6px;
+  background:linear-gradient(180deg,#f9f7f0,#e9e5d6); border-bottom:1px solid #d3cdbb;}
+.tbtn{display:flex; align-items:center; gap:4px; height:24px; padding:0 7px; cursor:default;
+  background:linear-gradient(180deg,#fdfdfb,#e3dfd0); border:1px solid #b9b4a3; border-radius:3px; font-size:11px;}
+.tbtn img{width:16px; height:16px; object-fit:contain;}
+.tbtn.dis{color:#9c9c9c; border-color:#d5d0c2; background:#f0ede2;}
+.tbtn:not(.dis):hover{background:linear-gradient(180deg,#f2f8ff,#d7e8fc); border-color:#8cb4e8;}
+.tbtn:not(.dis):active{background:#d9e8fb;}
+.tsep{width:1px; height:20px; background:#c6c2b4; margin:0 4px;}
+.taddr{flex:1; display:flex; align-items:center; gap:4px; height:22px; padding:0 4px;
+  background:#fff; border:1px solid #7b8aa5; box-shadow:inset 0 1px 2px rgba(0,0,0,.12); font-size:11px; min-width:0;}
+.taddr img{width:14px; height:14px; object-fit:contain; flex:0 0 auto;}
+.taddr .tv{flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.taddr .arrow{width:16px; height:16px; flex:0 0 auto; background:url(assets/xp/dropdown.png) center/11px no-repeat;}
 
 /* explorer panes */
 .xp-split{display:flex; flex:1; min-height:0;}
-.xp-tree{width:212px; min-width:150px; background:#fff; overflow:auto; padding:4px 2px;
-  border-right:1px solid #c6c2b4;}
-.xp-detail{flex:1; min-width:0; background:#fff; overflow:auto; padding:10px 12px;}
-.tree-node .trow{display:flex; align-items:center; gap:3px; padding:2px 4px; cursor:default; border-radius:2px; white-space:nowrap;}
+.xp-tree{width:210px; min-width:150px; background:#fff; overflow:auto; padding:5px 2px; border-right:1px solid #e0ddcf;}
+.xp-detail{flex:1; min-width:0; background:#fff; overflow:auto; padding:10px 14px;}
+.tree-node .trow{display:flex; align-items:center; gap:3px; padding:2px 3px; cursor:default; border-radius:2px; white-space:nowrap;}
 .tree-node .trow:hover{background:#e8f0fe;}
-.tree-node .trow b{font-weight:normal; font-size:11px;}
-.tree-node ul{list-style:none; margin:0; padding:0 0 0 18px;}
+.tree-node .trow img{width:16px; height:16px; object-fit:contain;}
+.tree-node .trow .tw{width:14px; text-align:center; color:#555; font-size:8px;}
+.tree-node .trow b{font-weight:normal;}
+.tree-node ul{list-style:none; margin:0; padding:0 0 0 17px;}
 .tree-node.collapsed ul{display:none;}
-.trow .tw{width:16px; text-align:center; color:#555; font-size:9px;}
-.skill-row{display:flex; align-items:center; gap:4px; padding:2px 4px; border-radius:2px; cursor:default; white-space:nowrap;}
+.skill-row{display:flex; align-items:center; gap:5px; padding:2px 3px; border-radius:2px; cursor:default; white-space:nowrap;}
 .skill-row:hover{background:#e8f0fe;}
 .skill-row.sel{background:#0a4fd6; color:#fff;}
-.skill-row .sico{width:16px; height:16px; position:relative; display:inline-grid; place-items:center; font-size:7px; color:#fff;}
-.skill-row .sico::after{content:attr(data-i); font-weight:bold; font-size:9px; color:#666; font-style:normal;}
-.skill-row.sel .sico::after{color:#cfe0ff;}
-.skill-row .sico img{position:absolute; inset:0; width:16px; height:16px; z-index:1;}
+.skill-row img{width:16px; height:16px; object-fit:contain;}
 .skill-row .snm{overflow:hidden; text-overflow:ellipsis;}
-.detail-title{display:flex; align-items:center; gap:8px; margin:0 0 2px; font-size:15px;}
-.detail-title .dico{width:28px; height:28px; position:relative; display:inline-grid; place-items:center;}
-.detail-title .dico::after{content:attr(data-i); font-size:12px; color:#999; font-weight:bold;}
-.detail-title .dico img{position:absolute; inset:0; width:28px; height:28px; z-index:1;}
-.detail-sub{color:#666; margin:0 0 10px; font-size:11px;}
-.proj{display:flex; gap:8px; align-items:baseline; padding:5px 6px; border:1px solid #e4e0d4; border-radius:4px; margin-bottom:5px; background:#fcfbf7;}
-.proj:hover{border-color:#99c1f0; background:#eef4fd;}
-.proj .pi{font-size:13px;}
+.detail-title{display:flex; align-items:center; gap:9px; margin:0 0 3px; font-size:16px;}
+.detail-title img{width:28px; height:28px; object-fit:contain;}
+.detail-sub{color:#666; margin:0 0 10px;}
+.proj{display:flex; gap:9px; align-items:baseline; padding:6px 7px; border:1px solid #e6e1d3; border-radius:3px; margin-bottom:5px; background:#fdfcf8;}
+.proj:hover{border-color:#9ac2ee; background:#eef4fd;}
+.proj img{width:16px; height:16px; object-fit:contain; align-self:center; flex:0 0 auto;}
 .proj a{color:#0046c8; text-decoration:none; font-weight:bold;}
 .proj a:hover{text-decoration:underline;}
-.proj .pd{color:#444; font-size:11px;}
-.empty-state{color:#777; text-align:center; padding:44px 10px; font-size:13px;}
-.empty-state .big{font-size:44px; display:block; margin-bottom:10px;}
+.proj .pd{color:#444;}
+.empty-state{color:#777; text-align:center; padding:42px 10px; font-size:12px;}
+.empty-state img{display:block; margin:0 auto 10px; width:44px; height:44px;}
 
-/* app window list (projects / recycle) */
-.app-list{list-style:none; margin:0; padding:4px;}
-.app-list li{display:flex; gap:9px; padding:6px 8px; border-bottom:1px solid #eee; cursor:default;}
+/* list windows (projects) */
+.app-list{list-style:none; margin:0; padding:4px 6px;}
+.app-list li{display:flex; gap:10px; padding:7px 8px; border-bottom:1px solid #eee;}
 .app-list li:hover{background:#eef4fd;}
-.app-list .pi{font-size:15px; line-height:1.2;}
+.app-list img{width:16px; height:16px; object-fit:contain; margin-top:2px; flex:0 0 auto;}
 .app-list a{color:#0046c8; text-decoration:none; font-weight:bold; font-size:12px;}
 .app-list a:hover{text-decoration:underline;}
 .app-list .pd{color:#555; font-size:11px; margin-top:1px;}
 .app-list .tags{font-size:10px; color:#888;}
 
-/* about page */
-.about{padding:16px 18px; max-width:640px;}
+/* tasks pane (recycle bin etc) */
+.tasks-pane{width:168px; min-width:140px; background:linear-gradient(180deg,#f6f7fb,#e7eaf4); border-right:1px solid #d5d8e4;
+  padding:10px 8px; font-size:11px;}
+.tasks-pane .tp-cap{font-size:11px; color:#3b5a9c; font-weight:bold; margin:2px 2px 6px;}
+.tasks-pane .tp-item{display:flex; align-items:center; gap:7px; padding:4px 6px; border-radius:2px; cursor:default;}
+.tasks-pane .tp-item img{width:16px; height:16px;}
+.tasks-pane .tp-item:hover{background:#cce0fb; text-decoration:underline;}
+.tasks-pane .tp-item.dis{color:#999; cursor:default;} .tasks-pane .tp-item.dis:hover{background:transparent; text-decoration:none;}
+
+/* about / content */
+.about{padding:16px 20px; max-width:620px;}
 .about h2{margin:0 0 2px; font-size:17px;}
 .about .sub{color:#666; margin-bottom:10px;}
-.about p{line-height:1.55; margin:0 0 10px;}
-.about .row{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 12px;}
+.about p{line-height:1.6; margin:0 0 10px;}
+.about h4{margin:13px 0 5px; font-size:12px; color:#333;}
+.about .row{display:flex; flex-wrap:wrap; gap:6px; margin:3px 0 6px;}
 .chip{border:1px solid #9cc0ea; background:#e8f1fc; color:#1a4b8f; border-radius:10px; padding:2px 9px; font-size:11px;}
+.about .links div{display:flex; align-items:center; gap:7px; margin-bottom:6px;}
+.about .links img{width:16px; height:16px;}
 .about .links a{color:#0046c8; text-decoration:none;}
 .about .links a:hover{text-decoration:underline;}
 .about .credit{margin-top:16px; color:#999; font-size:10px; border-top:1px dotted #ccc; padding-top:8px;}
-.about h4{margin:12px 0 4px; font-size:12px; color:#333;}
 
-/* dialogs (generic XP) */
-.dlg{position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); z-index:4000;
-  background:var(--luna-face); border:1px solid var(--border); border-radius:8px 8px 0 0;
-  box-shadow:3px 3px 10px rgba(0,0,0,.5); min-width:300px;}
-.dlg .wtitle{height:24px; border-radius:7px 7px 0 0;}
-.dlg .db{display:flex; gap:12px; padding:16px 16px 6px; align-items:flex-start;}
-.dlg .db .di{font-size:30px;}
-.dlg .db .dt{font-size:11px; line-height:1.5;}
-.dlg .dbtns{display:flex; justify-content:flex-end; gap:8px; padding:12px 16px 14px;}
-.xpbtn{min-width:70px; height:23px; padding:0 12px; font-family:var(--tahoma); font-size:11px; cursor:pointer;
-  border:1px solid #8a8a8a; border-radius:3px; background:linear-gradient(180deg,#fff,#ece9d8 40%,#ded9c5);}
-.xpbtn:active{background:linear-gradient(180deg,#d9d4c0,#c9c4b0);}
-.xpbtn:disabled{color:#999; cursor:default;}
-
-/* start menu */
-#startmenu{position:fixed; left:2px; bottom:32px; z-index:5000; width:252px; background:#fff;
-  border:1px solid #0831d9; border-radius:8px 8px 8px 8px; box-shadow:3px 3px 10px rgba(0,0,0,.4); overflow:hidden;}
-#startmenu .sm-head{height:6px; background:linear-gradient(180deg,#3a9bff,#0058e6);}
-#startmenu .sm-userrow{display:flex; align-items:center; gap:8px; padding:5px 8px;
-  background:linear-gradient(180deg,#8fc1ff,#3a8bef 60%,#2a7ae0); color:#fff; font-weight:bold; font-size:12px;}
-.sm-userrow .avatar{width:30px; height:30px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#ffe9c9,#d9a05b 60%,#a06a2a);
-  display:grid; place-items:center; font-size:16px;}
-#startmenu .sm-in{display:flex;}
-.sm-left{flex:1; padding:2px 4px 6px; overflow:hidden;}
-.sm-right{width:84px; background:linear-gradient(180deg,#3a9bff,#0058e6); margin:2px 0 0 0;}
-.sm-item{display:flex; align-items:center; gap:8px; padding:4px 8px; cursor:default; border-radius:3px; font-size:11px;}
-.sm-item:hover{background:#0a4fd6; color:#fff;}
-.sm-item .si{font-size:16px;}
-.sm-sep{border-top:1px solid #d6d2c4; margin:3px 6px;}
-.sm-cap{font-size:10px; color:#666; padding:4px 10px 0;}
-.sm-right .sm-item{color:#fff; font-size:10px; padding:6px 2px; justify-content:center; text-align:center; flex-direction:column; gap:2px; border-radius:0;}
-.sm-right .sm-item:hover{background:rgba(255,255,255,.25); color:#fff;}
-.sm-right .sm-item .si{font-size:22px;}
-.sm-allprog{display:flex; align-items:center; justify-content:space-between; margin:2px 6px 5px; padding:4px 8px; cursor:pointer;
-  font-size:11px; border:1px solid #c6c2b4; border-radius:3px; background:linear-gradient(180deg,#fff,#f0ede0);}
-.sm-allprog:hover{background:linear-gradient(180deg,#eef4fd,#dbe9fb); border-color:#7ba6d9;}
-.sm-foot{display:flex; justify-content:flex-end; align-items:center; background:linear-gradient(180deg,#3a9bff,#0058e6);
-  padding:3px 4px;}
-.sm-foot .sm-off{display:flex; gap:3px;}
-.sm-foot .sm-off button{width:auto; min-width:54px; height:24px; font-size:11px; cursor:pointer;
-  border:1px solid #fff; border-radius:3px; color:#fff; background:linear-gradient(180deg,#f59b8d,#d9442f); font-family:var(--tahoma);}
-.sm-foot .sm-off button:active{filter:brightness(.85);}
+/* IE home */
+.ie-home{padding:18px 26px; background:#fff;}
+.ie-home h1{font-size:20px; margin:2px 0 4px; color:#000;}
+.ie-home .iesub{color:#666; font-size:11px; margin-bottom:18px; border-bottom:1px solid #eee; padding-bottom:10px;}
+.ie-grid{display:flex; flex-wrap:wrap; gap:14px;}
+.ie-card{width:150px; border:1px solid #d9d9d9; border-radius:4px; padding:10px; text-align:center; cursor:pointer;}
+.ie-card img{width:32px; height:32px; object-fit:contain; margin-bottom:6px;}
+.ie-card .n{font-size:11px; font-weight:bold; color:#0046c8; text-decoration:underline;}
+.ie-card:hover{background:#eef4fd; border-color:#9ac2ee;}
+.ie-card .d{font-size:10px; color:#777; margin-top:3px;}
 
 /* taskbar */
 #taskbar{position:fixed; left:0; right:0; bottom:0; height:30px; z-index:6000;
-  background:linear-gradient(180deg,#245edb 0%,#3f8cf3 8%,#245edb 45%,#123a8a 100%); display:flex; align-items:center; padding:0 2px; gap:3px;}
-#startbtn{display:flex; align-items:center; gap:3px; height:24px; padding:0 9px 0 4px; border:none; cursor:pointer;
-  color:#fff; font-weight:bold; font-family:var(--tahoma); font-size:15px; font-style:italic; letter-spacing:.5px;
-  background:linear-gradient(180deg,#3c9b36,#2f7a2b 45%,#1f571e); border-radius:0 8px 8px 0; border:1px solid #0f3f0e; border-left:none;}
-#startbtn:hover{filter:brightness(1.12);}
+  background:linear-gradient(180deg,#1f4fc0 0%,#2e6ce0 4%,#3d8bf5 10%,#3583f0 22%,#245edb 55%,#163ea8 88%,#102f8d 100%);
+  display:flex; align-items:center; padding:0 3px; gap:2px;}
+#startbtn{display:flex; align-items:center; gap:5px; height:26px; padding:0 8px 0 5px; border:none; cursor:pointer;
+  color:#fff; font-family:"Trebuchet MS","Tahoma",sans-serif; font-weight:bold; font-style:italic; font-size:17px;
+  text-shadow:0 1px 1px rgba(0,0,0,.4); border-radius:0 10px 10px 0; border-left:2px solid rgba(255,255,255,.55);
+  background:linear-gradient(180deg,#56c64e 0%,#3aa534 20%,#2c8c27 55%,#1e6f1c 100%);}
+#startbtn:active{filter:brightness(.85);}
 #startbtn.on{filter:brightness(.8);}
+#ql{display:flex; align-items:center; gap:4px; margin-left:5px; padding:0 6px 0 2px; border-right:1px solid rgba(0,0,0,.4);}
+#ql button{width:22px; height:22px; border:none; background:transparent; cursor:pointer; padding:2px; border-radius:2px;}
+#ql button img{width:100%; height:100%; object-fit:contain;}
+#ql button:hover{background:rgba(255,255,255,.28);}
 #tasks{flex:1; display:flex; gap:2px; align-items:center; overflow:hidden;}
-.task{height:24px; max-width:160px; min-width:0; display:flex; align-items:center; gap:5px; padding:0 8px; cursor:pointer;
-  color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:3px; font-size:11px;
-  background:linear-gradient(180deg,#3f8cf3,#245edb 60%,#1a4bb0); font-family:var(--tahoma);}
-.task .ti{font-size:13px;}
+.task{height:24px; min-width:60px; max-width:170px; display:flex; align-items:center; gap:5px; padding:0 8px; cursor:pointer;
+  color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:3px; font-family:var(--f); font-size:11px;
+  background:linear-gradient(180deg,#4a9bf8,#2f78ec 55%,#1e5ad4); box-shadow:inset 0 1px 0 rgba(255,255,255,.25);}
+.task img{width:16px; height:16px; object-fit:contain; flex:0 0 auto;}
 .task .tl{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-.task.act{background:linear-gradient(180deg,#7fb4f8,#4f8ff0 55%,#3a79dd); border-color:#fff;}
-.task:hover{filter:brightness(1.1);}
-#tray{display:flex; align-items:center; gap:6px; padding:0 8px; height:24px; color:#fff;
-  border-left:1px solid rgba(0,0,0,.35); background:linear-gradient(180deg,#0d8fe8,#0d8fe8 30%,#0a7fd4 90%);}
-#tray .tic{font-size:13px;}
-#clock{font-size:11px; text-align:center; line-height:1.15;}
+.task.act{background:linear-gradient(180deg,#7ec1ff,#4a94f5 55%,#3273e0); border-color:#fff;}
+.task:hover{filter:brightness(1.08);}
+#tray{display:flex; align-items:center; gap:7px; padding:0 8px 0 7px; height:100%; color:#fff;
+  border-left:1px solid rgba(0,0,0,.35); box-shadow:inset 1px 0 0 rgba(255,255,255,.15);
+  background:linear-gradient(180deg,#0fa3ef 0%,#0fa3ef 45%,#0d8adf 100%); font-size:11px;}
+#tray .spk{width:15px; height:15px;}
+#clock{text-align:center; line-height:1.25; cursor:default;}
 
-/* balloon */
-#balloon{position:fixed; right:10px; bottom:34px; z-index:5500; width:248px;
-  background:#ffffe1; border:1px solid #8a97a8; box-shadow:2px 2px 6px rgba(0,0,0,.4); display:none;}
-#balloon .bh{background:#3a9bff; color:#fff; font-weight:bold; padding:2px 6px; display:flex; justify-content:space-between; font-size:11px;}
-#balloon .bh .bx{cursor:pointer;}
-#balloon .bt{padding:8px 10px; font-size:11px; line-height:1.5; position:relative;}
-#balloon .bt .bico{font-size:20px; float:left; margin:0 8px 4px 0;}
-#balloon::after{content:""; position:absolute; right:26px; bottom:-7px; border-left:8px solid transparent; border-right:8px solid transparent; border-top:8px solid #ffffe1;}
+/* start menu */
+#startmenu{position:fixed; left:2px; bottom:32px; z-index:7000; width:300px; display:none;
+  background:var(--luna-face); border:1px solid #0a46a8; border-radius:8px 8px 8px 0;
+  box-shadow:4px 5px 14px rgba(0,0,0,.45); overflow:hidden; flex-direction:column;}
+#startmenu .sm-head{display:flex; align-items:center; gap:8px; padding:7px 10px;
+  background:linear-gradient(180deg,#3f9df5,#2c80e8 60%,#1c66d0);}
+#startmenu .sm-head img{width:42px; height:42px; border-radius:6px;}
+#startmenu .sm-head .u{color:#fff; font-size:16px; font-weight:bold; text-shadow:0 1px 2px rgba(0,0,30,.5);}
+#startmenu .sm-head .c{color:#d6e6fb; font-size:10px; margin-top:2px;}
+#startmenu .sm-body{display:flex; flex:1; min-height:0;}
+#startmenu .sm-left{width:50%; padding:5px 3px 3px; display:flex; flex-direction:column; min-height:0;}
+#startmenu .sm-right{width:50%; background:linear-gradient(90deg,#d8e6fa 0%,#eaf3fe 30%,#f4f9ff 100%);
+  border-left:1px solid #bcd0ea; padding:8px 4px 4px; display:flex; flex-direction:column; justify-content:space-evenly;}
+.sm-cap{font-size:11px; color:#888; padding:2px 8px 1px; text-align:left;}
+.sm-item{display:flex; align-items:center; gap:8px; padding:4px 8px; cursor:default; border-radius:3px; font-size:11px; color:#000;}
+.sm-item img{width:24px; height:24px; object-fit:contain; flex:0 0 auto;}
+.sm-item:hover{background:#0a4fd6; color:#fff;}
+.sm-right .sm-item{color:#0f3e8f; font-weight:bold; padding:4px 7px;}
+.sm-right .sm-item img{width:24px; height:24px;}
+.sm-right .sm-item:hover{background:#cfe0fb; color:#0a3f8f;}
+.sm-sep{border-top:1px solid #d9d5c6; margin:3px 8px;}
+#sm-scroll{flex:1; overflow:hidden; position:relative;}
+.sm-all{display:flex; align-items:center; justify-content:space-between; flex:0 0 auto;
+  margin:auto 4px 4px; padding:4px 9px; cursor:pointer;
+  font-size:11px; color:#fff; font-weight:bold; border-radius:3px;
+  background:linear-gradient(180deg,#58bd51 0%,#3c9f35 45%,#2d8727 100%); border:1px solid #1c6418;}
+.sm-all:hover{filter:brightness(1.08);}
+.sm-btm{display:flex; align-items:flex-end; padding:0;}
+.sm-btm .sm-off{flex:1; display:flex; gap:4px; justify-content:flex-end; padding:0 8px 5px 0;}
+.sm-off button{display:flex; align-items:center; gap:5px; height:24px; padding:0 9px; font-size:11px; cursor:pointer;
+  border-radius:3px; font-family:var(--f); border:1px solid rgba(0,0,0,.35);}
+.sm-off button svg{width:14px; height:14px;}
+.sm-off .logoff{color:#000; background:linear-gradient(180deg,#fdfdfb,#e9e6d8 45%,#dcd8c6); border-color:#7d8ca8;}
+.sm-off .turnoff{color:#fff; background:linear-gradient(180deg,#5fc456 0%,#3ca233 45%,#2b8325 100%); border-color:#145c10;
+  text-shadow:0 1px 1px rgba(0,0,0,.35);}
+.sm-off .logoff svg{stroke:#3c4a5c;}
+.sm-off .turnoff svg{stroke:#fff;}
+.sm-off button:hover{filter:brightness(1.1);} .sm-off button:active{filter:brightness(.85);}
+#sm-allprogs{position:fixed; z-index:7100; width:196px; display:none; background:#fff;
+  border:1px solid #7c94b8; border-radius:3px; box-shadow:4px 5px 12px rgba(0,0,0,.45); padding:2px;
+  overflow-y:auto; max-height:420px;}
+#sm-allprogs .mi{display:flex; align-items:center; gap:7px; padding:4px 20px 4px 6px; cursor:default; font-size:11px;}
+#sm-allprogs .mi img{width:16px; height:16px; object-fit:contain;}
+#sm-allprogs .mi:hover{background:#0a4fd6; color:#fff;}
+#sm-allprogs .msep{border-top:1px solid #d6d2c4; margin:3px 2px;}
+#sm-allprogs .cap{font-size:10px; color:#888; padding:3px 6px 1px;}
 
 /* context menu */
-#ctxmenu{position:fixed; z-index:7000; background:var(--luna-face); border:1px solid #aca899; box-shadow:2px 2px 6px rgba(0,0,0,.35); padding:2px; min-width:150px; display:none;}
-#ctxmenu .ci{display:flex; align-items:center; gap:7px; padding:4px 18px 4px 7px; cursor:default;}
-#ctxmenu .ci:hover{background:#0a4fd6; color:#fff;}
-#ctxmenu .sep{border-top:1px solid #c6c2b4; margin:3px 2px;}
+#ctxmenu{position:fixed; z-index:7500; background:#fff; border:1px solid #8a94ac; box-shadow:3px 3px 8px rgba(0,0,0,.4);
+  padding:2px; min-width:160px; display:none;}
+#ctxmenu .mi{display:flex; align-items:center; gap:8px; padding:4px 30px 4px 6px; cursor:default; white-space:nowrap; font-size:11px;}
+#ctxmenu .mi img{width:16px; height:16px;}
+#ctxmenu .mi:hover{background:#0a4fd6; color:#fff;}
+#ctxmenu .mi .subarr{margin-left:auto; font-size:8px; color:#777;}
+#ctxmenu .mi:hover .subarr{color:#fff;}
+#ctxmenu .msep{border-top:1px solid #d6d2c4; margin:3px 2px;}
+#ctxmenu .mi.dis{color:#aaa;} #ctxmenu .mi.dis:hover{background:transparent; color:#aaa;}
+#ctxsub{position:fixed; z-index:7600; background:#fff; border:1px solid #8a94ac; box-shadow:3px 3px 8px rgba(0,0,0,.4);
+  padding:2px; min-width:120px; display:none;}
+#ctxsub .mi{display:flex; align-items:center; gap:8px; padding:4px 24px 4px 6px; cursor:default; white-space:nowrap; font-size:11px;}
+#ctxsub .mi:hover{background:#0a4fd6; color:#fff;}
+#ctxsub .mi.checked::before{content:""; width:10px; height:10px; background:url(assets/xp/checked.png) no-repeat center/contain;}
 
-/* shutdown */
-#shutdown{position:fixed; inset:0; z-index:9000; background:#000; display:none; align-items:center; justify-content:center;}
-#shutdown .txt{color:#f60; font-size:30px; font-family:"Lucida Console",monospace; text-align:center;}
-#shutdown.hide{display:none;}
-body.no-shutdown #shutdown{display:none;}
+/* dialogs */
+.dlg-buttons{display:flex; justify-content:flex-end; gap:6px; padding:12px 12px 12px; background:var(--luna-face);}
+.xpbtn{min-width:74px; height:23px; padding:0 14px; font-family:var(--f); font-size:11px; cursor:pointer;
+  border:1px solid #7d8ca8; border-radius:3px; background:linear-gradient(180deg,#fdfdfb,#e9e6d8 45%,#dcd8c6);}
+.xpbtn:active{background:linear-gradient(180deg,#d4d0be,#c4c0ac);}
+.xpbtn:focus{outline:1px dotted #333; outline-offset:-3px;}
+.xpbtn.default{border-color:#1f5fcd; background:linear-gradient(180deg,#eaf3fd,#cfe2fa 45%,#b9d4f5);}
+.tabs{display:flex; padding:10px 10px 0; background:var(--luna-face); align-items:flex-end; gap:2px;}
+.tab{padding:4px 12px 3px; font-size:11px; cursor:default; background:var(--luna-face);
+  border:1px solid #aca899; border-bottom:none; border-radius:4px 4px 0 0;}
+.tab.act{background:#fff; padding-bottom:4px; position:relative; top:1px; border-bottom:1px solid #fff; font-weight:bold;}
+.tabpane{flex:1; min-height:0; background:#fff; border-top:1px solid #aca899; padding:14px 14px; overflow:auto; margin:0 10px 10px;}
+.dlg{display:flex; flex-direction:column;}
+.mon-prev{width:200px; height:150px; border:2px solid #666; border-radius:6px 6px 3px 3px; padding:5px; background:#eef0f2; position:relative;}
+.mon-prev .screen{width:100%; height:100%; border:1px solid #333; background:#3a6ea5; overflow:hidden; position:relative;}
+.wall-list label{display:flex; align-items:center; gap:8px; padding:3px 6px; cursor:pointer; border-radius:2px;}
+.wall-list label:hover{background:#e8f0fe;}
+.wall-list input{margin:0;}
+.wall-thumb{width:52px; height:38px; border:1px solid #999; flex:0 0 auto;}
 
-.scroll-x{overflow-x:auto;}
-a{cursor:pointer;}
+/* notepad */
+.np-text{width:100%; height:100%; border:none; resize:none; font-family:"Lucida Console",Consolas,monospace; font-size:12px;
+  padding:6px 8px; background:#fff; color:#000; outline:none;}
 </style>
 </head>
-<body data-wall="bliss">
-
-<!-- boot screen -->
+<body class="wall-photo" data-wall="photo">
+<!-- boot -->
 <div id="boot">
-  <div class="boot-logo">Windows<span style="opacity:.55">XP</span></div>
-  <div class="boot-sub">skills edition</div>
+  <div class="boot-logo">Windows<span style="opacity:.5">XP</span></div>
   <div class="boot-bar"><i></i></div>
-  <div class="boot-hint">click anywhere to skip</div>
 </div>
 
+<!-- login -->
+<div id="login">
+  <div class="login-card" id="login-user">
+    <div class="pic"><img src="assets/xp/login-avatar.png" alt=""></div>
+    <div class="nm">Noah Zhou</div>
+    <div class="role">Software Engineering &amp; Business Administration &middot; SCUT</div>
+  </div>
+  <div class="login-hint">To begin, click your user name</div>
+  <button class="turnoff" id="login-off"><svg width="15" height="15" viewBox="0 0 16 16"><path d="M8 1.5v6" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M3.4 3.8a6 6 0 1 0 9.2 0" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>Turn Off Computer</button>
+  <div class="brand"><img src="assets/xp/windows.png" alt=""><span>Windows XP</span></div>
+</div>
+
+<!-- welcome flash -->
+<div id="welcome"><img src="assets/xp/windows.png" alt="" width="46" style="opacity:.85"><div class="wl">Welcome</div></div>
+
+<!-- shutdown -->
+<div id="shutdown"><div class="txt">It is now safe to turn off your computer.</div></div>
+
 <!-- desktop -->
-<div id="desktop" style="position:fixed; inset:0 0 30px 0;">
+<div id="desktop">
   <div id="icons"></div>
   <div id="winlayer"></div>
 </div>
@@ -251,40 +367,29 @@ a{cursor:pointer;}
 <div id="taskbar">
   <button id="startbtn" title="Start">
     <svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true">
-      <defs><radialGradient id="orb" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#7ee06f"/><stop offset=".55" stop-color="#2f9e2e"/><stop offset="1" stop-color="#0f5d13"/></radialGradient></defs>
-      <circle cx="24" cy="24" r="22" fill="url(#orb)" stroke="#0b4a0e" stroke-width="1.5"/>
-      <g transform="translate(13 13) scale(.5) skewX(-12)">
-        <rect x="0" y="0" width="15" height="15" fill="#f35325"/>
-        <rect x="18" y="0" width="15" height="15" fill="#81bc06"/>
-        <rect x="0" y="18" width="15" height="15" fill="#05a6f0"/>
-        <rect x="18" y="18" width="15" height="15" fill="#ffba08"/>
+      <defs><radialGradient id="orb" cx=".35" cy=".3" r=".95"><stop offset="0" stop-color="#8ae07a"/><stop offset=".45" stop-color="#3aa52f"/><stop offset="1" stop-color="#0c4f0f"/></radialGradient></defs>
+      <circle cx="24" cy="24" r="22" fill="url(#orb)" stroke="#0b4a0e" stroke-width="1.6"/>
+      <g transform="translate(13 13) scale(.52) skewX(-14)">
+        <rect x="0" y="0" width="15" height="15" fill="#f35325"/><rect x="18" y="0" width="15" height="15" fill="#81bc06"/>
+        <rect x="0" y="18" width="15" height="15" fill="#05a6f0"/><rect x="18" y="18" width="15" height="15" fill="#ffba08"/>
       </g>
+      <path d="M24 6c0 0-14 8-14 18s14 18 14 18 14-8 14-18S24 6 24 6z" fill="#fff" opacity=".12"/>
     </svg>
     start
   </button>
+  <div id="ql"></div>
   <div id="tasks"></div>
   <div id="tray">
-    <span class="tic" title="Volume: 100%">🔊</span>
-    <span class="tic" title="No new mail">✉️</span>
+    <svg class="spk" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z" fill="#fff"/><path d="M15 8.5a5 5 0 0 1 0 7" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M17.5 5.8a9 9 0 0 1 0 12.4" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
     <span id="clock" title=""></span>
   </div>
 </div>
 
 <!-- start menu -->
-<div id="startmenu" style="display:none"></div>
-
-<!-- balloon -->
-<div id="balloon">
-  <div class="bh"><span>💡 Noah's Desktop</span><span class="bx" id="balloon-x">✕</span></div>
-  <div class="bt"><span class="bico">👋</span>Welcome! Double-click <b>My Skills</b> to see what I can do — or poke around the desktop like it's 2001.</div>
-</div>
-
-<!-- context menu -->
+<div id="startmenu"></div>
+<div id="sm-allprogs"></div>
 <div id="ctxmenu"></div>
-
-<!-- shutdown screen -->
-<div id="shutdown"><div class="txt">It is now safe to turn off your computer.</div></div>
-
+<div id="ctxsub"></div>
 <script>
 "use strict";
 /* ================= data ================= */
@@ -323,12 +428,13 @@ const SVG = {
   Trae: '<svg viewBox="0 0 24 24" width="16" height="16" fill="#412991" aria-hidden="true"><path d="M24 20.5H3.5V17H0V3.5h24ZM3.5 17h17V7h-17Zm8.5-5-2.5 2.5L7 12l2.5-2.5Zm7 0-2.5 2.5L14 12l2.5-2.5z"/></svg>',
 };
 
-// ── projects ──────────────────────────────────────────
 const GH = "https://github.com/NoahIsARider/";
 const SCHOLAR = "https://scholar.google.cz/citations?user=CLf-BNAAAAAJ";
+const HOMEPAGE = "https://noahisarider.github.io/";
+const BLOGS = "https://noahsblogs.pages.dev/";
+const GOODREADS = "https://www.goodreads.com/ratkingsyndrome";
 const P = (n, d, u) => ({ n, d, u });
 
-// ── skill data: skill -> related projects ─────────────
 const DATA = {
   Languages: {
     Python: { projects: [
@@ -454,31 +560,24 @@ const DATA = {
     ]},
   },
   Creative: {
-    "draw.io": { projects: [
-    ]},
-    CapCut: { projects: [
-    ]},
-    BandLab: { projects: [
-    ]},
+    "draw.io": { projects: [] },
+    CapCut: { projects: [] },
+    BandLab: { projects: [] },
   },
 };
 
 const NOSKILL = "No public project on GitHub yet — this one lives in coursework or private work.";
 const skillIconHTML = (name)=>{
-  const initial = name.replace(/[^A-Za-z0-9]/g,"").slice(0,2).toUpperCase() || name.slice(0,2).toUpperCase();
-  let img = "";
-  if (ICONS[name]) img = '<img src="'+ICONS[name]+'" alt="" onerror="this.remove()">';
-  else if (SVG[name]) img = SVG[name];
-  return '<span class="sico" data-i="'+initial+'">'+img+'</span>';
+  if (ICONS[name]) return '<img src="'+ICONS[name]+'" alt="" loading="lazy" onerror="this.outerHTML=\'<img src=assets/xp/document-16.png alt=\\\'\\\'>\'">';
+  if (SVG[name]) return SVG[name];
+  return '<img src="assets/xp/document-16.png" alt="">';
 };
 const detailIconHTML = (name)=>{
-  const initial = name.replace(/[^A-Za-z0-9]/g,"").slice(0,2).toUpperCase() || name.slice(0,2).toUpperCase();
-  let img = "";
-  if (ICONS[name]) img = '<img src="'+ICONS[name]+'" alt="" onerror="this.remove()">';
-  else if (SVG[name]) img = SVG[name];
-  return '<span class="dico" data-i="'+initial+'">'+img+'</span>';
+  if (ICONS[name]) return '<img src="'+ICONS[name]+'" alt="" loading="lazy" onerror="this.remove()">';
+  if (SVG[name]) return '<span style="width:28px;height:28px;display:grid;place-items:center">'+SVG[name].replace('width="16" height="16"','width="24" height="24"')+'</span>';
+  return '<img src="assets/xp/notepad-32.png" alt="">';
 };
-const projHTML = (p)=>'<div class="proj"><span class="pi">📄</span><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.n+'</a><div class="pd">'+p.d+'</div></div></div>';
+const projHTML = (p, openCb)=>'<div class="proj"><img src="assets/xp/document-16.png" alt=""><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.n+'</a><div class="pd">'+p.d+'</div></div></div>';
 
 /* aggregate projects */
 const ALLPROJ = [];
@@ -490,11 +589,34 @@ for (const [grp, skills] of Object.entries(DATA))
       seen.add(pr.u);
       ALLPROJ.push({name:pr.n, d:pr.d, u:pr.u, skill:sn, group:grp});
     }
+/* ================= local assets ================= */
+const XP = {
+  folder16:"assets/xp/folder-16.png", folder:"assets/xp/folder-32.png", folder48:"assets/xp/folder.png",
+  open:"assets/xp/folder-open.png", computer:"assets/xp/computer.png", computer16:"assets/xp/computer-16.png",
+  doc:"assets/xp/document-16.png", note16:"assets/xp/notepad-16.png", note32:"assets/xp/notepad-32.png",
+  ie:"assets/xp/ie.png", iepaper:"assets/xp/ie-paper.png", earth:"assets/xp/earth.png", home:"assets/xp/home.png",
+  github:"assets/xp/github.png", win:"assets/xp/windows.png", recycle:"assets/xp/recycle-empty-32.png",
+  recycle16:"assets/xp/recycle-empty-16.png", recycle48:"assets/xp/recycle-empty-48.png",
+  back:"assets/xp/back.png", forward:"assets/xp/forward.png", up:"assets/xp/up.png",
+  refresh:"assets/xp/refresh.png", stop:"assets/xp/stop.png", search:"assets/xp/search.png",
+  control16:"assets/xp/control-16.png", avatar48:"assets/xp/avatar-48.png"
+};
+const LINKS = [
+  {n:"GitHub", d:"59 public repositories — projects, coursework & experiments", u:"https://github.com/NoahIsARider", i:XP.github},
+  {n:"Google Scholar", d:"Publications, incl. an accepted IEEE TCE paper", u:SCHOLAR, i:XP.iepaper},
+  {n:"Homepage", d:"noahisarider.github.io — the landing page", u:HOMEPAGE, i:XP.home},
+  {n:"Blogs", d:"noahsblogs.pages.dev — essays & experiments", u:BLOGS, i:XP.earth},
+  {n:"Goodreads", d:"Reading shelf — Rat King Syndrome", u:GOODREADS, i:XP.doc}
+];
+
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const img16 = p => '<img src="'+p+'" alt="" style="width:16px;height:16px;object-fit:contain">';
+function openTab(u){ return window.open(u,"_blank","noopener"); }
 
 /* ================= window manager ================= */
-const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 let zTop = 100, nextCascade = 0, focusedId = null;
-const winState = {};   // id -> {el, min, max, taskBtn}
+const winState = {};   // id -> {el, min, max, taskBtn, mxBtn}
 
 function focusWin(id){
   const s = winState[id]; if(!s) return;
@@ -502,18 +624,13 @@ function focusWin(id){
   s.el.style.zIndex = ++zTop;
   s.el.classList.remove("inactive");
   $$(".win").forEach(w=>{ if(w!==s.el) w.classList.add("inactive"); });
-  Object.entries(winState).forEach(([k,v])=>{
-    v.taskBtn.classList.toggle("act", k===id && !v.min);
-  });
+  Object.entries(winState).forEach(([k,v])=>{ v.taskBtn.classList.toggle("act", k===id && !v.min); });
 }
 function taskClick(id){
   const s = winState[id]; if(!s) return;
   if (s.min){ restoreWin(id); }
-  else if (focusedId === id) { minimizeWin(id); }
+  else if (focusedId === id){ minimizeWin(id); }
   else focusWin(id);
-}
-function setActiveWinClass(){
-  Object.entries(winState).forEach(([k,v])=>v.el.classList.toggle("activeWin", !v.min && v.el.style.zIndex==zTop));
 }
 function minimizeWin(id){
   const s = winState[id]; s.min = true; s.el.style.display="none"; s.taskBtn.classList.remove("act");
@@ -523,10 +640,12 @@ function restoreWin(id){
 }
 function closeWin(id){
   const s = winState[id]; if(!s) return;
+  closeMenus();
   s.el.remove(); s.taskBtn.remove(); delete winState[id];
   const rest = Object.keys(winState);
   if(rest.length) focusWin(rest[rest.length-1]);
 }
+function minimizeAll(){ Object.keys(winState).forEach(minimizeWin); }
 function toggleMax(id){
   const s = winState[id]; if(!s) return;
   const el = s.el;
@@ -534,20 +653,28 @@ function toggleMax(id){
     s.max=false; el.classList.remove("maximized");
     el.style.left=s.prev.x+"px"; el.style.top=s.prev.y+"px";
     el.style.width=s.prev.w+"px"; el.style.height=s.prev.h+"px";
-    s.mxBtn.textContent="❐";
+    s.mxBtn.innerHTML = captionGlyph("mx");
   } else {
     s.max=true;
     const r = el.getBoundingClientRect();
     s.prev = {x:r.left, y:r.top, w:r.width, h:r.height};
     el.classList.add("maximized");
-    el.style.left="0"; el.style.top="0"; el.style.width="100%"; el.style.height="100%";
-    s.mxBtn.textContent="❐"; /* restore glyph */
+    el.style.left="0"; el.style.top="0"; el.style.width="100%"; el.style.height="calc(100% - 30px)";
+    s.mxBtn.innerHTML = captionGlyph("rst");
   }
   focusWin(id);
 }
+
+function captionGlyph(kind){
+  if(kind==="mn") return '<svg width="9" height="9" viewBox="0 0 10 10"><path d="M1 6.5h8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  if(kind==="mx") return '<svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="none" stroke="#fff" stroke-width="1.5"/></svg>';
+  if(kind==="rst") return '<svg width="10" height="10" viewBox="0 0 10 10"><rect x="1.2" y="3.2" width="5.6" height="5.6" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M3.2 3.2v-2h5.6v5.6h-2" fill="none" stroke="#fff" stroke-width="1.4"/></svg>';
+  return '<svg width="8" height="8" viewBox="0 0 8 8"><path d="M0 0l8 8M8 0L0 8" stroke="#fff" stroke-width="1.7"/></svg>';
+}
+
 function createWin(id, title, icon, contentHTML, opts){
   opts = opts || {};
-  closeWin(id); /* single instance per id */
+  closeWin(id);
   const el = document.createElement("div");
   el.className = "win";
   el.style.zIndex = ++zTop;
@@ -555,36 +682,52 @@ function createWin(id, title, icon, contentHTML, opts){
   const tbody = document.createElement("div"); tbody.className="wbody";
   el.appendChild(tw); el.appendChild(tbody);
 
-  const W = opts.w || Math.min(860, innerWidth-40);
-  const H = opts.h || Math.min(560, innerHeight-80);
-  const cx = 40 + (nextCascade*26) % 160, cy = 24 + (nextCascade*22) % 120;
+  const W = opts.w || Math.min(820, innerWidth-40);
+  const H = opts.h || Math.min(540, innerHeight-90);
+  const cx = 46 + (nextCascade*28) % 150, cy = 22 + (nextCascade*24) % 110;
   nextCascade++;
-  const availW = Math.max(320, innerWidth-60), availH = Math.max(260, innerHeight-90);
+  const availW = Math.max(300, innerWidth-60), availH = Math.max(240, innerHeight-96);
   const ww = Math.min(W, availW), wh = Math.min(H, availH);
   el.style.width = ww+"px"; el.style.height = wh+"px";
   const maxX = Math.max(0, innerWidth - ww - 8), maxY = Math.max(0, innerHeight - 30 - wh - 6);
   el.style.left = Math.min(cx, maxX)+"px"; el.style.top = Math.min(cy, maxY)+"px";
 
-  tw.innerHTML = '<span class="ticon">'+icon+'</span><span class="tt"></span>';
+  const dialog = !!opts.dialog;
+  tw.innerHTML = '<img class="tic" src="'+icon+'" alt=""><span class="tt"></span>';
   tw.querySelector(".tt").textContent = title;
   const btns = document.createElement("div"); btns.className="xbtns";
-  const bMin=document.createElement("button"), bMx=document.createElement("button"), bCl=document.createElement("button");
-  bMin.className="xbtn mn"; bMin.title="Minimize"; bMin.textContent="—";
-  bMx.className="xbtn"; bMx.title="Maximize"; bMx.textContent="❐";
-  bCl.className="xbtn cl"; bCl.title="Close"; bCl.textContent="✕";
-  btns.append(bMin,bMx,bCl); tw.appendChild(btns);
-  bCl.addEventListener("click", e=>{e.stopPropagation(); closeWin(id);});
-  bMin.addEventListener("click", e=>{e.stopPropagation(); minimizeWin(id);});
-  bMx.addEventListener("click", e=>{e.stopPropagation(); toggleMax(id);});
+  let mxBtn = null;
+  if (!dialog){
+    const bMin=document.createElement("button"), bCl=document.createElement("button");
+    bMin.className="capbtn mn"; bMin.title="Minimize"; bMin.innerHTML=captionGlyph("mn");
+    bCl.className="capbtn cl"; bCl.title="Close"; bCl.innerHTML=captionGlyph("cl");
+    mxBtn=document.createElement("button"); mxBtn.className="capbtn mx"; mxBtn.title="Maximize"; mxBtn.innerHTML=captionGlyph("mx");
+    btns.append(bMin,mxBtn,bCl);
+    bMin.addEventListener("click", e=>{e.stopPropagation(); minimizeWin(id);});
+    mxBtn.addEventListener("click", e=>{e.stopPropagation(); toggleMax(id);});
+    bCl.addEventListener("click", e=>{e.stopPropagation(); closeWin(id);});
+  } else {
+    const bCl=document.createElement("button");
+    bCl.className="capbtn cl"; bCl.title="Close"; bCl.innerHTML=captionGlyph("cl");
+    btns.appendChild(bCl);
+    bCl.addEventListener("click", e=>{e.stopPropagation(); closeWin(id);});
+  }
+  tw.appendChild(btns);
+
+  const tic = el.querySelector(".tic");
+  tic.style.width = dialog ? "18px" : "16px";
+  tic.style.height = dialog ? "18px" : "16px";
+  if (opts.titleIcon && opts.titleIcon.w){ tic.style.width=opts.titleIcon.w+"px"; tic.style.height=opts.titleIcon.h+"px"; }
 
   if (typeof contentHTML === "function") contentHTML = contentHTML(el);
   tbody.innerHTML = contentHTML;
+
   el.addEventListener("pointerdown", ()=>focusWin(id), true);
 
   /* drag */
   let drag=null;
   tw.addEventListener("pointerdown", e=>{
-    if (e.target.closest(".xbtn")) return;
+    if (e.target.closest(".capbtn") || e.target.closest(".mbar-item")) return;
     if (winState[id] && winState[id].max) return;
     focusWin(id);
     drag = {sx:e.clientX, sy:e.clientY, ox:el.offsetLeft, oy:el.offsetTop};
@@ -596,62 +739,209 @@ function createWin(id, title, icon, contentHTML, opts){
     const ny = Math.min(Math.max(0, drag.oy + e.clientY - drag.sy), Math.max(0, innerHeight - 30 - el.offsetHeight - 2));
     el.style.left=nx+"px"; el.style.top=ny+"px";
   });
-  const endDrag=e=>{ drag=null; };
+  const endDrag=()=>{ drag=null; };
   tw.addEventListener("pointerup", endDrag);
   tw.addEventListener("pointercancel", endDrag);
-  tw.addEventListener("dblclick", e=>{ if(!e.target.closest(".xbtn")) toggleMax(id); });
+  tw.addEventListener("dblclick", e=>{ if(!e.target.closest(".capbtn") && !dialog) toggleMax(id); });
 
   /* taskbar button */
   const tb = document.createElement("button");
-  tb.className="task"; tb.innerHTML='<span class="ti">'+icon+'</span><span class="tl"></span>';
+  tb.className="task";
+  tb.innerHTML = '<img src="'+icon+'" alt=""><span class="tl"></span>';
   tb.querySelector(".tl").textContent = title;
   tb.addEventListener("click", ()=>taskClick(id));
   $("#tasks").appendChild(tb);
 
-  winState[id] = {el, min:false, max:false, taskBtn:tb, mxBtn:bMx};
+  winState[id] = {el, min:false, max:false, taskBtn:tb, mxBtn};
   $("#winlayer").appendChild(el);
   focusWin(id);
   return id;
 }
 
+/* ================= dropdown menus ================= */
+let openMenuEl = null;
+function closeMenus(){
+  $$(".mddrop").forEach(m=>{ m.style.display="none"; m.remove(); });
+  $$(".mbar-item").forEach(x=>x.classList.remove("open"));
+  openMenuEl = null;
+}
+function buildMenubar(winId, defs){
+  const bar = document.createElement("div"); bar.className="menubar";
+  defs.forEach(def=>{
+    if(def === "sep"){ return; }
+    const it = document.createElement("span");
+    it.className="mbar-item"; it.textContent = def.label;
+    it.addEventListener("click", e=>{
+      e.stopPropagation();
+      const open = openMenuEl === it;
+      closeMenus();
+      if(open) return;
+      it.classList.add("open"); openMenuEl = it;
+      const menu = document.createElement("div"); menu.className="mddrop";
+      def.items.forEach(item=>{
+        if(item === "-"){ const sp=document.createElement("div"); sp.className="msep"; menu.appendChild(sp); return; }
+        const row = document.createElement("div"); row.className="mi"+(item.disabled?" dis":"");
+        if(item.icon) row.appendChild(Object.assign(document.createElement("img"),{src:item.icon,alt:""}));
+        else row.style.paddingLeft = "24px";
+        const lb = document.createElement("span"); lb.textContent = item.label; row.appendChild(lb);
+        if(item.acc){ const a=document.createElement("span"); a.className="acc"; a.textContent=item.acc; row.appendChild(a); }
+        if(!item.disabled && item.act) row.addEventListener("click", ev=>{ ev.stopPropagation(); const r=item.act(); closeMenus(); if(r===false){} });
+        menu.appendChild(row);
+      });
+      document.body.appendChild(menu);
+      const r = it.getBoundingClientRect();
+      menu.style.display="block";
+      menu.style.left = r.left+"px";
+      menu.style.top = (r.bottom+1)+"px";
+      const mr = menu.getBoundingClientRect();
+      if(mr.right > innerWidth-2) menu.style.left = Math.max(2, innerWidth-mr.width-2)+"px";
+    });
+    bar.appendChild(it);
+  });
+  return bar;
+}
+function attachMenubar(winId, defs){
+  const w = winState[winId].el;
+  const mb = buildMenubar(winId, defs);
+  w.querySelector(".wbody").insertBefore(mb, w.querySelector(".wbody").firstChild);
+  return mb;
+}
+function favItems(){
+  return LINKS.map(l=>({label:l.n, icon:l.i, act:()=>openTab(l.u)}));
+}
+function stdMenus(winId, extra){
+  extra = extra || {};
+  const file = extra.file || [{label:"Close", icon:XP.doc, act:()=>closeWin(winId)}];
+  return [
+    {label:"File", items:file},
+    {label:"Edit", items:[
+      {label:"Cut", disabled:true},{label:"Copy", disabled:true},{label:"Paste", disabled:true},"-",{label:"Select All", disabled:true}
+    ]},
+    {label:"View", items: extra.view || [{label:"Refresh", act:()=>refreshDesktop()}]},
+    {label:"Favorites", items: favItems()},
+    {label:"Tools", items: extra.tools || [{label:"Folder Options…", disabled:true}]},
+    {label:"Help", items:[{label:"About skills.exe", act:()=>openAboutApp()}]}
+  ];
+}
+function openAboutApp(){
+  if(winState.aboutapp && !winState.aboutapp.min) return focusWin("aboutapp");
+  createWin("aboutapp","About skills.exe", XP.win,
+    '<div class="about" style="max-width:420px">'+
+    '<div style="display:flex;gap:14px;align-items:center;margin-bottom:10px">'+
+    '<img src="assets/xp/windows.png" alt="" style="width:56px;height:auto">'+
+    '<div><h2 style="margin:0 0 2px">skills.exe</h2><div class="sub">Version 2.0 (Luna)</div></div></div>'+
+    '<p>Noah Zhou\'s skills &amp; projects, presented as a Windows XP desktop tribute.</p>'+
+    '<p style="color:#666;font-size:10px;border-top:1px dotted #ccc;padding-top:6px">Rebuilt by Triton &middot; icons: winXP by ShizukuIchi (MIT) &middot; wallpaper: Noah\'s pick. No Microsoft products were harmed.</p>'+
+    '</div>',
+    {w:380, h:250, dialog:true});
+}
+
 /* ================= desktop icons ================= */
 const DESKTOP = [
-  {id:"skills",  label:"My Skills",     icon:"🛠️", act:()=>openSkills(), web:false},
-  {id:"projects",label:"My Projects",   icon:"📂", act:()=>openProjects(), web:false},
-  {id:"about",   label:"About Me",      icon:"👤", act:()=>openAbout(), web:false},
-  {id:"github",  label:"GitHub",        icon:"🐙", act:()=>window.open("https://github.com/NoahIsARider","_blank"), web:true},
-  {id:"scholar", label:"Scholar",       icon:"🎓", act:()=>window.open(SCHOLAR,"_blank"), web:true},
-  {id:"home",    label:"Homepage",      icon:"🏠", act:()=>window.open("https://noahisarider.github.io/","_blank"), web:true},
-  {id:"blogs",   label:"Blogs",         icon:"📰", act:()=>window.open("https://noahsblogs.pages.dev/","_blank"), web:true},
-  {id:"recycle", label:"Recycle Bin",   icon:"🗑️", act:()=>openRecycle(), web:false}
+  {id:"skills",  label:"My Skills",   icon:XP.folder,    act:openSkills},
+  {id:"projects",label:"My Projects", icon:XP.open,      act:openProjects},
+  {id:"about",   label:"About Me",    icon:XP.computer,  act:openAbout},
+  {id:"internet",label:"Internet Explorer", icon:XP.ie, act:openInternet},
+  {id:"recycle", label:"Recycle Bin", icon:XP.recycle,   act:openRecycle}
 ];
 function buildIcons(){
   const wrap = $("#icons");
+  wrap.innerHTML="";
   DESKTOP.forEach((it,i)=>{
     const d = document.createElement("div");
-    d.className="dicon"; d.dataset.id=it.id; d.title = (it.web?"Shortcut to ":"")+it.label + " — double-click to open";
-    d.innerHTML = '<span class="ico">'+it.icon+'</span><span class="lab">'+it.label+"</span>"+(it.web?'<span class="arrow">↗</span>':"");
-    d.addEventListener("pointerdown", e=>{ e.stopPropagation(); $$(".dicon").forEach(x=>x.classList.remove("sel")); d.classList.add("sel"); });
+    d.className="dicon"; d.dataset.id=it.id; d.title = it.label;
+    d.innerHTML = '<img class="ico" src="'+it.icon+'" alt=""><span class="lab">'+it.label+"</span>";
+    d.addEventListener("pointerdown", e=>{ e.stopPropagation(); selectIcon(d); });
     d.addEventListener("dblclick", e=>{ e.stopPropagation(); it.act(); });
-    d.addEventListener("contextmenu", e=>{ e.preventDefault(); e.stopPropagation(); selectIconOnly(d); showIconMenu(e, d, it); });
+    d.addEventListener("contextmenu", e=>{ e.preventDefault(); e.stopPropagation(); selectIcon(d); iconCtx(e,d,it); });
     wrap.appendChild(d);
   });
 }
-function selectIconOnly(d){ $$(".dicon").forEach(x=>x.classList.remove("sel")); d.classList.add("sel"); }
+function selectIcon(d){ $$(".dicon").forEach(x=>x.classList.remove("sel")); d.classList.add("sel"); }
+function refreshDesktop(){
+  buildIcons();
+  const old = $("#winlayer");
+  // XP: refresh flickers the shell — subtle re-render is enough
+}
 
-/* ================= app windows ================= */
-const WIN_TITLES = {skills:"My Skills — skills.exe", projects:"My Projects — projects.exe", about:"About Me — about.exe", recycle:"Recycle Bin"};
+/* ================= desktop context menu ================= */
+function hideCtx(){ const c=$("#ctxmenu"); c.style.display="none"; $("#ctxsub").style.display="none"; }
+function showCtx(x,y,html){ const c=$("#ctxmenu"); c.innerHTML=html; c.style.display="block"; const r=c.getBoundingClientRect();
+  c.style.left=Math.min(x,innerWidth-r.width-4)+"px"; c.style.top=Math.min(y,innerHeight-34-r.height-4)+"px"; }
+function showSub(x,y,html){ const s=$("#ctxsub"); s.innerHTML=html; s.style.display="block"; const r=s.getBoundingClientRect();
+  s.style.left=Math.min(x,innerWidth-r.width-4)+"px"; s.style.top=Math.min(y,innerHeight-34-r.height-4)+"px"; }
+function sortIconsBy(mode){
+  const wrap=$("#icons");
+  const arr=$$(".dicon");
+  arr.sort((a,b)=>{
+    const A=DESKTOP.find(x=>x.id===a.dataset.id), B=DESKTOP.find(x=>x.id===b.dataset.id);
+    if(!A||!B) return 0;
+    if(mode==="name") return A.label.localeCompare(B.label);
+    return 0;
+  });
+  arr.forEach(d=>wrap.appendChild(d));
+}
+function desktopCtx(e){
+  const items =
+    '<div class="mi" data-sub="arrange">Arrange Icons By<span class="subarr">▶</span></div>'+
+    '<div class="msep"></div>'+
+    '<div class="mi" data-act="refresh">Refresh</div>'+
+    '<div class="msep"></div>'+
+    '<div class="mi" data-act="props">Display Properties</div>';
+  showCtx(e.clientX, e.clientY, items);
+}
+function iconCtx(e, d, it){
+  showCtx(e.clientX, e.clientY,
+    '<div class="mi" data-act="open"><img src="'+it.icon+'" alt="">Open</div>');
+}
+$("#ctxmenu").addEventListener("pointerover", e=>{
+  const mi = e.target.closest("[data-sub]");
+  if(mi){
+    const c=$("#ctxmenu"); const r=mi.getBoundingClientRect();
+    showSub(r.right, r.top-3,
+      '<div class="mi" data-sort="name">By Name</div>'+
+      '<div class="mi" data-sort="type">By Type</div>'+
+      '<div class="mi" data-sort="size">By Size</div>'+
+      '<div class="mi" data-sort="date">By Date Modified</div>');
+  } else { $("#ctxsub").style.display="none"; }
+});
+$("#ctxmenu").addEventListener("click", e=>{
+  const mi = e.target.closest(".mi"); if(!mi) return;
+  hideCtx();
+  const a = mi.dataset.act;
+  if(a==="refresh") refreshDesktop();
+  else if(a==="props") openDisplay();
+  else if(a==="open"){
+    const icon=$(".dicon.sel");
+    if(icon){ const it=DESKTOP.find(x=>x.id===icon.dataset.id); if(it) it.act(); }
+  }
+});
+$("#ctxsub").addEventListener("click", e=>{
+  const mi = e.target.closest(".mi"); if(!mi) return;
+  hideCtx();
+  const s=mi.dataset.sort;
+  sortIconsBy(s||"name");
+});
 
+/* ================= explorer (My Skills) ================= */
 function openSkills(){
   if(winState.skills && !winState.skills.min) return focusWin("skills");
-  createWin("skills", WIN_TITLES.skills, "🛠️", ()=>{
-    let left = '<div class="xp-tree" id="sk-tree"></div>';
-    let right = '<div class="xp-detail" id="sk-detail"></div>';
-    const bar = '<div class="tbar"><span class="tbtn" style="color:#bbb" title="Back">←</span><span class="tbtn" style="color:#bbb">→</span><span class="addr">🔎 Address: My Skills</span></div>';
-    return bar + '<div class="xp-split">'+left+right+'</div>';
-  }, {w:880, h:540});
-  /* status bar */
+  createWin("skills", "My Skills", XP.folder16, ()=>{
+    return '<div class="xp-split" style="flex:1">'+
+      '<div class="xp-tree" id="sk-tree"></div>'+
+      '<div class="xp-detail" id="sk-detail"></div>'+
+      '</div>';
+  }, {w:860, h:540});
+  attachMenubar("skills", stdMenus("skills", {view:[{label:"Refresh", act:()=>{renderSkillTree(); return false;}}]}));
   const w = winState.skills.el;
+  const bar = document.createElement("div"); bar.className="toolbar";
+  bar.innerHTML =
+    '<span class="tbtn dis"><img src="'+XP.back+'" alt="">Back</span>'+
+    '<span class="tbtn dis"><img src="'+XP.forward+'" alt="">Forward</span>'+
+    '<span class="tbtn dis"><img src="'+XP.up+'" alt="">Up</span>'+
+    '<span class="tsep"></span>'+
+    '<span class="taddr"><img src="'+XP.folder16+'" alt=""><span class="tv">My Skills</span><span class="arrow"></span></span>';
+  w.querySelector(".wbody").insertBefore(bar, w.querySelector(".wbody").querySelector(".xp-split"));
   const st = document.createElement("div"); st.className="wstatus";
   st.innerHTML = '<span class="status-sunken" style="flex:1" id="sk-status">Ready</span><span class="status-sunken" id="sk-count"></span>';
   w.querySelector(".wbody").appendChild(st);
@@ -659,12 +949,14 @@ function openSkills(){
 }
 function renderSkillTree(){
   const tree = $("#sk-tree"), detail = $("#sk-detail");
+  if(!tree) return;
   const skillRows = [];
   let sel = null, totalSkills=0, totalProj=0;
+  tree.innerHTML="";
   for (const [group, skills] of Object.entries(DATA)){
     const node = document.createElement("div"); node.className="tree-node";
     const head = document.createElement("div"); head.className="trow";
-    head.innerHTML = '<span class="tw">▼</span><span>📁</span><b>'+group+'</b>';
+    head.innerHTML = '<span class="tw">▼</span><img src="'+XP.folder16+'" alt=""><b>'+group+'</b>';
     head.addEventListener("click", ()=>{
       node.classList.toggle("collapsed");
       head.querySelector(".tw").textContent = node.classList.contains("collapsed")?"▶":"▼";
@@ -688,245 +980,394 @@ function renderSkillTree(){
     tree.appendChild(node);
   }
   $("#sk-count").textContent = totalSkills+" skills · "+totalProj+" projects";
-  /* default select: first skill with projects */
   for (const r of skillRows){ if(DATA[r.group][r.name].projects.length){ r.row.click(); break; } }
-  window._skillRows = skillRows;
 }
 function showSkillDetail(group, name){
   const e = DATA[group][name];
-  const d = $("#sk-detail");
+  const d = $("#sk-detail"); if(!d) return;
   let html = '<h2 class="detail-title">'+detailIconHTML(name)+' <span>'+name+"</span></h2>";
   html += '<div class="detail-sub">'+group+" · "+e.projects.length+" related project(s)</div>";
-  if (!e.projects.length) html += '<div class="empty-state"><span class="big">📁</span>'+NOSKILL+"</div>";
+  if (!e.projects.length) html += '<div class="empty-state"><img src="'+XP.folder48+'" alt="">'+NOSKILL+"</div>";
   else html += e.projects.map(projHTML).join("");
   d.innerHTML = html;
   $("#sk-status").textContent = name+" — "+e.projects.length+" related project(s)";
 }
 
+/* ================= My Projects ================= */
 function openProjects(){
   if(winState.projects && !winState.projects.min) return focusWin("projects");
-  createWin("projects", WIN_TITLES.projects, "📂", ()=>{
-    let rows = ALLPROJ.map(p=>'<li><span class="pi">📄</span><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.name+'</a>'+
-      '<div class="pd">'+p.d+'</div><div class="tags">via '+p.skill+' · '+p.group+"</div></div></li>").join("");
-    return '<div style="flex:1; min-height:0; overflow:auto; background:#fff"><ul class="app-list">'+rows+"</ul></div>";
+  createWin("projects", "My Projects", XP.folder16, ()=>{
+    let rows = ALLPROJ.map(p=>'<li><img src="'+XP.doc+'" alt=""><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.name+'</a>'+
+      '<div class="pd">'+p.d+'</div><div class="tags">via '+p.skill+" · "+p.group+"</div></div></li>").join("");
+    return '<div style="flex:1;min-height:0;overflow:auto;background:#fff"><ul class="app-list">'+rows+"</ul></div>";
   }, {w:720, h:520});
+  attachMenubar("projects", stdMenus("projects"));
   const w = winState.projects.el;
+  const bar = document.createElement("div"); bar.className="toolbar";
+  bar.innerHTML =
+    '<span class="tbtn dis"><img src="'+XP.back+'" alt="">Back</span>'+
+    '<span class="tbtn dis"><img src="'+XP.forward+'" alt="">Forward</span>'+
+    '<span class="tbtn dis"><img src="'+XP.up+'" alt="">Up</span>'+
+    '<span class="tsep"></span>'+
+    '<span class="taddr"><img src="'+XP.folder16+'" alt=""><span class="tv">My Projects</span><span class="arrow"></span></span>';
+  const wb = w.querySelector(".wbody");
+  wb.insertBefore(bar, wb.querySelector(".menubar").nextSibling);
   const st = document.createElement("div"); st.className="wstatus";
-  st.innerHTML = '<span class="status-sunken" style="flex:1">'+ALLPROJ.length+" unique project(s) · double-click a row or click the title to visit</span>";
-  w.querySelector(".wbody").appendChild(st);
+  st.innerHTML = '<span class="status-sunken" style="flex:1">'+ALLPROJ.length+" unique project(s) · click a title to visit</span>";
+  wb.appendChild(st);
 }
 
+/* ================= About Me ================= */
 function openAbout(){
   if(winState.about && !winState.about.min) return focusWin("about");
   const html = '<div class="about">'+
-    '<h2>Noah Zhou <span style="color:#999;font-weight:normal">(周方亚诺)</span></h2>'+
-    '<div class="sub">Software Engineering + Business Administration · South China University of Technology (SCUT)</div>'+
+    '<div style="display:flex;gap:16px;align-items:flex-start">'+
+    '<img src="'+XP.avatar48+'" alt="" style="width:64px;height:64px;border:1px solid #c8d4e8;border-radius:8px">'+
+    '<div><h2>Noah Zhou <span style="color:#999;font-weight:normal">(周方亚诺)</span></h2>'+
+    '<div class="sub">Software Engineering + Business Administration &middot; South China University of Technology (SCUT)</div></div></div>'+
     '<p>I like building things — web apps, AI experiments, and the occasional weird idea. I read, watch and listen a lot, and I care about recommender systems, social computing and how humans and AI actually work together.</p>'+
-    '<h4>🔬 Research interests</h4><div class="row">'+
+    '<h4>Research interests</h4><div class="row">'+
     ["Artificial Intelligence","Deep Learning","Social Computing","Multi-Agent Systems","Human-AI Collaboration","AI for Business","Recommender Systems"].map(x=>'<span class="chip">'+x+"</span>").join("")+
-    '</div><h4>🌐 Elsewhere on the web</h4><div class="links">'+
-    '<div>💡 Personal page → <a href="https://noahisarider.github.io/" target="_blank" rel="noopener">noahisarider.github.io</a></div>'+
-    '<div>🐙 GitHub → <a href="https://github.com/NoahIsARider" target="_blank" rel="noopener">NoahIsARider</a> · 54+ public repositories</div>'+
-    '<div>🎓 Google Scholar → <a href="'+SCHOLAR+'" target="_blank" rel="noopener">publications incl. an accepted IEEE TCE paper</a></div>'+
-    '<div>📰 Blogs → <a href="https://noahsblogs.pages.dev/" target="_blank" rel="noopener">noahsblogs.pages.dev</a></div>'+
-    '<div>📚 Goodreads → <a href="https://www.goodreads.com/ratkingsyndrome" target="_blank" rel="noopener">Rat King Syndrome</a></div>'+
+    '</div><h4>Elsewhere on the web</h4><div class="links">'+
+    '<div><img src="'+XP.home+'" alt=""><span><a href="'+HOMEPAGE+'" target="_blank" rel="noopener">Personal page</a> — noahisarider.github.io</span></div>'+
+    '<div><img src="'+XP.github+'" alt=""><span><a href="https://github.com/NoahIsARider" target="_blank" rel="noopener">GitHub</a> — 59+ public repositories</span></div>'+
+    '<div><img src="'+XP.iepaper+'" alt=""><span><a href="'+SCHOLAR+'" target="_blank" rel="noopener">Google Scholar</a> — incl. an accepted IEEE TCE paper</span></div>'+
+    '<div><img src="'+XP.earth+'" alt=""><span><a href="'+BLOGS+'" target="_blank" rel="noopener">Blogs</a> — noahsblogs.pages.dev</span></div>'+
+    '<div><img src="'+XP.doc+'" alt=""><span><a href="'+GOODREADS+'" target="_blank" rel="noopener">Goodreads</a> — Rat King Syndrome</span></div>'+
     "</div>"+
-    '<div class="credit">This desktop was booted with love by Triton 🌊 — running on GitHub Pages, no real Microsoft products were harmed.</div>'+
+    '<div class="credit">Fan-made Windows XP desktop running on GitHub Pages. Icons: winXP by ShizukuIchi (MIT). Rebuilt by Triton.</div>'+
     "</div>";
-  createWin("about", WIN_TITLES.about, "👤", html, {w:560, h:520});
+  createWin("about", "About Me", XP.computer16, html, {w:580, h:520});
+  attachMenubar("about", stdMenus("about"));
 }
 
+/* ================= Internet Explorer ================= */
+function openInternet(){
+  if(winState.internet && !winState.internet.min) return focusWin("internet");
+  createWin("internet", "Noah Zhou's Links — Microsoft Internet Explorer", XP.ie, ()=>{
+    const cards = LINKS.map(l=>
+      '<div class="ie-card" onclick="openTab(\''+l.u+'\')"><img src="'+l.i+'" alt=""><div class="n">'+l.n+'</div><div class="d">'+l.d+"</div></div>").join("");
+    return '<div class="ie-home" style="flex:1;overflow:auto">'+
+      '<h1>Welcome to Noah Zhou\'s desktop links</h1>'+
+      '<div class="iesub">Favorite destinations — open in your browser</div>'+
+      '<div class="ie-grid">'+cards+"</div>"+
+      "</div>";
+  }, {w:820, h:520});
+  attachMenubar("internet", stdMenus("internet", {
+    file:[
+      {label:"New Window", icon:XP.ie, act:()=>openTab(HOMEPAGE)},
+      "-",{label:"Close", icon:XP.doc, act:()=>closeWin("internet")}
+    ],
+    tools:[{label:"Internet Options…", disabled:true}]
+  }));
+  const w = winState.internet.el;
+  const bar = document.createElement("div"); bar.className="toolbar";
+  bar.innerHTML =
+    '<span class="tbtn dis"><img src="'+XP.back+'" alt="">Back</span>'+
+    '<span class="tbtn dis"><img src="'+XP.forward+'" alt="">Forward</span>'+
+    '<span class="tbtn dis" title="Stop"><img src="'+XP.stop+'" alt=""></span>'+
+    '<span class="tbtn" title="Refresh" onclick="refreshIe()"><img src="'+XP.refresh+'" alt=""></span>'+
+    '<span class="tbtn" title="Home" onclick="openTab(\''+HOMEPAGE+'\')"><img src="'+XP.home+'" alt=""></span>'+
+    '<span class="tsep"></span>'+
+    '<span class="taddr"><img src="'+XP.iepaper+'" alt=""><span class="tv">https://noahisarider.github.io/</span></span>';
+  const wb = w.querySelector(".wbody");
+  wb.insertBefore(bar, wb.querySelector(".menubar").nextSibling);
+  const st = document.createElement("div"); st.className="wstatus";
+  st.innerHTML = '<span class="status-sunken" style="flex:1">Done</span><span class="status-sunken" style="min-width:70px">&#127760; Internet</span>';
+  w.querySelector(".wbody").appendChild(st);
+  return true;
+}
+function refreshIe(){
+  const cont = winState.internet && winState.internet.el.querySelector(".ie-home");
+  if(cont){ cont.style.opacity=.4; setTimeout(()=>{cont.style.opacity=1;},180); }
+  return false;
+}
+
+/* ================= Recycle Bin ================= */
 function openRecycle(){
   if(winState.recycle && !winState.recycle.min) return focusWin("recycle");
-  createWin("recycle", WIN_TITLES.recycle, "🗑️",
-    '<div style="flex:1;min-height:0;overflow:auto;background:#fff"><div class="empty-state"><span class="big">🗑️</span>Recycle Bin is empty.<br><span style="font-size:11px;color:#aaa">Nothing has been thrown away. Yet.</span></div></div>',
-    {w:420, h:300});
-  const w = winState.recycle.el;
+  createWin("recycle", "Recycle Bin", XP.recycle16, ()=>{
+    return '<div style="display:flex;flex:1;min-height:0">'+
+      '<div class="tasks-pane"><div class="tp-cap">Recycle Bin Tasks</div>'+
+      '<div class="tp-item dis"><img src="'+XP.recycle16+'" alt=""><span>Empty the Recycle Bin</span></div>'+
+      '<div class="tp-item dis"><img src="'+XP.recycle16+'" alt=""><span>Restore all items</span></div>'+
+      '<div class="tp-cap" style="margin-top:16px">Other Places</div>'+
+      '<div class="tp-item" onclick="closeWin(\'recycle\');openSkills()"><img src="'+XP.folder16+'" alt=""><span>My Skills</span></div>'+
+      '<div class="tp-item" onclick="closeWin(\'recycle\');openProjects()"><img src="'+XP.folder16+'" alt=""><span>My Projects</span></div>'+
+      '<div class="tp-cap" style="margin-top:16px">Details</div>'+
+      '<div style="padding:4px 6px;color:#555">Recycle Bin<br><span style="color:#999">0 objects</span></div>'+
+      "</div>"+
+      '<div style="flex:1;min-width:0;background:#fff;overflow:auto"><div class="empty-state"><img src="'+XP.recycle48+'" alt="">Recycle Bin is empty<br><span style="font-size:11px;color:#aaa">Nothing has been thrown away. Yet.</span></div></div>'+
+      "</div>";
+  }, {w:520, h:340});
+  attachMenubar("recycle", stdMenus("recycle"));
   const st = document.createElement("div"); st.className="wstatus";
   st.innerHTML = '<span class="status-sunken" style="flex:1">0 objects</span>';
-  w.querySelector(".wbody").appendChild(st);
+  winState.recycle.el.querySelector(".wbody").appendChild(st);
 }
 
+/* ================= Display Properties ================= */
+function openDisplay(){
+  if(winState.display && !winState.display.min) return focusWin("display");
+  const tabs = ["Themes","Desktop","Screen Saver","Appearance","Settings"];
+  createWin("display", "Display Properties", XP.control16,
+    '<div style="flex:1;display:flex;flex-direction:column;min-height:0">'+
+    '<div class="tabs">'+tabs.map((t,i)=>'<span class="tab'+(i===1?" act":"")+'" data-t="'+i+'">'+t+"</span>").join("")+'</div>'+
+    '<div class="tabpane" id="dp-pane"></div>'+
+    '<div class="dlg-buttons" style="padding-top:8px;padding-bottom:10px">'+
+    '<button class="xpbtn" onclick="applyDisplay()">OK</button>'+
+    '<button class="xpbtn" onclick="closeWin(\'display\')">Cancel</button>'+
+    '<button class="xpbtn" onclick="applyDisplay()">Apply</button></div>'+
+    "</div>", {w:440, h:400, dialog:true});
+  const w = winState.display.el;
+  $$("#dp-pane, .dlg-buttons").forEach(()=>{});
+  const tabsEl = w.querySelector(".tabs");
+  tabsEl.addEventListener("click", e=>{
+    const t=e.target.closest(".tab"); if(!t) return;
+    tabsEl.querySelectorAll(".tab").forEach(x=>x.classList.remove("act"));
+    t.classList.add("act");
+    renderDpPane(+t.dataset.t);
+  });
+  renderDpPane(1);
+}
+const WALLS = [
+  {v:"photo", n:"Countryside (photo)", css:"url(assets/wallpaper.jpg) center/cover"},
+  {v:"sky",   n:"Sky", css:"linear-gradient(180deg,#4a7fd4,#cfe4f4)"},
+  {v:"teal",  n:"Teal", css:"#008080"},
+  {v:"none",  n:"(None) — solid color", css:"#3a6ea5"}
+];
+function renderDpPane(tab){
+  const pane = $("#dp-pane"); if(!pane) return;
+  const cur = document.body.dataset.wall || "photo";
+  if(tab===1){
+    let rows = WALLS.map(w=>{
+      const bg = w.v==="photo" ? "url(assets/wallpaper.jpg) center/cover" : w.css;
+      return '<label><input type="radio" name="wall" value="'+w.v+'"'+(cur===w.v?" checked":"")+
+        ' onclick="setWall(\''+w.v+'\')"><span class="wall-thumb" style="background:'+bg+'"></span><span>'+w.n+"</span></label>";
+    }).join("");
+    pane.innerHTML = '<div style="display:flex;gap:18px;align-items:flex-start">'+
+      '<div class="mon-prev"><div class="screen" id="wall-prev"></div></div>'+
+      '<div class="wall-list">'+rows+'</div></div>';
+    syncPrev();
+  } else if(tab===0){
+    pane.innerHTML = '<p style="margin-top:2px">Theme</p><div style="display:flex;align-items:center;gap:8px">'+
+      '<span class="wall-thumb" style="width:34px;height:34px;background:linear-gradient(135deg,#3a9bff,#0058e6 60%,#ece9d8)"></span>'+
+      '<b>Windows XP (default)</b></div><p style="color:#888;font-size:10px;margin-top:14px">My current theme. No changes allowed — it\'s already perfect.</p>';
+  } else if(tab===2){
+    pane.innerHTML = '<p style="color:#888">Screen saver</p><div style="border:1px solid #999;height:150px;display:grid;place-items:center;color:#bbb;font-size:11px;background:#f4f6f8">(None)</div>'+
+      '<p style="font-size:11px;margin-top:8px">Screen saver: <b>(None)</b> — you are the screen saver.</p>';
+  } else if(tab===3){
+    pane.innerHTML = '<p>Window and buttons: <b>Windows XP style</b><br>Color scheme: <b>Default (blue)</b><br>Font size: <b>Normal</b></p>'+
+      '<div style="display:flex;align-items:center;gap:10px"><span class="wall-thumb" style="width:90px;height:56px"></span><span style="font-size:10px;color:#666">Preview of the Luna (blue) color scheme.</span></div>';
+  } else {
+    pane.innerHTML = '<p>Display: <b>1024 × 768 pixels</b><br>Color quality: <b>Highest (32 bit)</b><br>Screen refresh rate: <b>60 Hertz</b></p>'+
+      '<p style="color:#888;font-size:10px">Virtual machine — a browser tab pretending to be a computer.</p>';
+  }
+}
+function syncPrev(){
+  const cur = document.body.dataset.wall || "photo";
+  const w = WALLS.find(x=>x.v===cur) || WALLS[0];
+  const pv = $("#wall-prev"); if(pv) pv.style.background = w.css;
+}
+function setWall(v){ document.body.dataset.wall = v; syncPrev(); }
+function applyDisplay(){
+  const v = document.body.dataset.wall || "photo";
+  document.body.className = "wall-"+v;
+  try{ localStorage.setItem("xp-wall", v); }catch(e){}
+  closeWin("display");
+}
+function refreshDesktopWall(){ /* noop */ }
+
 /* ================= start menu ================= */
-const START_ACTIONS = {
-  skills: ()=>openSkills(), projects: ()=>openProjects(), about: ()=>openAbout(),
-  recycle: ()=>openRecycle(), display: ()=>openDisplayProps(),
-  github: ()=>window.open("https://github.com/NoahIsARider","_blank"),
-  scholar: ()=>window.open(SCHOLAR,"_blank"),
-  home: ()=>window.open("https://noahisarider.github.io/","_blank"),
-  blogs: ()=>window.open("https://noahsblogs.pages.dev/","_blank")
-};
-function smItem(i,t,act){ return '<div class="sm-item" data-act="'+act+'"><span class="si">'+i+'</span><span>'+t+'</span></div>'; }
+const APPS = [
+  {cap:"Accessories", items:[{n:"My Skills", i:XP.folder, a:openSkills},
+    {n:"My Projects", i:XP.open, a:openProjects},
+    {n:"About Me", i:XP.computer, a:openAbout},
+    {n:"Notepad", i:XP.note32, a:openNotepad}]},
+  {cap:"Internet", items:[{n:"Internet Explorer", i:XP.ie, a:openInternet},
+    {n:"GitHub", i:XP.github, a:()=>openTab("https://github.com/NoahIsARider")},
+    {n:"Google Scholar", i:XP.iepaper, a:()=>openTab(SCHOLAR)},
+    {n:"Homepage", i:XP.home, a:()=>openTab(HOMEPAGE)},
+    {n:"Blogs", i:XP.earth, a:()=>openTab(BLOGS)}]},
+  {cap:"System", items:[{n:"Display Properties", i:XP.control16, a:openDisplay}]}
+];
+function smIcon(p){ return '<img src="'+p+'" alt="">'; }
 function buildStartMenu(){
   const m = $("#startmenu");
-  const leftMain = '<div class="sm-cap">Internet</div>'+
-    smItem("🐙","GitHub","github")+
-    smItem("🎓","Google Scholar","scholar")+
-    '<div class="sm-sep"></div>'+
-    smItem("🏠","Homepage","home")+
-    smItem("📰","Blogs","blogs");
-  const allProg = '<div class="sm-sep"></div>'+
-    smItem("🛠️","My Skills","skills")+
-    smItem("📂","My Projects","projects")+
-    smItem("👤","About Me","about")+
-    '<div class="sm-sep"></div>'+
-    smItem("🖥️","Display Properties","display");
-  m.innerHTML = '<div class="sm-head"></div>'+
-    '<div class="sm-userrow"><span class="avatar">👤</span><span>Noah Zhou</span></div>'+
-    '<div class="sm-in"><div class="sm-left" id="sm-left">'+leftMain+
-      '<div class="sm-allprog" id="sm-all"><span>All Programs</span><span>▶</span></div>'+
-    '</div><div class="sm-right">'+
-      smItem("🛠️","My<br>Skills","skills")+
-      smItem("📂","My<br>Projects","projects")+
-      smItem("👤","About<br>Me","about")+
-      smItem("🗑️","Recycle<br>Bin","recycle")+
-    "</div></div>"+
-    '<div class="sm-foot"><span class="sm-off"><button data-off="restart">Restart</button><button data-off="turn">Turn Off</button></span></div>';
-  let inAll = false;
-  function renderLeft(progView){
-    const left = $("#sm-left");
-    left.innerHTML = progView
-      ? smItem("◀","Back","__back")+allProg
-      : leftMain+'<div class="sm-allprog" id="sm-all"><span>All Programs</span><span>▶</span></div>';
-    inAll = progView;
-  }
+  const rightItems = [
+    {n:"My Skills", i:XP.folder, a:openSkills},
+    {n:"My Projects", i:XP.open, a:openProjects},
+    {n:"About Me", i:XP.computer, a:openAbout},
+    {n:"Recycle Bin", i:XP.recycle, a:openRecycle}
+  ];
+  const leftItems = [
+    {n:"Internet Explorer", i:XP.ie, a:openInternet},
+    {n:"GitHub", i:XP.github, a:()=>openTab("https://github.com/NoahIsARider")},
+    {n:"Google Scholar", i:XP.iepaper, a:()=>openTab(SCHOLAR)},
+    {n:"Homepage", i:XP.home, a:()=>openTab(HOMEPAGE)},
+    {n:"Blogs", i:XP.earth, a:()=>openTab(BLOGS)}
+  ];
+  m.innerHTML =
+    '<div class="sm-head"><img src="'+XP.avatar48+'" alt=""><div><div class="u">Noah Zhou</div><div class="c">skills &middot; projects &middot; about</div></div></div>'+
+    '<div class="sm-body">'+
+      '<div class="sm-left" id="sm-left">'+
+        '<div class="sm-cap">Internet</div>'+
+        leftItems.map(it=>'<div class="sm-item" data-a="'+it.n.replace(/\s/g,"")+'">'+smIcon(it.i)+"<span>"+it.n+"</span></div>").join("")+
+        '<div class="sm-sep"></div>'+
+        '<div class="sm-item" data-a="Notepad">'+smIcon(XP.note32)+"<span>Notepad</span></div>"+
+        '<div class="sm-item" data-a="DisplayProperties">'+smIcon(XP.control16)+"<span>Display Properties</span></div>"+
+      '</div>'+
+      '<div class="sm-right">'+
+        rightItems.map(it=>'<div class="sm-item" data-a="'+it.n.replace(/\s/g,"")+'">'+smIcon(it.i)+"<span>"+it.n+"</span></div>").join("")+
+      '</div>'+
+    '</div>'+
+    '<div class="sm-btm">'+
+    '<div class="sm-all" id="sm-allbtn"><span>All Programs</span><span style="font-size:9px">▶</span></div>'+
+    '<div class="sm-off">'+
+      '<button class="logoff" onclick="logOff()"><svg viewBox="0 0 16 16"><path d="M2 8h9" fill="none" stroke-width="1.8" stroke-linecap="round"/><path d="M8 4l4 4-4 4" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="1.5" y="3.5" width="9" height="9" rx="1.5" fill="none" stroke-width="1.5"/></svg>Log Off</button>'+
+      '<button class="turnoff" onclick="turnOff()"><svg viewBox="0 0 16 16"><path d="M8 1.5v7" stroke-width="2" stroke-linecap="round"/><path d="M3.2 4a6 6 0 1 0 9.6 0" fill="none" stroke-width="1.8" stroke-linecap="round"/></svg>Turn Off Computer</button>'+
+    '</div></div>';
+  /* left click dispatch */
   m.addEventListener("click", e=>{
     const it = e.target.closest(".sm-item");
-    if (it){
-      const a = it.dataset.act;
-      if (a === "__back"){ renderLeft(false); return; }
-      if (a && START_ACTIONS[a]) START_ACTIONS[a]();
-      hideStart();
-      return;
-    }
-    if (e.target.closest("#sm-all")){ renderLeft(!inAll); return; }
-  });
-  m.querySelectorAll("[data-off]").forEach(b=>b.addEventListener("click", e=>{
-    e.stopPropagation();
-    const off = b.dataset.off;
+    if(!it){ return; }
+    const key = it.dataset.a;
     hideStart();
-    if (off==="restart") location.reload();
-    else if (off==="turn") doShutdown();
-  }));
+    const all = APPS.flatMap(g=>g.items).concat(rightItems).concat(leftItems);
+    const hit = all.find(x=>x.n.replace(/\s/g,"")===key);
+    if(hit) hit.a();
+  });
+  m.querySelector("#sm-allbtn").addEventListener("click", e=>{ e.stopPropagation(); toggleAllProgs(); });
 }
+const ALLPROGS_MI = ()=>APPS.map(g=>
+  '<div class="cap">'+g.cap+"</div>"+
+  g.items.map(it=>'<div class="mi" data-a="'+it.n.replace(/\s/g,"")+'">'+img16(it.i)+"<span>"+it.n+"</span></div>").join("")+
+  '<div class="msep"></div>').join("");
 function toggleStart(){
   const m = $("#startmenu");
   const show = m.style.display==="none";
-  m.style.display = show?"block":"none";
+  hideAllProgs();
+  m.style.display = show?"flex":"none";
   $("#startbtn").classList.toggle("on", show);
+  if(show){ m.querySelectorAll(".sm-item").forEach(x=>x.scrollIntoView&&0); }
 }
-function hideStart(){ $("#startmenu").style.display="none"; $("#startbtn").classList.remove("on"); }
-function doShutdown(){
-  $$(".win").forEach(w=>w.remove());
-  Object.keys(winState).forEach(k=>delete winState[k]);
+function hideStart(){ $("#startmenu").style.display="none"; $("#startbtn").classList.remove("on"); hideAllProgs(); }
+function toggleAllProgs(){
+  const ap = $("#sm-allprogs");
+  const m = $("#startmenu");
+  if(ap.style.display==="block"){ ap.style.display="none"; return; }
+  ap.innerHTML = ALLPROGS_MI();
+  ap.style.display="block";
+  const mr = m.getBoundingClientRect();
+  ap.style.left = (mr.left + mr.width - 2)+"px";
+  const h = ap.scrollHeight;
+  ap.style.top = Math.max(8, (mr.bottom - 8) - Math.min(h, ap.style.maxHeight?420:420)) + "px";
+  const br = ap.getBoundingClientRect();
+  if(br.top < 8) ap.style.top = "8px";
+}
+function hideAllProgs(){ $("#sm-allprogs").style.display="none"; }
+
+/* ================= Notepad ================= */
+function openNotepad(){
+  if(winState.notepad && !winState.notepad.min) return focusWin("notepad");
+  const txt = "skills.txt - Notepad\n=============================\n\nHello. This is a real-looking Notepad window\ninside a fake desktop. Congratulations on finding it.\n\nThings you can do here:\n  - open My Skills  (the folder on the desktop)\n  - open My Projects (everything I've built)\n  - visit About Me   (the human behind the bytes)\n  - browse the Favorites menus in any window\n  - right-click the desktop and pick Display Properties\n    to swap the wallpaper\n  - Log Off to see the welcome screen again\n\nKeyboard is not actually wired up.\nType nothing. Feel the era.\n\n        - Triton\n";
+  createWin("notepad", "skills.txt - Notepad", XP.note16,
+    '<div style="flex:1;min-height:0"><textarea class="np-text" spellcheck="false" readonly>'+txt.replace(/</g,"&lt;")+"</textarea></div>",
+    {w:520, h:380});
+  const mb = stdMenus("notepad", {view:[{label:"Refresh", disabled:true}]});
+  attachMenubar("notepad", mb);
+  const st = document.createElement("div"); st.className="wstatus";
+  st.innerHTML = '<span class="status-sunken" style="flex:1">Ln 1, Col 1</span>';
+  winState.notepad.el.querySelector(".wbody").appendChild(st);
+}
+
+/* ================= logon / off ================= */
+let loggedIn = false;
+function showLogin(){
+  hideStart(); minimizeAll();
+  $$(".win").forEach(w=>w.remove()); Object.keys(winState).forEach(k=>delete winState[k]);
   $("#tasks").innerHTML="";
-  const sd = $("#shutdown");
-  sd.style.display="flex";
-  document.body.classList.add("no-shutdown");
-  setTimeout(()=>{ sd.style.display="none"; location.reload(); }, 4000);
+  $("#welcome").style.display="none";
+  $("#login").style.display="flex";
+  loggedIn = false;
+}
+function doLogon(){
+  if(loggedIn) return;
+  $("#login").style.display="none";
+  const wl = $("#welcome"); wl.style.display="flex";
+  setTimeout(()=>{ wl.style.display="none"; loggedIn = true; }, 1200);
+}
+function logOff(){ showLogin(); }
+function turnOff(){
+  hideStart();
+  $("#shutdown").style.display="flex";
+  setTimeout(()=>{ location.reload(); }, 3200);
 }
 
-/* ================= context menu ================= */
-function showDesktopMenu(e){
-  const cm = $("#ctxmenu");
-  cm.innerHTML = '<div class="ci" data-act="refresh">🔄 Refresh</div>'+
-                 '<div class="ci" data-act="props">🖥️ Properties</div>';
-  cm.style.display="block";
-  const r = cm.getBoundingClientRect();
-  cm.style.left = Math.min(e.clientX, innerWidth-r.width-4)+"px";
-  cm.style.top = Math.min(e.clientY, innerHeight-30-r.height-4)+"px";
-  cm.dataset.mode="desktop";
-}
-function showIconMenu(e, el, it){
-  const cm = $("#ctxmenu");
-  cm.innerHTML = '<div class="ci" data-act="open">Open</div>';
-  cm.style.display="block";
-  const r = cm.getBoundingClientRect();
-  cm.style.left = Math.min(e.clientX, innerWidth-r.width-4)+"px";
-  cm.style.top = Math.min(e.clientY, innerHeight-30-r.height-4)+"px";
-  cm.dataset.mode="icon";
-  cm._icon = it;
-}
-function hideMenu(){ const cm=$("#ctxmenu"); cm.style.display="none"; }
-$("#ctxmenu").addEventListener("click", e=>{
-  const ci = e.target.closest(".ci"); if(!ci) return;
-  const cm = $("#ctxmenu");
-  if (cm.dataset.mode==="icon" && ci.dataset.act==="open"){ cm._icon.act(); }
-  else if (ci.dataset.act==="refresh"){ flashIcons(); }
-  else if (ci.dataset.act==="props"){ openDisplayProps(); }
-  hideMenu();
-});
-function flashIcons(){
-  $$(".dicon").forEach((d,i)=>d.animate([{opacity:.25},{opacity:1}], {duration:160, delay:i*18}));
-}
-function openDisplayProps(){
-  if(winState.display && !winState.display.min) return focusWin("display");
-  createWin("display", "Display Properties", "🖥️", ()=>{
-    const opts = [
-      ["bliss","Bliss (green hill)","🖼️", "assets/bliss.svg"],
-      ["sky","Blue sky","🌤️", null],
-      ["teal","Classic teal","🎨", null]
-    ];
-    const cur = document.body.dataset.wall;
-    return '<div class="about" style="padding:12px 14px">'+
-      '<h4 style="margin-top:0">Wallpaper</h4><div class="row">'+
-      opts.map(o=>'<label style="display:flex;align-items:center;gap:5px;font-size:11px;cursor:pointer">'+
-        '<input type="radio" name="wall" value="'+o[0]+'"'+(cur===o[0]?" checked":"")+" onclick=\"applyWall('"+o[0]+"')\">"+
-        o[1]+"</label>").join("")+
-      "</div>"+
-      '<div style="border:1px solid #999;height:120px;background:url(assets/bliss.svg) center/cover" id="wall-prev"></div>'+
-      '<p style="color:#666;font-size:10px;margin-top:6px">Display: 1024×768 (virtual) · Theme: Windows XP Luna · “skills edition”</p>'+
-      "</div>";
-  }, {w:420, h:330});
-}
-function applyWall(v){
+/* ================= boot / init ================= */
+function applyStoredWall(){
+  let v="photo";
+  try{ v = localStorage.getItem("xp-wall") || "photo"; }catch(e){}
+  if(!WALLS.find(w=>w.v===v)) v="photo";
+  document.body.className = "wall-"+v;
   document.body.dataset.wall = v;
-  const prev = document.getElementById("wall-prev");
-  if (prev) prev.style.background = v==="bliss" ? "url(assets/bliss.svg) center/cover" : (v==="sky" ? "linear-gradient(180deg,#4a7fd4,#cfe4f4)" : "#008080");
 }
-
-/* ================= clock / tray ================= */
+function bootSequence(){
+  const b = $("#boot");
+  const toLogin = ()=>{ b.classList.add("off"); setTimeout(()=>{ b.remove(); $("#login").style.display="flex"; },500); };
+  b.addEventListener("click", toLogin);
+  setTimeout(toLogin, 2100);
+}
 function tick(){
   const d = new Date();
   const h = d.getHours()%12 || 12;
   const m = String(d.getMinutes()).padStart(2,"0");
-  const ampm = d.getHours()>=12?"PM":"AM";
-  $("#clock").textContent = h+":"+m+" "+ampm;
-  $("#clock").title = d.toLocaleDateString(undefined,{weekday:"short",year:"numeric",month:"short",day:"numeric"});
+  $("#clock").textContent = h+":"+m+" "+(d.getHours()>=12?"PM":"AM");
+  $("#clock").title = d.toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});
 }
-setInterval(tick, 10000); tick();
-
-/* ================= boot & balloon ================= */
-function boot(){
-  const b = $("#boot");
-  const done = ()=>{ b.classList.add("off"); setTimeout(()=>b.remove(), 600); };
-  const t0 = Date.now();
-  b.addEventListener("click", done);
-  setTimeout(done, 2600);
-  /* balloon after boot */
-  setTimeout(()=>{ $("#balloon").style.display="block"; }, t0>2600?300:3400);
+function quickLaunch(){
+  const q = $("#ql");
+  const mk = (icon, title, act)=>{ const b=document.createElement("button"); b.title=title;
+    b.innerHTML='<img src="'+icon+'" alt="">'; b.addEventListener("click", act); q.appendChild(b); };
+  mk(XP.ie, "Internet Explorer", openInternet);
+  mk(XP.github, "GitHub", ()=>openTab("https://github.com/NoahIsARider"));
 }
-$("#balloon-x").addEventListener("click", ()=>$("#balloon").style.display="none");
-$("#balloon").addEventListener("click", e=>{ if(!e.target.closest(".bh")) $("#balloon").style.display="none"; });
 
 /* ================= global events ================= */
-document.addEventListener("pointerdown", e=>{ if(!e.target.closest("#startmenu") && !e.target.closest("#startbtn")) hideStart(); });
+document.addEventListener("pointerdown", e=>{
+  if(!e.target.closest("#startmenu") && !e.target.closest("#startbtn")) hideStart();
+  if(!e.target.closest("#ctxmenu") && !e.target.closest("#ctxsub")) hideCtx();
+  if(!e.target.closest(".mddrop") && !e.target.closest(".mbar-item")) closeMenus();
+  if(!e.target.closest("#sm-allprogs") && !e.target.closest(".sm-all")) hideAllProgs();
+  if(!e.target.closest(".dicon")) $$(".dicon").forEach(x=>x.classList.remove("sel"));
+});
 $("#startbtn").addEventListener("click", e=>{ e.stopPropagation(); toggleStart(); });
-$("#desktop").addEventListener("contextmenu", e=>{ if(!e.target.closest(".dicon")){ e.preventDefault(); showDesktopMenu(e);} });
-document.addEventListener("pointerdown", e=>{ if(!e.target.closest("#ctxmenu")) hideMenu(); });
+$("#sm-allprogs").addEventListener("click", e=>{
+  const mi = e.target.closest(".mi"); if(!mi) return;
+  const key = mi.dataset.a;
+  hideStart();
+  const hit = APPS.flatMap(g=>g.items).find(x=>x.n.replace(/\s/g,"")===key);
+  if(hit) hit.a();
+});
+$("#login-user").addEventListener("click", doLogon);
+$("#login-off").addEventListener("click", turnOff);
+$("#desktop").addEventListener("contextmenu", e=>{ if(!e.target.closest(".dicon")){ e.preventDefault(); desktopCtx(e);} });
 document.addEventListener("keydown", e=>{
+  if(e.key==="Escape"){ hideStart(); hideCtx(); closeMenus(); hideAllProgs(); }
   const sel = $(".dicon.sel");
   if (e.key==="Enter" && sel){
-    const id = sel.dataset.id;
-    const it = DESKTOP.find(x=>x.id===id);
+    const it = DESKTOP.find(x=>x.id===sel.dataset.id);
     if (it) it.act();
   }
 });
 
 /* ================= init ================= */
+applyStoredWall();
+quickLaunch();
 buildIcons();
 buildStartMenu();
-boot();
+tick(); setInterval(tick, 10000);
+bootSequence();
 </script>
 </body>
 </html>
