@@ -706,7 +706,7 @@ function showSkillDetail(group, name){
 function openProjects(){
   if(winState.projects && !winState.projects.min) return focusWin("projects");
   createWin("projects", WIN_TITLES.projects, "📂", ()=>{
-    let rows = ALLPROJ.map(p=>'<li><span class="pi">📄</span><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.n+'</a>'+
+    let rows = ALLPROJ.map(p=>'<li><span class="pi">📄</span><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.name+'</a>'+
       '<div class="pd">'+p.d+'</div><div class="tags">via '+p.skill+' · '+p.group+"</div></div></li>").join("");
     return '<div style="flex:1; min-height:0; overflow:auto; background:#fff"><ul class="app-list">'+rows+"</ul></div>";
   }, {w:720, h:520});
