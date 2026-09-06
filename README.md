@@ -50,7 +50,7 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 - ⛵ [sailor-draft](https://github.com/NoahIsARider/sailor-draft) — screenwriting, unadorned → [sailor-draft.vercel.app](https://sailor-draft.vercel.app)
 - 🕊️ [ReLife-App](https://github.com/NoahIsARider/ReLife-App) — a digital legacy app → [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host)
 - 🤠 [NEOWEST](https://github.com/NoahIsARider/NEOWEST) — retro-futurism × western cowboy, pure frontend → [demo](https://noahisarider.github.io/NEOWEST/)
-- 🖤 [Platonia](https://github.com/NoahIsARider/Platonia) — a coming-soon page as numbered black-and-white plates → [demo](https://noahisarider.github.io/Platonia/)
+- 🖤 [Platonia](https://github.com/NoahIsARider/Platonia) — a hub for beautiful frontend templates → [demo](https://noahisarider.github.io/Platonia/)
 
 **Literature · Film · Music**
 
