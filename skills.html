@@ -20,50 +20,6 @@ body.wall-sky{background:linear-gradient(180deg,#4a7fd4 0%,#7fb0e8 55%,#cfe4f4 1
 body.wall-teal{background:#008080;}
 .wcontent{user-select:text; -webkit-user-select:text;}
 
-/* ═══════════ boot ═══════════ */
-#boot{position:fixed; inset:0; z-index:9900; background:#000; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:30px; opacity:1; transition:opacity .45s;}
-#boot.off{opacity:0; pointer-events:none;}
-.boot-logo{font-size:60px; font-weight:bold; font-style:italic; letter-spacing:-1px;
-  background:linear-gradient(180deg,#fff 15%,#cfd9f0 55%,#7a9fd8 90%); -webkit-background-clip:text; background-clip:text; color:transparent;}
-.boot-bar{width:218px; height:16px; border:1px solid #4a4a4a; background:#111; padding:2px; border-radius:1px;}
-.boot-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,#1e56d8,#5ea0ff 55%,#2f7cf0);
-  animation:bootfill 2s cubic-bezier(.25,.7,.4,1) forwards;}
-@keyframes bootfill{0%{width:2%} 55%{width:64%} 85%{width:86%} 100%{width:100%}}
-
-/* ═══════════ login / welcome ═══════════ */
-#login{position:fixed; inset:0; z-index:9800; display:none; align-items:center; justify-content:center;
-  background:radial-gradient(120% 105% at 50% 26%, #9fc6f4 0%, #6a97e2 34%, #3a68c4 70%, #1d3f8e 100%);}
-#login::before{content:""; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(60% 40% at 50% 0%, rgba(255,255,255,.18), transparent 70%);}
-#login .brand{position:absolute; right:18px; bottom:12px; display:flex; align-items:center; gap:6px;
-  color:#dfe9f8; font-style:italic; font-weight:bold; font-size:13px; opacity:.9;}
-#login .brand img{width:20px; height:auto; opacity:.85;}
-#login .turnoff{position:absolute; left:16px; bottom:16px; display:flex; align-items:center; gap:7px;
-  height:30px; padding:0 16px 0 10px; font-size:12px; font-weight:bold; color:#fff;
-  border:1px solid #174e9e; border-radius:3px; cursor:pointer; font-family:var(--f);
-  background:linear-gradient(180deg,#79b2f7 0%,#3f84e8 45%,#2a66cd 100%); box-shadow:0 2px 5px rgba(0,0,0,.3);}
-#login .turnoff:hover{filter:brightness(1.1);}
-#login .turnoff:active{filter:brightness(.85);}
-.login-card{display:flex; flex-direction:column; align-items:center; gap:10px; cursor:pointer;
-  padding:26px 44px 24px; border-radius:10px;}
-.login-card .pic{width:120px; height:120px; border-radius:10px; box-shadow:0 8px 22px rgba(0,0,0,.4);
-  background:#fff; display:grid; place-items:center; border:2px solid #e8f1fd; outline:1px solid #7fa3d8;}
-.login-card .pic img{width:100%; height:100%; border-radius:12px;}
-.login-card .nm{color:#fff; font-size:26px; font-weight:bold; text-shadow:0 2px 6px rgba(0,0,0,.45); margin-top:4px;}
-.login-card .role{color:#d7e5f8; font-size:12px; text-shadow:0 1px 2px rgba(0,0,0,.4);}
-.login-card:hover .pic{outline:3px solid rgba(255,255,255,.65); outline-offset:3px;}
-.login-hint{position:absolute; left:0; right:0; top:16%; text-align:center; color:#e3edfb; font-size:14px;
-  text-shadow:0 1px 3px rgba(0,0,0,.45); letter-spacing:.2px;}
-#welcome{position:fixed; inset:0; z-index:9850; background:#000; display:none; flex-direction:column;
-  align-items:center; justify-content:center; gap:26px;}
-#welcome .wl{font-size:44px; font-weight:bold; font-style:italic; letter-spacing:0;
-  background:linear-gradient(180deg,#fff 20%,#b9cdf2 70%,#6f97dc 95%); -webkit-background-clip:text; background-clip:text; color:transparent;}
-
-/* ═══════════ shutdown ═══════════ */
-#shutdown{position:fixed; inset:0; z-index:9950; background:#000; display:none; align-items:center; justify-content:center;}
-#shutdown .txt{color:#f60; font-size:26px; font-family:"Lucida Console",Consolas,monospace; text-align:center;}
-
 /* ═══════════ desktop ═══════════ */
 #desktop{position:absolute; inset:0 0 30px 0;}
 #icons{position:absolute; top:3px; left:2px; display:flex; flex-direction:column; flex-wrap:wrap;
@@ -276,10 +232,8 @@ body.wall-teal{background:#008080;}
 .sm-off button{display:flex; align-items:center; gap:5px; height:24px; padding:0 9px; font-size:11px; cursor:pointer;
   border-radius:3px; font-family:var(--f); border:1px solid rgba(0,0,0,.35);}
 .sm-off button svg{width:14px; height:14px;}
-.sm-off .logoff{color:#000; background:linear-gradient(180deg,#fdfdfb,#e9e6d8 45%,#dcd8c6); border-color:#7d8ca8;}
 .sm-off .turnoff{color:#fff; background:linear-gradient(180deg,#5fc456 0%,#3ca233 45%,#2b8325 100%); border-color:#145c10;
   text-shadow:0 1px 1px rgba(0,0,0,.35);}
-.sm-off .logoff svg{stroke:#3c4a5c;}
 .sm-off .turnoff svg{stroke:#fff;}
 .sm-off button:hover{filter:brightness(1.1);} .sm-off button:active{filter:brightness(.85);}
 #sm-allprogs{position:fixed; z-index:7100; width:196px; display:none; background:#fff;
@@ -333,30 +287,6 @@ body.wall-teal{background:#008080;}
 </style>
 </head>
 <body class="wall-photo" data-wall="photo">
-<!-- boot -->
-<div id="boot">
-  <div class="boot-logo">Windows<span style="opacity:.5">XP</span></div>
-  <div class="boot-bar"><i></i></div>
-</div>
-
-<!-- login -->
-<div id="login">
-  <div class="login-card" id="login-user">
-    <div class="pic"><img src="assets/xp/login-avatar.png" alt=""></div>
-    <div class="nm">Noah Zhou</div>
-    <div class="role">Software Engineering &amp; Business Administration &middot; SCUT</div>
-  </div>
-  <div class="login-hint">To begin, click your user name</div>
-  <button class="turnoff" id="login-off"><svg width="15" height="15" viewBox="0 0 16 16"><path d="M8 1.5v6" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M3.4 3.8a6 6 0 1 0 9.2 0" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>Turn Off Computer</button>
-  <div class="brand"><img src="assets/xp/windows.png" alt=""><span>Windows XP</span></div>
-</div>
-
-<!-- welcome flash -->
-<div id="welcome"><img src="assets/xp/windows.png" alt="" width="46" style="opacity:.85"><div class="wl">Welcome</div></div>
-
-<!-- shutdown -->
-<div id="shutdown"><div class="txt">It is now safe to turn off your computer.</div></div>
-
 <!-- desktop -->
 <div id="desktop">
   <div id="icons"></div>
@@ -1224,7 +1154,6 @@ function buildStartMenu(){
     '<div class="sm-btm">'+
     '<div class="sm-all" id="sm-allbtn"><span>All Programs</span><span style="font-size:9px">▶</span></div>'+
     '<div class="sm-off">'+
-      '<button class="logoff" onclick="logOff()"><svg viewBox="0 0 16 16"><path d="M2 8h9" fill="none" stroke-width="1.8" stroke-linecap="round"/><path d="M8 4l4 4-4 4" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="1.5" y="3.5" width="9" height="9" rx="1.5" fill="none" stroke-width="1.5"/></svg>Log Off</button>'+
       '<button class="turnoff" onclick="turnOff()"><svg viewBox="0 0 16 16"><path d="M8 1.5v7" stroke-width="2" stroke-linecap="round"/><path d="M3.2 4a6 6 0 1 0 9.6 0" fill="none" stroke-width="1.8" stroke-linecap="round"/></svg>Turn Off Computer</button>'+
     '</div></div>';
   /* left click dispatch */
@@ -1270,7 +1199,7 @@ function hideAllProgs(){ $("#sm-allprogs").style.display="none"; }
 /* ================= Notepad ================= */
 function openNotepad(){
   if(winState.notepad && !winState.notepad.min) return focusWin("notepad");
-  const txt = "skills.txt - Notepad\n=============================\n\nHello. This is a real-looking Notepad window\ninside a fake desktop. Congratulations on finding it.\n\nThings you can do here:\n  - open My Skills  (the folder on the desktop)\n  - open My Projects (everything I've built)\n  - visit About Me   (the human behind the bytes)\n  - browse the Favorites menus in any window\n  - right-click the desktop and pick Display Properties\n    to swap the wallpaper\n  - Log Off to see the welcome screen again\n\nKeyboard is not actually wired up.\nType nothing. Feel the era.\n\n        - Triton\n";
+  const txt = "skills.txt - Notepad\n=============================\n\nHello. This is a real-looking Notepad window\ninside a fake desktop. Congratulations on finding it.\n\nThings you can do here:\n  - open My Skills  (the folder on the desktop)\n  - open My Projects (everything I've built)\n  - visit About Me   (the human behind the bytes)\n  - browse the Favorites menus in any window\n  - right-click the desktop and pick Display Properties\n    to swap the wallpaper\n\nKeyboard is not actually wired up.\nType nothing. Feel the era.\n\n        - Triton\n";
   createWin("notepad", "skills.txt - Notepad", XP.note16,
     '<div style="flex:1;min-height:0"><textarea class="np-text" spellcheck="false" readonly>'+txt.replace(/</g,"&lt;")+"</textarea></div>",
     {w:520, h:380});
@@ -1281,27 +1210,11 @@ function openNotepad(){
   winState.notepad.el.querySelector(".wbody").appendChild(st);
 }
 
-/* ================= logon / off ================= */
-let loggedIn = false;
-function showLogin(){
-  hideStart(); minimizeAll();
-  $$(".win").forEach(w=>w.remove()); Object.keys(winState).forEach(k=>delete winState[k]);
-  $("#tasks").innerHTML="";
-  $("#welcome").style.display="none";
-  $("#login").style.display="flex";
-  loggedIn = false;
-}
-function doLogon(){
-  if(loggedIn) return;
-  $("#login").style.display="none";
-  const wl = $("#welcome"); wl.style.display="flex";
-  setTimeout(()=>{ wl.style.display="none"; loggedIn = true; }, 1200);
-}
-function logOff(){ showLogin(); }
+/* ================= power ================= */
 function turnOff(){
   hideStart();
-  $("#shutdown").style.display="flex";
-  setTimeout(()=>{ location.reload(); }, 3200);
+  try{ window.close(); }catch(e){}
+  setTimeout(()=>{ location.reload(); }, 250);
 }
 
 /* ================= boot / init ================= */
@@ -1311,12 +1224,6 @@ function applyStoredWall(){
   if(!WALLS.find(w=>w.v===v)) v="photo";
   document.body.className = "wall-"+v;
   document.body.dataset.wall = v;
-}
-function bootSequence(){
-  const b = $("#boot");
-  const toLogin = ()=>{ b.classList.add("off"); setTimeout(()=>{ b.remove(); $("#login").style.display="flex"; },500); };
-  b.addEventListener("click", toLogin);
-  setTimeout(toLogin, 2100);
 }
 function tick(){
   const d = new Date();
@@ -1349,8 +1256,6 @@ $("#sm-allprogs").addEventListener("click", e=>{
   const hit = APPS.flatMap(g=>g.items).find(x=>x.n.replace(/\s/g,"")===key);
   if(hit) hit.a();
 });
-$("#login-user").addEventListener("click", doLogon);
-$("#login-off").addEventListener("click", turnOff);
 $("#desktop").addEventListener("contextmenu", e=>{ if(!e.target.closest(".dicon")){ e.preventDefault(); desktopCtx(e);} });
 document.addEventListener("keydown", e=>{
   if(e.key==="Escape"){ hideStart(); hideCtx(); closeMenus(); hideAllProgs(); }
@@ -1367,7 +1272,6 @@ quickLaunch();
 buildIcons();
 buildStartMenu();
 tick(); setInterval(tick, 10000);
-bootSequence();
 </script>
 </body>
 </html>
