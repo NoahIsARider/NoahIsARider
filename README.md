@@ -20,7 +20,6 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 **AI & Multi-Agent**
 
 - 🍵 [MatchaFlow](https://github.com/NoahIsARider/MatchaFlow) — LLM multi-agents that simulate a whole software project-management flow
-- 📚 [Humans + AI: A Systematic Review](https://github.com/NoahIsARider/When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis) — when human-AI combinations actually work
 - ⚔️ [Crusaders](https://github.com/NoahIsARider/Crusaders) — scaffold for human-machine collaboration with dynamic power handover
 - 🎯 [DLFaceDetection](https://github.com/NoahIsARider/DLFaceDetection) — gRPC-based distributed face recognition
 
