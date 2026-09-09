@@ -1,4 +1,4 @@
-<h1 align="left">Hi, I'm Noah 👋 </h1>
+<h1 align="center">Hi, I'm Noah 👋 </h1>
 
 Software Engineering + Business Administration student at **South China University of Technology**.
 I like building things — web apps, AI experiments, and the occasional weird idea.
