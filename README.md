@@ -5,7 +5,7 @@ I like building things — web apps, AI experiments, and the occasional weird id
 
 <img src="https://raw.githubusercontent.com/NoahIsARider/NoahIsARider/main/dino.svg?v=2" width="850" alt="Chrome dino — an endless runner, day and night" />
 
-💫 [My Personal Page](https://noahisarider.github.io) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 🛠 [Skills & Tools](https://noahisarider.github.io/NoahIsARider/skills.html) · 📇 [Blogs](https://noahsblogs.pages.dev/) · 🗂️ [Portfolio](https://noahisarider.github.io/oblivio/portfolio/) · 📍 Guangzhou
+💫 [My Personal Page](https://noahisarider.github.io) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 🛠 [Skills & Tools](https://noahisarider.github.io/NoahIsARider/skills.html) · 🗂️ [Blogs](https://noahsblogs.pages.dev/) · 📇 [Portfolio](https://noahisarider.github.io/oblivio/portfolio/) · 📍 Guangzhou
 
 ---
 
