@@ -1,6 +1,6 @@
 <h1 align="center">Hi, I'm Noah Chou👋 </h1>
 
-Software Engineering + Business Administration student at **South China University of Technology**.
+**Software Engineering** major with a **Business Administration** minor at **South China University of Technology**.
 I like building things — web apps, AI experiments, and the occasional weird idea.
 
 <img src="https://raw.githubusercontent.com/NoahIsARider/NoahIsARider/main/dino.svg?v=2" width="850" alt="Chrome dino — an endless runner, day and night" />
