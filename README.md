@@ -40,25 +40,6 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 - 🦎 [Reptile](https://github.com/NoahIsARider/Reptile) — scrapers for A24 filmographies, Bilibili danmaku & news sites
 - ⛓️ [OnChainGov](https://github.com/NoahIsARider/OnChainGov) — DAO/Web3 governance data to causal inference (DID/PSM-DID)
 
-**Design & Frontend**
-
-- 📰 [GeekRSS](https://github.com/NoahIsARider/GeekRSS) — minimalist, text-first RSS reader → [geek-rss.vercel.app](https://geek-rss.vercel.app)
-- 🛸 [ARK3005](https://github.com/NoahIsARider/ARK3005) — experimental web experience (PROTOCOL_07A) → [ark-3005.vercel.app](https://ark-3005.vercel.app)
-- ⚰️ [Museum-of-Failures](https://github.com/NoahIsARider/Museum-of-Failures) — a museum of AI failure cases → [museum-of-failures.vercel.app](https://museum-of-failures.vercel.app)
-- 💾 [BookClub-2000](https://github.com/NoahIsARider/BookClub-2000) — Windows 2000-styled co-reading platform + reading log → [book-club-2000.vercel.app](https://book-club-2000.vercel.app)
-- ⛵ [sailor-draft](https://github.com/NoahIsARider/sailor-draft) — screenwriting, unadorned → [sailor-draft.vercel.app](https://sailor-draft.vercel.app)
-- 🕊️ [ReLife-App](https://github.com/NoahIsARider/ReLife-App) — a digital legacy app → [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host)
-- 🤠 [NEOWEST](https://github.com/NoahIsARider/NEOWEST) — retro-futurism × western cowboy, pure frontend → [demo](https://noahisarider.github.io/NEOWEST/)
-- 🖤 [Platonia](https://github.com/NoahIsARider/Platonia) — a hub for beautiful frontend templates → [demo](https://noahisarider.github.io/Platonia/)
-
-**Literature · Film · Music**
-
-- 🧠 [Philosophers-Once-Said](https://github.com/NoahIsARider/Philosophers-Once-Said) — quotes from philosophers
-- ☄️ [DoNotExpectTooMuchFromTheEndOfTheWorld](https://github.com/NoahIsARider/DoNotExpectTooMuchFromTheEndOfTheWorld) — an AI identity dataset, Radu Jude-inspired
-- 🎬 [Clube](https://github.com/NoahIsARider/Clube) — screening schedules, anonymous ratings & wrap-ups for film societies
-- 🎧 [REMIX-1721](https://github.com/NoahIsARider/REMIX-1721) — music remix web
-- 🪨 [Sisyphus](https://github.com/NoahIsARider/Sisyphus) — a 7-chapter command-line detective story
-
 I read, watch and listen a lot — come chat with me:
 
 - 📖 **Goodreads** — [Rat King Syndrome](https://www.goodreads.com/ratkingsyndrome)
