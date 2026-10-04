@@ -66,3 +66,4 @@ Here are some fun projects I'd like to share with you:
 
 - 💐 [**oblivio**](https://noahisarider.github.io/oblivio/) — Oblivion is freedom and no one lasts forever.
 - 🗻 [LANDSLIDE](https://github.com/LandslideLab) — A cave for explorations on AI-Human Collaboration and Multi-Agent Systems as well as weird ideas. Feel free to join it.
+- 🎧 [Codeberg](https://codeberg.org/NoahIsARider) — Stay original, authentic and independent.
