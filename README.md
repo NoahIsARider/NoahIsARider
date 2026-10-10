@@ -5,7 +5,7 @@ I like building things — web apps, AI experiments, and the occasional weird id
 
 <img src="https://raw.githubusercontent.com/NoahIsARider/NoahIsARider/main/dino.svg?v=2" width="850" alt="Chrome dino — an endless runner, day and night" />
 
-💫 [My Personal Page](https://noahisarider.github.io) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 🛠 [Skills & Tools](https://noahisarider.github.io/NoahIsARider/skills.html) · 🗂️ [Blog](https://noahsblog.pages.dev/) · 📇 [Portfolio](https://noahisarider.github.io/oblivio/portfolio/) · 📍 Guangzhou
+💫 [My Personal Page](https://noahisarider.codeberg.page) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 🛠 [Skills & Tools](https://noahisarider.codeberg.page/NoahIsARider/skills.html) · 🗂️ [Blog](https://noahsblog.pages.dev/) · 📇 [Portfolio](https://noahisarider.codeberg.page/oblivio/portfolio/) · 📍 Guangzhou
 
 ---
 
@@ -64,6 +64,6 @@ I keep a couple of agents as pets:
 
 Here are some fun projects I'd like to share with you:
 
-- 💐 [**oblivio**](https://noahisarider.github.io/oblivio/) — Oblivion is freedom and no one lasts forever.
+- 💐 [**oblivio**](https://noahisarider.codeberg.page/oblivio/) — Oblivion is freedom and no one lasts forever.
 - 🗻 [LANDSLIDE](https://github.com/LandslideLab) — A cave for explorations on AI-Human Collaboration and Multi-Agent Systems as well as weird ideas. Feel free to join it.
 - 🎧 [Codeberg](https://codeberg.org/NoahIsARider) — Stay original, authentic and independent.

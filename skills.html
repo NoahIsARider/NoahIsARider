@@ -360,7 +360,7 @@ const SVG = {
 
 const GH = "https://github.com/NoahIsARider/";
 const SCHOLAR = "https://scholar.google.cz/citations?user=CLf-BNAAAAAJ";
-const HOMEPAGE = "https://noahisarider.github.io/";
+const HOMEPAGE = "https://noahisarider.codeberg.page/";
 const BLOGS = "https://noahsblogs.pages.dev/";
 const GOODREADS = "https://www.goodreads.com/ratkingsyndrome";
 const P = (n, d, u) => ({ n, d, u });
@@ -386,7 +386,7 @@ const DATA = {
       P("ArkRSS", "Terminal-style RSS reader, green-on-black", "https://ark-rss.vercel.app"),
       P("SnakeGame", "Snake, generated with Cursor + GPT-4o-mini, hand-tuned", GH + "SnakeGame"),
       P("Lyricbook", "A lyric book with a Shakespearean flavor", GH + "Lyricbook"),
-      P("Platonia", "A coming-soon page as a numbered series of black-and-white plates — collapse, presence, foam, no future", "https://noahisarider.github.io/Platonia/"),
+      P("Platonia", "A coming-soon page as a numbered series of black-and-white plates — collapse, presence, foam, no future", "https://noahisarider.codeberg.page/Platonia/"),
     ]},
     TypeScript: { projects: [
       P("Museum-of-Failures", "A museum of AI failure cases — Next.js + shadcn/ui", "https://museum-of-failures.vercel.app"),
@@ -534,7 +534,7 @@ const XP = {
 const LINKS = [
   {n:"GitHub", d:"59 public repositories — projects, coursework & experiments", u:"https://github.com/NoahIsARider", i:XP.github},
   {n:"Google Scholar", d:"Publications, incl. an accepted IEEE TCE paper", u:SCHOLAR, i:XP.iepaper},
-  {n:"Homepage", d:"noahisarider.github.io — the landing page", u:HOMEPAGE, i:XP.home},
+  {n:"Homepage", d:"noahisarider.codeberg.page — the landing page", u:HOMEPAGE, i:XP.home},
   {n:"Blogs", d:"noahsblogs.pages.dev — essays & experiments", u:BLOGS, i:XP.earth},
   {n:"Goodreads", d:"Reading shelf — Rat King Syndrome", u:GOODREADS, i:XP.doc}
 ];
@@ -959,7 +959,7 @@ function openAbout(){
     '<h4>Research interests</h4><div class="row">'+
     ["Artificial Intelligence","Deep Learning","Social Computing","Multi-Agent Systems","Human-AI Collaboration","AI for Business","Recommender Systems"].map(x=>'<span class="chip">'+x+"</span>").join("")+
     '</div><h4>Elsewhere on the web</h4><div class="links">'+
-    '<div><img src="'+XP.home+'" alt=""><span><a href="'+HOMEPAGE+'" target="_blank" rel="noopener">Personal page</a> — noahisarider.github.io</span></div>'+
+    '<div><img src="'+XP.home+'" alt=""><span><a href="'+HOMEPAGE+'" target="_blank" rel="noopener">Personal page</a> — noahisarider.codeberg.page</span></div>'+
     '<div><img src="'+XP.github+'" alt=""><span><a href="https://github.com/NoahIsARider" target="_blank" rel="noopener">GitHub</a> — 59+ public repositories</span></div>'+
     '<div><img src="'+XP.iepaper+'" alt=""><span><a href="'+SCHOLAR+'" target="_blank" rel="noopener">Google Scholar</a> — incl. an accepted IEEE TCE paper</span></div>'+
     '<div><img src="'+XP.earth+'" alt=""><span><a href="'+BLOGS+'" target="_blank" rel="noopener">Blogs</a> — noahsblogs.pages.dev</span></div>'+
@@ -999,7 +999,7 @@ function openInternet(){
     '<span class="tbtn" title="Refresh" onclick="refreshIe()"><img src="'+XP.refresh+'" alt=""></span>'+
     '<span class="tbtn" title="Home" onclick="openTab(\''+HOMEPAGE+'\')"><img src="'+XP.home+'" alt=""></span>'+
     '<span class="tsep"></span>'+
-    '<span class="taddr"><img src="'+XP.iepaper+'" alt=""><span class="tv">https://noahisarider.github.io/</span></span>';
+    '<span class="taddr"><img src="'+XP.iepaper+'" alt=""><span class="tv">https://noahisarider.codeberg.page/</span></span>';
   const wb = w.querySelector(".wbody");
   wb.insertBefore(bar, wb.querySelector(".menubar").nextSibling);
   const st = document.createElement("div"); st.className="wstatus";

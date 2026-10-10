@@ -5,7 +5,7 @@ I like building things — web apps, AI experiments, and the occasional weird id
 
 <img src="https://raw.githubusercontent.com/NoahIsARider/NoahIsARider/main/dino.svg?v=2" width="850" alt="Chrome dino — an endless runner, day and night" />
 
-💫 [My Personal Page](https://noahisarider.github.io) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 🛠 [Skills & Tools](https://noahisarider.github.io/NoahIsARider/skills.html) · 📇 [Blogs](https://noahsblogs.pages.dev/) · 🗂️ [Portfolio](https://noahisarider.github.io/oblivio/portfolio/) · 📍 Guangzhou
+💫 [My Personal Page](https://noahisarider.codeberg.page) · 🎓 [Google Scholar](https://scholar.google.cz/citations?user=CLf-BNAAAAAJ) · 🛠 [Skills & Tools](https://noahisarider.codeberg.page/NoahIsARider/skills.html) · 📇 [Blogs](https://noahsblogs.pages.dev/) · 🗂️ [Portfolio](https://noahisarider.codeberg.page/oblivio/portfolio/) · 📍 Guangzhou
 
 ---
 
@@ -59,8 +59,8 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [BookClub-2000](https://github.com/NoahIsARider/BookClub-2000) | Windows 2000-styled co-reading platform + personal reading log (86 books) | [book-club-2000.vercel.app](https://book-club-2000.vercel.app) |
 | [sailor-draft](https://github.com/NoahIsARider/sailor-draft) | Screenwriting, unadorned | [sailor-draft.vercel.app](https://sailor-draft.vercel.app) |
 | [ReLife-App](https://github.com/NoahIsARider/ReLife-App) | Digital legacy app — Expo + Express | [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host) |
-| [NEOWEST](https://github.com/NoahIsARider/NEOWEST) | Retro-Futurism × Western Cowboy aesthetic — pure frontend | [noahisarider.github.io/NEOWEST](https://noahisarider.github.io/NEOWEST/) |
-| [Platonia](https://github.com/NoahIsARider/Platonia) | A coming-soon page as a numbered series of black-and-white plates — collapse, presence, foam, no future | [noahisarider.github.io/Platonia](https://noahisarider.github.io/Platonia/) |
+| [NEOWEST](https://github.com/NoahIsARider/NEOWEST) | Retro-Futurism × Western Cowboy aesthetic — pure frontend | [noahisarider.codeberg.page/NEOWEST](https://noahisarider.codeberg.page/NEOWEST/) |
+| [Platonia](https://github.com/NoahIsARider/Platonia) | A coming-soon page as a numbered series of black-and-white plates — collapse, presence, foam, no future | [noahisarider.codeberg.page/Platonia](https://noahisarider.codeberg.page/Platonia/) |
 
 **Literature · Film · Music**
 
@@ -97,5 +97,5 @@ I keep a couple of agents as pets:
 
 Here are some fun projects I'd like to share with you:
 
-- 💐 [**oblivio**](https://noahisarider.github.io/oblivio/) — Oblivion is freedom and no one lasts forever.
+- 💐 [**oblivio**](https://noahisarider.codeberg.page/oblivio/) — Oblivion is freedom and no one lasts forever.
 - 🗻 [LANDSLIDE](https://github.com/LandslideLab) — A cave for explorations on AI-Human Collaboration and Multi-Agent Systems as well as weird ideas. Feel free to join it.
