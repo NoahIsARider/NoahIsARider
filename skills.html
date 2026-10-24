@@ -1211,10 +1211,33 @@ function openNotepad(){
 }
 
 /* ================= power ================= */
+/* shutting down does not reload the same machine. the screen goes black, the machine
+   warns you three times, and the visitor lands in the swamp, which is the newer desktop */
 function turnOff(){
   hideStart();
   try{ window.close(); }catch(e){}
-  setTimeout(()=>{ location.reload(); }, 250);
+  const veil = document.createElement("div");
+  veil.style.cssText = "position:fixed;inset:0;background:#000;z-index:99999;opacity:0;"+
+    "transition:opacity .55s ease;display:grid;place-items:center;padding:6vw";
+  const wrap = document.createElement("div");
+  wrap.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:1.5em;text-align:center";
+  const warn = document.createElement("div");
+  warn.textContent = "DANGER! DANGER! DANGER!";
+  warn.style.cssText = "font:900 clamp(24px,5.4vw,66px)/1.15 Tahoma,'Segoe UI',sans-serif;"+
+    "letter-spacing:.06em;color:#D2603B;text-shadow:0 0 26px rgba(210,96,59,.5),0 2px 0 #2A211B";
+  const sub = document.createElement("div");
+  sub.textContent = "this machine is going under";
+  sub.style.cssText = "font:12px/1 Tahoma,sans-serif;letter-spacing:.34em;"+
+    "text-transform:uppercase;color:#8BD450;opacity:.85";
+  wrap.appendChild(warn); wrap.appendChild(sub);
+  veil.appendChild(wrap);
+  document.body.appendChild(veil);
+  requestAnimationFrame(()=>{ veil.style.opacity = "1"; });
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches && warn.animate){
+    warn.animate([{opacity:1},{opacity:.32},{opacity:1}],
+                 {duration:760, iterations:4, easing:"ease-in-out"});
+  }
+  setTimeout(()=>{ location.href = "desktop.html"; }, 3600);
 }
 
 /* ================= boot / init ================= */

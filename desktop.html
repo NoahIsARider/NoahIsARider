@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAMP OS — Noah Zhou</title>
+<meta name="description" content="Noah Zhou's skills and projects, arranged as a cursed 1998 desktop. Click an icon.">
+<link rel="icon" href="assets/xp/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2A211B;
+    --bone:#F2E8D5;
+    --acid:#8BD450;
+    --rust:#D2603B;
+    --mustard:#E8B22A;
+    --mud:#6B4A82;
+    --tb: clamp(86px, 10.6vh, 124px);
+    --head:"Bangers","Impact","Haettenschweiler",sans-serif;
+    --body:"Fredoka","Trebuchet MS",Verdana,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:#241c17}
+  body{font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+  #desktop{position:fixed;inset:0;overflow:hidden;user-select:none}
+  .wall{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+
+  /* ---------------- desktop icons: big stickers, they spill into a second column ---------------- */
+  #icons{position:absolute;left:18px;top:10px;height:calc(100% - var(--tbh, 100px) - 18px);z-index:3;
+    display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start}
+  .dicon{width:clamp(140px,14vh,196px);padding:5px 2px 10px;display:flex;flex-direction:column;
+    align-items:center;gap:3px;cursor:pointer;border:0;background:none;font:inherit;color:inherit}
+  .dicon .pic{width:clamp(70px,9.9vh,118px);height:clamp(70px,9.9vh,118px);display:flex;
+    align-items:center;justify-content:center;transition:transform .12s ease}
+  .dicon .pic img{width:100%;height:100%;object-fit:contain;
+    filter:drop-shadow(4px 5px 0 rgba(26,18,12,.55))}
+  .dicon .pic img.wide{transform:scaleX(1.16)}
+  .dicon .lb{font-family:var(--head);font-size:clamp(19px,2.4vh,27px);letter-spacing:.5px;
+    line-height:1.05;color:var(--bone);text-align:center;
+    text-shadow:2px 2px 0 var(--ink),-1px -1px 0 var(--ink),1px -1px 0 var(--ink),-1px 1px 0 var(--ink)}
+  .dicon:hover .pic{transform:translateY(-2px) rotate(-2deg)}
+  .dicon:active .pic{transform:translateY(1px) rotate(1deg)}
+
+  /* ---------------- windows ---------------- */
+  #winlayer{position:absolute;inset:0;z-index:10;pointer-events:none}
+  .win{position:absolute;pointer-events:auto}
+  .win .shell{position:absolute;inset:0;width:100%;height:100%;
+    filter:drop-shadow(10px 12px 0 rgba(26,18,12,.45))}
+  .win .cap{position:absolute;right:0;display:flex;align-items:center;cursor:grab;pointer-events:auto;
+    font-family:var(--head);color:var(--bone);letter-spacing:1.4px;
+    text-shadow:2px 2px 0 rgba(42,33,27,.6)}
+  .win .hit{position:absolute;border:0;background:none;padding:0;cursor:pointer}
+  .win .body{position:absolute;overflow:hidden;font-size:clamp(16px,2.05vh,22px);font-weight:600;line-height:1.4}
+  /* the painted scrollbar, made real: native bars are hidden, the art thumb moves */
+  .win .sbar{position:absolute;pointer-events:none}
+  .win .sbar .thumb{position:absolute;left:0;width:100%;cursor:grab;pointer-events:auto;touch-action:none}
+  .win .sbar .arw{position:absolute;left:0;width:100%;border:0;background:none;padding:0;
+    cursor:pointer;pointer-events:auto}
+  .tree,.detail,.rows,.prose{scrollbar-width:none;-ms-overflow-style:none}
+  .tree::-webkit-scrollbar,.detail::-webkit-scrollbar,.rows::-webkit-scrollbar,
+  .prose::-webkit-scrollbar{width:0;height:0}
+  .prose{height:100%;overflow:auto}
+
+  /* explorer */
+  .expl{display:flex;height:100%;gap:14px}
+  .tree{width:38%;overflow:auto;padding-right:4px;
+    mask-image:linear-gradient(to bottom,#000 calc(100% - 30px),transparent)}
+  .grp{font-family:var(--head);font-size:clamp(17px,2.2vh,24px);letter-spacing:.7px;color:var(--rust);margin:10px 0 4px}
+  .grp:first-child{margin-top:0}
+  .sk{display:flex;align-items:center;gap:8px;padding:3px 6px;cursor:pointer;font-weight:600}
+  .sk img{width:clamp(20px,3vh,30px);height:clamp(20px,3vh,30px);object-fit:contain;flex:0 0 auto}
+  .sk:hover{background:rgba(139,212,80,.28)}
+  .sk.on{background:rgba(232,178,42,.5);outline:2px solid var(--ink)}
+  .detail{flex:1;overflow:auto;padding-right:8px;
+    mask-image:linear-gradient(to bottom,#000 calc(100% - 30px),transparent)}
+  .dtitle{font-family:var(--head);font-size:clamp(20px,3vh,31px);letter-spacing:.8px;margin:0 0 6px;
+    display:flex;align-items:center;gap:10px}
+  .dtitle img{width:clamp(24px,3.6vh,38px);height:clamp(24px,3.6vh,38px)}
+  .dsub{color:#6b5b4b;margin:0 0 12px;font-size:clamp(14px,1.8vh,19px)}
+  .pr{padding:8px 0;border-bottom:1px dashed rgba(42,33,27,.28);display:flex;gap:9px;align-items:flex-start}
+  .pr:hover a{color:var(--ink);text-decoration:underline}
+  .pr:hover .pd{color:#221a14}
+  .pr:last-child{border-bottom:0}
+  .pr .pi{width:clamp(20px,2.9vh,30px);height:clamp(20px,2.9vh,30px);object-fit:contain;flex:0 0 auto;margin-top:1px}
+  .pr a{color:var(--rust);text-decoration:none;font-weight:700;font-size:clamp(17px,2.2vh,23px)}
+  .pr a:hover{text-decoration:underline}
+  .pr .pd{color:#4a3d33;font-size:clamp(13px,1.7vh,18px);line-height:1.35;margin-top:2px}
+
+  /* lists */
+  .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;font-family:var(--head);
+    font-size:clamp(15px,2vh,21px);letter-spacing:.5px}
+  .chip{color:var(--mud);cursor:pointer;text-decoration:underline dotted}
+  .chip.on{color:var(--rust);text-decoration:none;border-bottom:3px solid var(--rust)}
+  .linkrow{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(42,33,27,.28);align-items:baseline}
+  .linkrow a{color:var(--rust);font-weight:700;text-decoration:none;font-size:clamp(17px,2.2vh,23px)}
+  .linkrow a:hover{text-decoration:underline}
+  .linkrow .ld{color:#4a3d33;font-size:clamp(13px,1.7vh,18px)}
+  .prose p{margin:0 0 10px;font-size:clamp(15px,1.95vh,21px)}
+  .prose h3{font-family:var(--head);font-size:clamp(18px,2.5vh,26px);letter-spacing:.5px;
+    color:var(--rust);margin:14px 0 6px}
+  .shelf{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:12px 0}
+  .shelf .badge{border:0;background:none;padding:0;cursor:pointer;display:block;
+    transition:transform .14s ease,filter .14s ease}
+  .shelf .badge img{height:clamp(46px,7vh,74px);width:auto;display:block;
+    filter:drop-shadow(3px 4px 0 rgba(26,18,12,.35))}
+  .shelf .badge:hover{transform:translateY(-4px) rotate(-2deg);filter:brightness(1.06)}
+
+  /* slime chat */
+  .chat{display:flex;flex-direction:column;height:100%}
+  .chatlog{flex:1;overflow:auto;scrollbar-width:none;-ms-overflow-style:none;padding-right:6px}
+  .chatlog::-webkit-scrollbar{width:0;height:0}
+  .line{margin:0 0 9px;font-size:clamp(15px,2vh,21px);line-height:1.38}
+  .line.u{color:#3a2c22;font-weight:600}
+  .line.u::before{content:"you ";font-family:var(--head);color:#8a7a68;letter-spacing:.5px}
+  .line.s{color:var(--rust);font-weight:600}
+  .line.s::before{content:"slime ";font-family:var(--head);color:var(--acid);letter-spacing:.5px}
+  .chatform{display:flex;gap:12px;align-items:flex-end;margin-top:10px;flex:0 0 auto}
+  .chatform input{flex:1;font:inherit;font-size:clamp(15px,1.95vh,20px);font-weight:600;color:var(--ink);
+    background:none;border:0;border-bottom:2px dashed rgba(42,33,27,.5);padding:5px 2px;outline:none}
+  .chatform input::placeholder{color:#8a7a68;font-weight:500}
+  .chatform input:focus{border-bottom-style:solid;border-bottom-color:var(--rust)}
+  .chatform button{font-family:var(--head);font-size:clamp(16px,2.1vh,22px);letter-spacing:1.2px;
+    color:var(--rust);background:none;border:0;cursor:pointer;padding:4px 2px}
+  .chatform button:hover{color:var(--ink)}
+
+  /* ---------------- taskbar: height follows the art, so it is never squashed ---------------- */
+  #taskbar{position:absolute;left:18px;right:1.2%;bottom:7px;z-index:40}
+  #taskbar .barart{display:block;width:100%;height:auto;
+    filter:drop-shadow(5px 7px 0 rgba(26,18,12,.42))}
+  #startbtn{position:absolute;left:2px;bottom:2%;height:94%;width:auto;aspect-ratio:703/643;
+    border:0;background:none;padding:0;cursor:pointer;z-index:5;transition:transform .14s ease}
+  #startbtn img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(2px 3px 0 rgba(26,18,12,.4))}
+  #startbtn:hover{transform:translateY(-3px) rotate(-2deg)}
+  #startbtn:active img{filter:brightness(.86)}
+  #tasks{position:absolute;inset:0;z-index:2;pointer-events:none}
+  .taskpg{position:absolute;bottom:22%;height:50%;font-family:var(--head);
+    font-size:clamp(13px,1.95vh,19px);letter-spacing:0;color:var(--ink);cursor:pointer;border:0;
+    background:none;padding:0 3px;transform:translateX(-50%);display:flex;align-items:center;
+    justify-content:center;white-space:nowrap;overflow:hidden;text-decoration:none;
+    pointer-events:auto;transition:transform .14s ease}
+  .taskpg:hover{color:var(--rust);transform:translateX(-50%) translateY(-2px)}
+
+  /* start menu, drawn panel with the list laid over its paper */
+  #startmenu{position:absolute;left:4px;bottom:calc(var(--tb) - 10px);width:clamp(188px,13vw,236px);
+    z-index:60;display:none;filter:drop-shadow(8px 10px 0 rgba(26,18,12,.42))}
+  #startmenu .panel{display:block;width:100%}
+  #startmenu .items{position:absolute;left:13%;right:4%;top:11.5%;bottom:4%;display:flex;
+    flex-direction:column;justify-content:flex-start;gap:1px;padding-top:4%}
+  #startmenu button{font-family:var(--head);font-size:clamp(15px,1.9vh,20px);letter-spacing:.5px;
+    text-align:left;background:none;border:0;color:var(--ink);cursor:pointer;padding:3px 6px}
+  #startmenu button:hover{color:var(--rust)}
+  #startmenu .foot{position:absolute;left:13%;right:6%;bottom:7%;font-family:var(--head);
+    font-size:clamp(12px,1.5vh,16px);letter-spacing:.8px;color:#7c6a58;pointer-events:none}
+  #startmenu.open{display:block}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="desktop">
+  <img class="wall" src="assets/swamp/wall.webp" alt="">
+  <img id="mascot" src="assets/swamp/mascot.webp" alt="Meet the slime" title="poke it"
+       style="position:absolute;right:1.2%;bottom:calc(var(--tbh, 100px) + 4px);width:15%;max-width:250px;
+              pointer-events:auto;cursor:pointer;z-index:2;transition:transform .16s ease;
+              filter:drop-shadow(5px 6px 0 rgba(26,18,12,.32))">
+  <div id="icons"></div>
+  <div id="winlayer"></div>
+  <div id="taskbar">
+    <img class="barart" src="assets/swamp/taskbar.webp" alt="">
+    <button id="startbtn" aria-label="Start"><img src="assets/swamp/start.webp" alt=""></button>
+    <div id="tasks"></div>
+  </div>
+</div>
+
+<script src="assets/swamp/data.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+addEventListener('error', e=>{ if(e.target && e.target.tagName==='IMG') e.target.style.visibility='hidden'; }, true);
+
+/* the shell art, measured from assets/swamp/shell.webp: 1431x853,
+   interior paper x 42..1400 (text stops at 1320, the scrollbar starts there),
+   interior y 141..755, title bar band y 34..130 */
+const SHELL = {
+  w:1431, h:853,
+  l:64/1431, t:141/853, r:(1431-1320)/1431, b:(853-755)/853,
+  capL:58/1431, capT:34/853, capH:96/853, capFs:42/853,
+  eyeX:[0.775, 0.842, 0.908], eyeW:0.058, eyeT:0.045, eyeH:0.085,
+  /* painted scrollbar: track x 1332..1408, thumb slot y 294..438, arrows outside 210..680 */
+  sbL:1332/1431, sbW:76/1431, sbTop:210/853, sbBot:680/853, sbThumbH:144/853,
+  sbUpT:140/853, sbUpH:70/853, sbDnT:680/853, sbDnH:110/853
+};
+const ASPECT = SHELL.w / SHELL.h;
+
+const APPS = {
+  skills:  {label:'SKILLS',   icon:'icon-skills',  w:1080, x:322, y:26,  title:'SKILLS.EXE'},
+  projects:{label:'PROJECTS', icon:'icon-projects',w:1040, x:340, y:60,  title:'PROJECTS.EXE'},
+  papers:  {label:'PAPERS',   icon:'icon-papers',  w:900,  x:372, y:90,  title:'PAPERS.EXE'},
+  links:   {label:'LINKS',    icon:'icon-links',   w:880,  x:392, y:110, title:'LINKS.EXE'},
+  readme:  {label:'README',   icon:'icon-readme',  w:940,  x:350, y:80,  title:'README.TXT'},
+  failed:  {label:'FAILED',   icon:'icon-failed',  w:880,  x:372, y:110, title:'FAILED IDEAS'},
+  shelf:   {label:'SHELF',    icon:'icon-shelf',   w:880,  x:345, y:100, title:'STICKER SHELF'},
+  start:   {label:'START',    icon:'icon-skills',  w:680,  x:150, y:110, title:'START MENU'},
+  slime:   {label:'SLIME',    icon:'icon-failed',  w:620,  x:430, y:150, title:'SLIME.EXE'},
+  hits:    {label:'HITS',     icon:'icon-shelf',   w:600,  x:520, y:170, title:'HITCOUNTER.EXE'}
+};
+/* each forge serves its own copy of this page, so the links follow the host it is
+   running on. github.io points at the github.io homepage, codeberg at the codeberg one */
+const HOST = location.hostname;
+const ON_CODEBERG = /codeberg/i.test(HOST);
+const ON_GITLAB = /gitlab/i.test(HOST);
+const HOME = ON_CODEBERG ? 'https://noahisarider.codeberg.page/'
+           : ON_GITLAB  ? 'https://noahisarider.gitlab.io/'
+           :              'https://noahisarider.github.io/';
+const DESK = ['skills','projects','papers','links','readme','failed','shelf'];
+
+/* ---------- geometry: the shell keeps its aspect and is clamped to the viewport ---------- */
+function tbHeight(){ return $('#taskbar').getBoundingClientRect().height || 100; }
+function syncBar(){
+  document.documentElement.style.setProperty('--tbh', Math.round(tbHeight()) + 'px');
+}
+syncBar();
+if (window.ResizeObserver) new ResizeObserver(syncBar).observe($('#taskbar'));
+addEventListener('load', syncBar);
+function box(a, x, y){
+  const availW = innerWidth - 56;
+  const availH = innerHeight - tbHeight() - 36;
+  const s = Math.min(1, availW / a.w, availH / (a.w / ASPECT));
+  const w = Math.round(a.w * s), h = Math.round(w / ASPECT);
+  const nx = Math.max(10, Math.min(x, innerWidth - w - 10));
+  const ny = Math.max(8, Math.min(y, innerHeight - h - 10));
+  return {w, h, x: Math.round(nx), y: Math.round(ny)};
+}
+
+/* ---------- desktop icons ---------- */
+const iconsEl = $('#icons');
+DESK.forEach(id=>{
+  const a = APPS[id];
+  const b = document.createElement('button');
+  b.className = 'dicon';
+  const wide = id === 'skills' ? ' class="wide"' : '';
+  b.innerHTML = `<span class="pic"><img src="assets/swamp/${a.icon}.webp"${wide} alt=""></span><span class="lb">${a.label}</span>`;
+  b.addEventListener('click', ()=>openWin(id));
+  iconsEl.appendChild(b);
+});
+(()=>{
+  const b = document.createElement('button');
+  b.className = 'dicon';
+  b.innerHTML = `<span class="pic"><img src="assets/swamp/icon-home.webp" alt=""></span><span class="lb">HOME</span>`;
+  b.addEventListener('click', ()=>window.open(HOME,'_blank','noopener'));
+  iconsEl.appendChild(b);
+})();
+
+/* ---------- window manager ---------- */
+let zTop = 100, cascade = 0;
+const wins = {};
+
+function openWin(id){
+  if (wins[id]) { focusWin(id); return; }
+  const a = APPS[id];
+  const r = box(a, a.x + (cascade%4)*24, a.y + (cascade%4)*20);
+  cascade++;
+  const el = document.createElement('div');
+  el.className = 'win';
+  el.style.cssText = `left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;z-index:${++zTop}`;
+  const capFs = Math.round(r.h * SHELL.capFs);
+  const pct = v => (v*100).toFixed(2) + '%';
+  el.innerHTML = `
+    <img class="shell" src="assets/swamp/shell.webp" alt="">
+    <div class="cap" style="left:${pct(SHELL.capL)};top:${pct(SHELL.capT)};height:${pct(SHELL.capH)};font-size:${capFs}px">${a.title}</div>
+    <button class="hit" data-act="close" aria-label="Close"
+      style="left:${pct(SHELL.eyeX[2])};top:${pct(SHELL.eyeT)};width:${pct(SHELL.eyeW)};height:${pct(SHELL.eyeH)};border-radius:50%"></button>
+    <button class="hit" data-act="min" aria-label="Minimise"
+      style="left:${pct(SHELL.eyeX[0])};top:${pct(SHELL.eyeT)};width:${pct(SHELL.eyeW)};height:${pct(SHELL.eyeH)};border-radius:50%"></button>
+    <button class="hit" data-act="max" aria-label="Maximise"
+      style="left:${pct(SHELL.eyeX[1])};top:${pct(SHELL.eyeT)};width:${pct(SHELL.eyeW)};height:${pct(SHELL.eyeH)};border-radius:50%"></button>
+    <div class="body" style="left:${pct(SHELL.l)};top:${pct(SHELL.t)};right:${pct(SHELL.r)};bottom:${pct(SHELL.b)}"></div>`;
+  el.addEventListener('pointerdown', ()=>focusWin(id), true);
+  el.querySelector('[data-act=close]').addEventListener('click', e=>{ e.stopPropagation(); closeWin(id); });
+  el.querySelector('[data-act=min]').addEventListener('click', e=>{ e.stopPropagation(); minimize(id); });
+  const maxBtn = el.querySelector('[data-act=max]');
+  if (maxBtn) maxBtn.addEventListener('click', e=>{ e.stopPropagation(); toggleMax(id); });
+  dragify(el, el.querySelector('.cap'));
+  $('#winlayer').appendChild(el);
+  wins[id] = {el, app:a, base:{x:r.x, y:r.y, w:r.w, h:r.h}, min:false, max:false};
+  renderInto(id, el.querySelector('.body'));
+  attachScrollbar(el, el.querySelector('.body'));
+  syncTasks(); focusWin(id);
+}
+
+function minimize(id){
+  const w = wins[id]; if(!w) return;
+  w.min = true; w.el.style.display = 'none'; syncTasks();
+}
+function toggleMax(id){
+  const w = wins[id]; if(!w) return;
+  if (w.max){
+    const b = w.base;
+    w.el.style.cssText = `left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px;z-index:${++zTop}`;
+    w.max = false;
+  } else {
+    const availH = innerHeight - tbHeight() - 24;
+    let hh = availH, ww = hh * ASPECT;
+    if (ww > innerWidth - 24){ ww = innerWidth - 24; hh = ww / ASPECT; }
+    const x = Math.round((innerWidth - ww)/2), y = Math.round((innerHeight - tbHeight() - hh)/2);
+    w.el.style.cssText = `left:${x}px;top:${y}px;width:${Math.round(ww)}px;height:${Math.round(hh)}px;z-index:${++zTop}`;
+    w.max = true;
+  }
+}
+
+/* the painted scrollbar driven by the real scroll position, native bars hidden */
+function attachScrollbar(win, host){
+  const sc = host.querySelector('.detail') || host.querySelector('.rows') ||
+             host.querySelector('.chatlog') || host.querySelector('.prose') || host;
+  if (!sc) return;
+  const pct = v => (v*100).toFixed(3) + '%';
+  const bar = document.createElement('div');
+  bar.className = 'sbar';
+  bar.style.cssText = `left:${pct(SHELL.sbL)};width:${pct(SHELL.sbW)};top:0;bottom:0`;
+  bar.innerHTML =
+    `<img class="thumb" src="assets/swamp/sb-thumb.webp" alt=""
+        style="height:${pct(SHELL.sbThumbH)};top:${pct(SHELL.sbTop)}">
+     <button class="arw" data-d="-1" aria-label="Scroll up" style="top:${pct(SHELL.sbUpT)};height:${pct(SHELL.sbUpH)}"></button>
+     <button class="arw" data-d="1" aria-label="Scroll down" style="top:${pct(SHELL.sbDnT)};height:${pct(SHELL.sbDnH)}"></button>`;
+  win.appendChild(bar);
+  const thumb = bar.querySelector('.thumb');
+  const trackLen = SHELL.sbBot - SHELL.sbTop;
+  function sync(){
+    const max = sc.scrollHeight - sc.clientHeight;
+    /* a short list gets a thumb that fills the whole track, the way a scrollbar says
+       "there is nothing further down here" */
+    const visible = sc.clientHeight / Math.max(1, sc.scrollHeight);
+    const th = Math.min(trackLen, Math.max(trackLen * 0.09, trackLen * visible));
+    const travel = trackLen - th;
+    const r = max > 4 ? Math.min(1, Math.max(0, sc.scrollTop / max)) : 0;
+    thumb.style.height = pct(th);
+    thumb.style.top = pct(SHELL.sbTop + travel * r);
+  }
+  sc.addEventListener('scroll', sync);
+  bar.querySelectorAll('.arw').forEach(b=>b.addEventListener('click', ()=>{
+    sc.scrollTop = sc.scrollTop + Number(b.dataset.d) * sc.clientHeight * 0.82;
+  }));
+  thumb.addEventListener('pointerdown', e=>{
+    const startY = e.clientY, startTop = sc.scrollTop;
+    const max = sc.scrollHeight - sc.clientHeight;
+    const visible = sc.clientHeight / Math.max(1, sc.scrollHeight);
+    const th = Math.min(trackLen, Math.max(trackLen * 0.09, trackLen * visible));
+    const travel = Math.max(0.01, trackLen - th);
+    const trackPx = Math.max(1, win.getBoundingClientRect().height * travel);
+    const move = ev=>{ sc.scrollTop = startTop + ((ev.clientY - startY) / trackPx) * max; };
+    const up = ()=>{ removeEventListener('pointermove',move); removeEventListener('pointerup',up); };
+    addEventListener('pointermove', move); addEventListener('pointerup', up);
+    e.preventDefault(); e.stopPropagation();
+  });
+  bar.addEventListener('wheel', e=>{ sc.scrollTop += e.deltaY; e.preventDefault(); }, {passive:false});
+  sync(); setTimeout(sync, 80); setTimeout(sync, 400);
+}
+function closeWin(id){ const w=wins[id]; if(!w) return; w.el.remove(); delete wins[id]; syncTasks(); }
+function focusWin(id){
+  const w=wins[id]; if(!w) return;
+  if (w.min){ w.min = false; w.el.style.display = ''; }
+  w.el.style.zIndex = ++zTop;
+}
+function dragify(el, handle){
+  handle.style.cursor = 'grab';
+  handle.addEventListener('pointerdown', e=>{
+    const sx=e.clientX, sy=e.clientY;
+    const ox=parseFloat(el.style.left), oy=parseFloat(el.style.top);
+    const move=ev=>{
+      el.style.left = Math.round(ox + ev.clientX - sx) + 'px';
+      el.style.top  = Math.round(oy + ev.clientY - sy) + 'px';
+    };
+    const up=()=>{ removeEventListener('pointermove',move); removeEventListener('pointerup',up); };
+    addEventListener('pointermove', move); addEventListener('pointerup', up);
+    e.preventDefault();
+  });
+}
+addEventListener('resize', ()=>{
+  Object.keys(wins).forEach(id=>{
+    const w=wins[id];
+    const r=box(w.app, parseFloat(w.el.style.left), parseFloat(w.el.style.top));
+    w.el.style.width=r.w+'px'; w.el.style.height=r.h+'px';
+    w.el.style.left=r.x+'px'; w.el.style.top=r.y+'px';
+  });
+});
+
+/* ---------- the pill slots in the taskbar hold the forges ---------- */
+const FORGES = [
+  ['GITHUB',      'https://github.com/NoahIsARider'],
+  ['GITLAB',      'https://gitlab.com/NoahIsARider'],
+  ['CODEBERG',    'https://codeberg.org/NoahIsARider'],
+  ['HUGGINGFACE', 'https://huggingface.co/NoahIsARider'],
+  ['SOURCEHUT',   'https://sr.ht/~noahisarider/'],
+];
+const SLOT_X = [0.1942, 0.341, 0.4882, 0.6353, 0.781];
+function syncTasks(){
+  const host = $('#tasks'); host.innerHTML = '';
+  FORGES.forEach(([name, url], i)=>{
+    if (i >= SLOT_X.length) return;
+    const a = document.createElement('a');
+    a.className = 'taskpg';
+    a.textContent = name;
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.title = url.replace(/^https?:\/\//,'');
+    a.style.left = (SLOT_X[i]*100) + '%';
+    a.style.width = "10.5%";
+    host.appendChild(a);
+  });
+}
+syncTasks();
+/* ---------- the slime is a button too ---------- */
+const mascot = $('#mascot');
+mascot.addEventListener('click', ()=>{
+  openWin('slime');
+  mascot.style.transform = 'translateY(-8px) rotate(-4deg)';
+  setTimeout(()=>{ mascot.style.transform=''; }, 260);
+});
+mascot.addEventListener('mouseenter', ()=>{ mascot.style.transform='translateY(-4px)'; });
+mascot.addEventListener('mouseleave', ()=>{ mascot.style.transform=''; });
+
+/* ---------- the start button walks back to the old desktop ---------- */
+$('#startbtn').title = 'back to skills.html';
+$('#startbtn').addEventListener('click', ()=>{ location.href = 'skills.html'; });
+
+/* ---------- content ---------- */
+const D = window.SWAMP;
+/* every number on this page is counted at runtime, nothing is typed in */
+const COUNT = (()=>{
+  const u = new Set();
+  let rows = 0, skills = 0;
+  D.groups.forEach(g=>{
+    skills += g.skills.length;
+    g.skills.forEach(s=>s.projects.forEach(p=>{ rows++; u.add(p.u); }));
+  });
+  return {rows, unique: u.size, skills};
+})();
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+function renderInto(id, host){
+  if (id==='skills') return renderSkills(host);
+  if (id==='projects') return renderProjects(host);
+  if (id==='links') return renderLinks(host);
+  if (id==='readme') return renderReadme(host);
+  if (id==='papers') return renderPapers(host);
+  if (id==='failed') return renderFailed(host);
+  if (id==='shelf') return renderShelf(host);
+  if (id==='slime') return renderSlime(host);
+  if (id==='hits') return renderHits(host);
+  if (id==='start') return renderStart(host);
+}
+function renderSlime(host){
+  host.innerHTML = `<div class="chat">
+    <div class="chatlog"></div>
+    <form class="chatform">
+      <input type="text" maxlength="140" autocomplete="off" placeholder="say something to the swamp"
+             aria-label="Message the slime">
+      <button type="submit">SEND</button>
+    </form>
+  </div>`;
+  const log = host.querySelector('.chatlog');
+  const form = host.querySelector('form');
+  const input = host.querySelector('input');
+
+  const say = (who, text) => {
+    const p = document.createElement('p');
+    p.className = 'line ' + who;
+    p.textContent = text;
+    log.appendChild(p);
+    log.scrollTop = log.scrollHeight;
+  };
+
+  say('s', 'you poked me. nobody has ever poked me. say something.');
+
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const msg = input.value.trim();
+    if (!msg) return;
+    say('u', msg);
+    input.value = '';
+    setTimeout(()=>say('s', slimeReply(msg)), 340);
+  });
+  setTimeout(()=>input.focus(), 120);
+}
+
+/* a small swamp vocabulary, matched on keywords, with a rotating shrug */
+const SLIME_RULES = [
+  [/\b(hi|hello|hey|yo|sup)\b/i, 'hello. you are the first thing to talk to me today. or ever.'],
+  [/how are you|how's it going|you ok/i, 'damp. otherwise fine.'],
+  [/who are you|what are you|your name|are you real/i, 'i am the thing in the corner. the swamp grew me by accident the day the wallpaper was drawn.'],
+  [/noah|zhou|who owns|whose page|who made/i, 'noah. software engineering at SCUT, minor in business administration. he drew the swamp, wrote the code, and left me here.'],
+  [/project|repo|code|github|work/i, () => `open PROJECTS. ${COUNT.unique} repositories, sorted by the language they were written in. some of them even run.`],
+  [/paper|research|scholar|publication|doi/i, 'there is an IEEE TCE paper on multimodal health misinformation. real, with a DOI, in the PAPERS folder.'],
+  [/fake news|misinformation|cmle|lora/i, 'collaborative mixture of experts on frozen backbones. i understood none of it. the numbers were good.'],
+  [/hire|job|intern|recruit|salary/i, 'he is after a PhD, not a job. computational social science, business intelligence, recommender systems, LLMs. bring a supervisor.'],
+  [/phd|uni|doctorate|apply/i, 'three research plans live in a drawer. hong kong, mostly. ask him and lose an hour.'],
+  [/contact|email|reach|write to/i, 'noahchou2005 at gmail. i have no hands, so you will have to type it.'],
+  [/read|book|goodreads|novel/i, 'rat king syndrome, over on the shelf. currently reading something that makes him sigh.'],
+  [/music|listen|song|album/i, 'i have no ears. i hear everything through the wallpaper.'],
+  [/old|1998|xp|previous|skills\.exe|other version/i, 'the old desktop is still up. the start button in the corner goes straight to it. a windows xp tribute, and it still works.'],
+  [/help|what can you|what do you do|how does this/i, 'click the icons. drag the windows by the orange bar. the painted scrollbar actually scrolls. the green button in the corner goes back to the old page.'],
+  [/swamp|weather|where are you|outside/i, 'always dusk here. the same sun since march. it has never rained.'],
+  [/sad|tired|tough|hard/i, 'the swamp has no advice. the swamp has slime.'],
+  [/love|nice|cool|great|amazing|beautiful/i, 'careful. compliments make me drip.'],
+  [/bye|goodbye|later|see you/i, 'the swamp does not close. shut the tab and i go back to being pixels.'],
+];
+const SLIME_SHRUGS = [
+  'say it again, slower.',
+  'i have opinions but no mouth to shape them.',
+  'the swamp says no. then it says yes. it is not a reliable source.',
+  'put that in an email to noah. i lose things.',
+  'i only know what the wallpaper tells me.',
+];
+let slimeN = 0;
+function slimeReply(msg){
+  for (const [re, answer] of SLIME_RULES)
+    if (re.test(msg)) return typeof answer === 'function' ? answer() : answer;
+  return SLIME_SHRUGS[slimeN++ % SLIME_SHRUGS.length];
+}
+/* small row icons, picked by what the project actually is */
+const SMALL_RULES = [
+  [/red.?team|attack|audit|adversar/i, 'small-3'],
+  [/data|dataset|bigdata|chart|analytic|statistic|metric|inference/i, 'small-11'],
+  [/review|meta-analysis|paper|thesis|essay|writing|book|lab/i, 'small-5'],
+  [/web|site|page|rss|app|platform|vercel|club|draft/i, 'small-6'],
+  [/docker|build|tool|system|framework|pipeline|scraper|setup/i, 'small-2'],
+  [/model|detect|health|ai|llm|agent|lora|reviewer|stethoscope/i, 'small-4'],
+  [/image|photo|video|face|keyframe|doodle|museum/i, 'small-7'],
+  [/rust|go|venus|chapter|simulat|game|snake|cavern/i, 'small-8'],
+];
+function smallIcon(p){
+  const hay = (p.n + ' ' + p.d).toLowerCase();
+  for (const [re, name] of SMALL_RULES) if (re.test(hay)) return 'assets/swamp/' + name + '.webp';
+  let h = 0;
+  for (let i=0;i<p.u.length;i++) h = (h*31 + p.u.charCodeAt(i)) >>> 0;
+  return 'assets/swamp/small-' + (1 + (h % 12)) + '.webp';
+}
+function projRow(p){
+  return `<div class="pr"><img class="pi" src="${smallIcon(p)}" alt="">
+    <div><a href="${p.u}" target="_blank" rel="noopener">${esc(p.n)}</a>
+    <div class="pd">${esc(p.d)}</div></div></div>`;
+}
+
+function renderSkills(host){
+  host.innerHTML = `<div class="expl"><div class="tree"></div><div class="detail"></div></div>`;
+  const tree=host.querySelector('.tree'), detail=host.querySelector('.detail');
+  let fi = 0;
+  D.groups.forEach(g=>{
+    const h=document.createElement('div'); h.className='grp'; h.textContent=g.name; tree.appendChild(h);
+    g.skills.forEach(sk=>{
+      const row=document.createElement('div'); row.className='sk';
+      const icon = 'assets/swamp/folder-' + (1 + (fi++ % 6)) + '.webp';
+      row.innerHTML=`<img src="${icon}" alt=""><span>${esc(sk.name)}</span>`;
+      row.addEventListener('click', ()=>{
+        tree.querySelectorAll('.sk').forEach(r=>r.classList.remove('on'));
+        row.classList.add('on'); showSkill(detail, sk, icon);
+      });
+      tree.appendChild(row);
+    });
+  });
+  showSkill(detail, D.groups[0].skills[0], 'assets/swamp/folder-1.webp');
+}
+function showSkill(host, sk, icon){
+  host.innerHTML = `<h2 class="dtitle"><img src="${icon||'assets/swamp/folder-1.webp'}" alt="">${esc(sk.name)}</h2>
+    <p class="dsub">${sk.projects.length} public ${sk.projects.length===1?'project':'projects'}</p>` +
+    sk.projects.map(p=>projRow(p)).join('');
+  host.scrollTop = 0;
+}
+function renderProjects(host){
+  const all=[]; D.groups.forEach(g=>g.skills.forEach(sk=>sk.projects.forEach(p=>all.push({...p,g:g.name}))));
+  host.innerHTML = `<div><div class="chip-row"></div><div class="rows"></div></div>`;
+  const chips=host.querySelector('.chip-row'), rows=host.querySelector('.rows');
+  const paint=f=>{ rows.innerHTML=(f?all.filter(p=>p.g===f):all).map(p=>projRow(p)).join(''); rows.scrollTop=0; };
+  const mk=(label,f)=>{
+    const b=document.createElement('span'); b.className='chip'+(f===null?' on':''); b.textContent=label;
+    b.addEventListener('click',()=>{chips.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+      b.classList.add('on'); paint(f);});
+    chips.appendChild(b);
+  };
+  mk('ALL '+all.length, null);
+  D.groups.forEach(g=>mk(g.name.toUpperCase(), g.name));
+  paint(null);
+}
+function renderLinks(host){
+  /* the repo count is counted, not typed */
+  const gh = new Set();
+  D.groups.forEach(g=>g.skills.forEach(sk=>sk.projects.forEach(p=>{
+    if (/^https:\/\/github\.com\//.test(p.u)) gh.add(p.u);
+  })));
+  const note = l => l.n === 'GitHub'
+    ? `${gh.size} of these projects live there`
+    : (l.n === 'Homepage' ? 'the landing page for this site' : l.d);
+  const rows = D.links.filter(l => !/goodreads/i.test(l.n + ' ' + l.u));
+  host.innerHTML = rows.map(l=>`<div class="linkrow">
+      <a href="${l.n === 'Homepage' ? HOME : l.u}" target="_blank" rel="noopener">${esc(l.n)}</a>
+      <span class="ld"${l.n==='GitHub'?' data-gh':''}>${esc(note(l))}</span></div>`).join('');
+  /* ask GitHub how many repos there are instead of typing a number that goes stale */
+  fetch('https://api.github.com/users/NoahIsARider', {cache:'no-store'})
+    .then(r => r.ok ? r.json() : null)
+    .then(j => {
+      if (!j || !j.public_repos) return;
+      const el = host.querySelector('[data-gh]');
+      if (el) el.textContent = `${j.public_repos} public repositories, ${gh.size} of them catalogued here`;
+    })
+    .catch(()=>{});
+}
+function renderReadme(host){
+  host.innerHTML = `<div class="prose">
+    <p><b>Noah Zhou</b>. Software engineering at SCUT, minor in business administration.
+    Research assistant on multimodal fake-news detection, human-AI collaboration and clinical AI.</p>
+    <p>This desktop is a catalogue. Everything in it is a real repository or a real paper.</p>
+    <h3>How to read it</h3>
+    <p><b>SKILLS</b> sorts the work by the language it was written in. <b>PROJECTS</b> is the flat list.
+    <b>PAPERS</b> holds the published ones. <b>FAILED</b> holds the ones that did not survive.</p>
+    <h3>Contact</h3>
+    <p>noahchou2005@gmail.com · <a href="${HOME}" target="_blank" rel="noopener">the human homepage</a></p>
+    <p><a href="skills.html">the 1998 desktop this one replaced</a> is still online.</p>
+  </div>`;
+}
+function renderPapers(host){
+  host.innerHTML = `<div class="prose">
+    <div class="pr"><a href="https://doi.org/10.1109/TCE.2026.3677445" target="_blank" rel="noopener">IEEE TCE 2026 — CMLE multimodal fake news</a>
+      <div class="pd">Collaborative mixture of LoRA experts on frozen backbones for multimodal health misinformation detection.</div></div>
+    <div class="pr"><a href="https://github.com/NoahIsARider/When-combinations-of-humans-and-AI-are-useful--A-systematic-review-and-meta-analysis" target="_blank" rel="noopener">When combinations of humans and AI are useful</a>
+      <div class="pd">Systematic review and meta-analysis. Code and analysis in R and Python.</div></div>
+    <h3>Elsewhere</h3>
+    <p><a href="https://scholar.google.cz/citations?user=CLf-BNAAAAAJ" target="_blank" rel="noopener">Google Scholar</a></p>
+  </div>`;
+}
+function renderFailed(host){
+  host.innerHTML = `<div class="prose">
+    <p>Things that did not survive contact with reality. Kept on purpose.</p>
+    <div class="pr"><div class="pd"><b>A three week attempt at a queue backed build system in bash.</b> Rewritten in Python twice.</div></div>
+    <div class="pr"><div class="pd"><b>A social app with zero users.</b> The onboarding animation was great.</div></div>
+    <div class="pr"><div class="pd"><b>Every quick LaTeX template I ever started from scratch.</b></div></div>
+  </div>`;
+}
+function renderShelf(host){
+  const links = [
+    [1, 'https://github.com/NoahIsARider', 'GitHub'],
+    [2, HOME, 'Homepage'],
+    [3, 'https://noahsblogs.pages.dev/', 'Blogs'],
+    [4, 'https://scholar.google.cz/citations?user=CLf-BNAAAAAJ', 'Google Scholar'],
+    [5, 'mailto:noahchou2005@gmail.com', 'Email'],
+    [6, 'skills.html', 'The 1998 desktop'],
+  ];
+  const badges = links.map(([i,u,t]) =>
+    `<a class="badge" href="${u}" target="_blank" rel="noopener" title="${t}">
+       <img src="assets/swamp/badge-${i}.webp" alt="${t}"></a>`).join('');
+  host.innerHTML = `<div class="prose">
+    <p>Stuff I collected on the way in. Every one of these goes somewhere real.
+    The counter is also a button.</p>
+    <div class="shelf">${badges}
+      <button class="badge counter" title="Hit counter"><img src="assets/swamp/badge-7.webp" alt="Hit counter"></button>
+    </div>
+    <h3>Best viewed</h3>
+    <p>At 1024 wide, in the dark, with the speakers on.</p>
+    <h3>Updates</h3>
+    <p>20 Oct 2026. The desktop boots. Windows drag and stack, the painted scrollbar works,
+       the slime answers when poked.</p>
+  </div>`;
+  host.querySelector('.counter').addEventListener('click', ()=>openWin('hits'));
+}
+function renderHits(host){
+  const key = 'swamp-hits';
+  const n = Number(localStorage.getItem(key) || 187);
+  host.innerHTML = `<div class="prose">
+    <p>Visitors since the swamp went up. I set it to 187 because nobody had visited yet
+    and an empty counter is a sad thing to ship.</p>
+    <p style="font-family:var(--head);font-size:clamp(34px,7vh,64px);letter-spacing:6px;
+       color:var(--rust);margin:6px 0 12px">${String(n).padStart(3,'0')}</p>
+    <p><a href="#" id="bump" style="color:var(--rust);font-weight:700;text-decoration:none">
+       hit it once more</a></p>
+  </div>`;
+  host.querySelector('#bump').addEventListener('click', e=>{
+    e.preventDefault();
+    const m = Number(localStorage.getItem(key) || 187) + 1;
+    localStorage.setItem(key, m);
+    host.querySelector('p:nth-of-type(2)').textContent = String(m).padStart(3,'0');
+  });
+}
+function renderStart(host){
+  host.innerHTML = `<div class="prose"><h3>Programs</h3>` +
+    DESK.map(id=>`<p style="margin:0 0 6px"><a href="#" data-app="${id}"
+      style="color:var(--rust);font-weight:700;text-decoration:none">${APPS[id].title}</a></p>`).join('') + `</div>`;
+  host.querySelectorAll('[data-app]').forEach(a=>a.addEventListener('click', e=>{
+    e.preventDefault(); openWin(a.dataset.app);
+  }));
+}
+const bootParams = new URLSearchParams(location.search);
+openWin(bootParams.get('open') || 'skills');
+if (bootParams.has('menu')) $('#startmenu').classList.add('open');
+</script>
+</body>
+</html>
