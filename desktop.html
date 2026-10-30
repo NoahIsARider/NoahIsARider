@@ -434,7 +434,7 @@ const COUNT = (()=>{
   let rows = 0, skills = 0;
   D.groups.forEach(g=>{
     skills += g.skills.length;
-    g.skills.forEach(s=>s.projects.forEach(p=>{ rows++; u.add(p.u); }));
+    g.skills.forEach(s=>s.projects.forEach(p=>{ rows++; if(p.u) u.add(p.u); }));
   });
   return {rows, unique: u.size, skills};
 })();
@@ -539,8 +539,11 @@ function smallIcon(p){
   return 'assets/swamp/small-' + (1 + (h % 12)) + '.webp';
 }
 function projRow(p){
+  const title = p.u
+    ? `<a href="${p.u}" target="_blank" rel="noopener">${esc(p.n)}</a>`
+    : `<span style="color:#D2603B;font-weight:700">${esc(p.n)}</span>`;
   return `<div class="pr"><img class="pi" src="${smallIcon(p)}" alt="">
-    <div><a href="${p.u}" target="_blank" rel="noopener">${esc(p.n)}</a>
+    <div>${title}
     <div class="pd">${esc(p.d)}</div></div></div>`;
 }
 
@@ -564,8 +567,12 @@ function renderSkills(host){
   showSkill(detail, D.groups[0].skills[0], 'assets/swamp/folder-1.webp');
 }
 function showSkill(host, sk, icon){
+  const pub = sk.projects.filter(p=>p.u).length, total = sk.projects.length;
+  const sub = pub === total
+    ? `${total} public ${total===1?'project':'projects'}`
+    : `${pub} public \u00b7 ${total-pub} not public yet`;
   host.innerHTML = `<h2 class="dtitle"><img src="${icon||'assets/swamp/folder-1.webp'}" alt="">${esc(sk.name)}</h2>
-    <p class="dsub">${sk.projects.length} public ${sk.projects.length===1?'project':'projects'}</p>` +
+    <p class="dsub">${sub}</p>` +
     sk.projects.map(p=>projRow(p)).join('');
   host.scrollTop = 0;
 }

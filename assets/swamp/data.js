@@ -469,12 +469,32 @@ window.SWAMP = {
        "u": "https://github.com/NoahIsARider/open-stethoscope"
       }
      ]
+    },
+    {
+     "name": "Godot",
+     "projects": [
+      {
+       "n": "BlueBlood",
+       "d": "A door-to-door salesman on a freight habitat. Godot 4 narrative game with painted stills, a live ledger and a weekly quota",
+       "u": ""
+      }
+     ]
     }
    ]
   },
   {
    "name": "Creative",
    "skills": [
+    {
+     "name": "Blender",
+     "projects": [
+      {
+       "n": "DogYears",
+       "d": "A playable first-person narrative game about the afternoons after a loss. Blender art pass with scanned PBR materials, a detailed architectural miniature, three.js runtime",
+       "u": "https://github.com/NoahIsARider/DogYears"
+      }
+     ]
+    },
     {
      "name": "draw.io",
      "projects": []

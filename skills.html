@@ -351,6 +351,8 @@ const ICONS = {
   Postman:     DEV + "postman/postman-original.svg",
   "Android Studio": DEV + "androidstudio/androidstudio-original.svg",
   "PyTorch": DEV + "pytorch/pytorch-original.svg",
+  Blender:     DEV + "blender/blender-original.svg",
+  Godot:       DEV + "godot/godot-original.svg",
 };
 const SVG = {
   WSL: '<svg viewBox="0 0 24 24" width="16" height="16" fill="#9CA3AF" aria-hidden="true"><path d="M8.165 6V3h7.665v3H8.165zm-.5-3H1c-.55 0-1 .45-1 1v2h7.665V3zM23 3h-6.67v3H24V4c0-.55-.45-1-1-1zM0 6.5h24V20c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V6.5zM11.5 18c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5v-1.5c0-.3-.2-.5-.5-.5h-8c-.3 0-.5.2-.5.5V18zM3.5 12.3l4-2.9v2.6l-2.5 1.9 2.5 1.9v2.6l-4-2.9v-3.2zm6.5.4v2.3H16v-2.3H10z"/></svg>',
@@ -488,8 +490,14 @@ const DATA = {
       P("CMLE-Health", "LoRA experts on frozen backbones — feature-cached training", GH + "CMLE-Health"),
       P("open-stethoscope", "404K-param model trained in ~1 minute on a P4 GPU", GH + "open-stethoscope"),
     ]},
+    Godot: { projects: [
+      P("BlueBlood", "A door-to-door salesman on a freight habitat. Godot 4 narrative game with painted stills, a live ledger and a weekly quota", ""),
+    ]},
   },
   Creative: {
+    Blender: { projects: [
+      P("DogYears", "A playable first-person narrative game about the afternoons after a loss. Blender art pass with scanned PBR materials, a detailed architectural miniature, three.js runtime", GH + "DogYears"),
+    ]},
     "draw.io": { projects: [] },
     CapCut: { projects: [] },
     BandLab: { projects: [] },
@@ -507,7 +515,9 @@ const detailIconHTML = (name)=>{
   if (SVG[name]) return '<span style="width:28px;height:28px;display:grid;place-items:center">'+SVG[name].replace('width="16" height="16"','width="24" height="24"')+'</span>';
   return '<img src="assets/xp/notepad-32.png" alt="">';
 };
-const projHTML = (p, openCb)=>'<div class="proj"><img src="assets/xp/document-16.png" alt=""><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.n+'</a><div class="pd">'+p.d+'</div></div></div>';
+const projHTML = (p, openCb)=>'<div class="proj"><img src="assets/xp/document-16.png" alt=""><div>'+
+  (p.u ? '<a href="'+p.u+'" target="_blank" rel="noopener">'+p.n+'</a>' : '<span style="color:#222;font-weight:600">'+p.n+'</span>')+
+  '<div class="pd">'+p.d+'</div></div></div>';
 
 /* aggregate projects */
 const ALLPROJ = [];
@@ -927,7 +937,8 @@ function showSkillDetail(group, name){
 function openProjects(){
   if(winState.projects && !winState.projects.min) return focusWin("projects");
   createWin("projects", "My Projects", XP.folder16, ()=>{
-    let rows = ALLPROJ.map(p=>'<li><img src="'+XP.doc+'" alt=""><div><a href="'+p.u+'" target="_blank" rel="noopener">'+p.name+'</a>'+
+    let rows = ALLPROJ.map(p=>'<li><img src="'+XP.doc+'" alt=""><div>'+
+      (p.u ? '<a href="'+p.u+'" target="_blank" rel="noopener">'+p.name+'</a>' : '<span style="color:#222;font-weight:600">'+p.name+'</span>')+
       '<div class="pd">'+p.d+'</div><div class="tags">via '+p.skill+" · "+p.group+"</div></div></li>").join("");
     return '<div style="flex:1;min-height:0;overflow:auto;background:#fff"><ul class="app-list">'+rows+"</ul></div>";
   }, {w:720, h:520});
