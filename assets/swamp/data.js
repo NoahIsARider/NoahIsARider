@@ -476,7 +476,7 @@ window.SWAMP = {
       {
        "n": "BlueBlood",
        "d": "A door-to-door salesman on a freight habitat. Godot 4 narrative game with painted stills, a live ledger and a weekly quota",
-       "u": ""
+       "u": "https://github.com/NoahIsARider/BlueBlood"
       }
      ]
     }
