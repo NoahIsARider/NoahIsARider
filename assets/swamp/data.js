@@ -188,8 +188,8 @@ window.SWAMP = {
      "projects": [
       {
        "n": "GoStudio",
-       "d": "Venus Plan — Chapter II: Go",
-       "u": "https://github.com/NoahIsARider/GoStudio"
+       "d": "Venus Plan — Chapter II: Go（已并入 VenusStudioEdu）",
+       "u": "https://github.com/NoahIsARider/VenusStudioEdu/tree/master/GoStudio"
       }
      ]
     },
@@ -198,8 +198,8 @@ window.SWAMP = {
      "projects": [
       {
        "n": "RustStudio",
-       "d": "Venus Plan — Chapter I: Rust",
-       "u": "https://github.com/NoahIsARider/RustStudio"
+       "d": "Venus Plan — Chapter I: Rust（已并入 VenusStudioEdu）",
+       "u": "https://github.com/NoahIsARider/VenusStudioEdu/tree/master/RustStudio"
       }
      ]
     },
@@ -218,8 +218,8 @@ window.SWAMP = {
      "projects": [
       {
        "n": "DockerStudio",
-       "d": "Venus Plan — Chapter III: Docker",
-       "u": "https://github.com/NoahIsARider/DockerStudio"
+       "d": "Venus Plan — Chapter III: Docker（已并入 VenusStudioEdu）",
+       "u": "https://github.com/NoahIsARider/VenusStudioEdu/tree/master/DockerStudio"
       },
       {
        "n": "aseprite-builder",
@@ -352,8 +352,8 @@ window.SWAMP = {
       },
       {
        "n": "DockerStudio",
-       "d": "Venus Plan — Chapter III: Docker",
-       "u": "https://github.com/NoahIsARider/DockerStudio"
+       "d": "Venus Plan — Chapter III: Docker（已并入 VenusStudioEdu）",
+       "u": "https://github.com/NoahIsARider/VenusStudioEdu/tree/master/DockerStudio"
       },
       {
        "n": "aseprite-builder",
