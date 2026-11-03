@@ -60,7 +60,6 @@ Artificial Intelligence · Deep Learning · Social Computing · Multi-Agent Syst
 | [sailor-draft](https://github.com/NoahIsARider/sailor-draft) | Screenwriting, unadorned | [sailor-draft.vercel.app](https://sailor-draft.vercel.app) |
 | [ReLife-App](https://github.com/NoahIsARider/ReLife-App) | Digital legacy app — Expo + Express | [digital-legacy-app](https://digital-legacy-accou-yopt.bolt.host) |
 | [NEOWEST](https://github.com/NoahIsARider/NEOWEST) | Retro-Futurism × Western Cowboy aesthetic — pure frontend | [noahisarider.codeberg.page/NEOWEST](https://noahisarider.codeberg.page/NEOWEST/) |
-| [Platonia](https://github.com/NoahIsARider/Platonia) | A coming-soon page as a numbered series of black-and-white plates — collapse, presence, foam, no future | [noahisarider.codeberg.page/Platonia](https://noahisarider.codeberg.page/Platonia/) |
 
 **Literature · Film · Music**
 

@@ -90,11 +90,6 @@ window.SWAMP = {
        "n": "Lyricbook",
        "d": "A lyric book with a Shakespearean flavor",
        "u": "https://github.com/NoahIsARider/Lyricbook"
-      },
-      {
-       "n": "Platonia",
-       "d": "A coming-soon page as a numbered series of black-and-white plates — collapse, presence, foam, no future",
-       "u": "https://noahisarider.codeberg.page/Platonia/"
       }
      ]
     },
